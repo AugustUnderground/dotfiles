@@ -128,9 +128,9 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite ""
 -------------------------
 layoutHook' = avoidStruts $ spacingRaw False (Border spacing' spacing' 
                                                      spacing' spacing') 
-                                       False (Border spacing' spacing' 
+                                       True (Border spacing' spacing' 
                                                     spacing' spacing') 
-                                       False
+                                       True
                           $ smartBorders
                           (tiled' ||| float' ||| full' ||| tall')
             where 
