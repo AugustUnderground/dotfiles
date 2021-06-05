@@ -2,7 +2,14 @@
 export ZSH_CFG="$HOME/.config/zsh"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/X11R6/bin/startx:$HOME/.local/bin:$HOME/scripts:$HOME/perl5/bin:$HOME/.cabal/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
+export PATH=/usr/X11R6/bin/startx:$PATH # OpenBSD
+export $HOME/.local/bin:$PATH           # Local executables
+export $HOME/scripts:$PATH              # My scripts
+export $HOME/dots/scripts:$PATH         # My private scripts
+export $HOME/perl5/bin:$PATH            # Perl
+export $HOME/.cabal/bin:$PATH           # Haskell
+export $HOME/.cargo/bin:$PATH           # Rust
+export $HOME/go/bin:$PATH               # Go
 
 # History
 export HISTFILE=$HOME/.zsh_history
