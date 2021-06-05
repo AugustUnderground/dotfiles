@@ -1,0 +1,32 @@
+auto-reload yes
+max-items 50
+browser "surf %u"
+macro y set browser "mpv %u" ; open-in-browser ; set browser "surf %u"
+macro m set browser "mpv %u"
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+# Colors
+color background          white     black
+color listnormal          white     black
+color listfocus           white     red   
+color listnormal_unread   red      black
+color listfocus_unread    red      black   standout bold
+color info                black     white    bold
+color article             white     black
+
+highlight article "^(Title):.*$" red default
+highlight article "^(Feed):.*$" red default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" red default

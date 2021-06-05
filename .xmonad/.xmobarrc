@@ -1,0 +1,43 @@
+-- colorBlack      = "#0d0d0e"
+-- colorDarkGray   = "#2d2d2e" 
+-- colorGray       = "#4f4f4f" 
+-- colorLightGray  = "#808080"
+-- colorWhite      = "#dedede"
+-- colorBlue       = "#5174e1"
+-- colorGreen      = "#007a4f" 
+-- colorPurple     = "#6016cd"
+-- colorYellow     = "#e1be51"
+-- colorRed        = "#7a002b"
+-- colorCyan       = "#0085b0" 
+
+Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
+       , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=16:antialias=true"
+                           , "xft:Symbola:size=16:style=Regular"
+                           ]
+       , bgColor         = "#0d0d0e"
+       , fgColor         = "#dedede"
+       , position        = Static { xpos = 1936
+                                  , ypos = 12
+                                  , width = 2530
+                                  , height = 30
+                                  }
+       , border          = FullB
+       , borderColor     = "#2d2d2e"
+       , borderWidth     = 0
+
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "<fn=2><fc=#dedede,#7a002b> ⸸ </fc></fn><fn=1><fc=#7a002b,#0d0d0e> </fc></fn> %StdinReader% }{ %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
+
+       , lowerOnStart     = True
+       , hideOnStart      = False
+       , allDesktops      = True
+       , overrideRedirect = True
+       , pickBroadest     = False
+       , persistent       = True
+
+   , commands = 
+        [ Run Date "<fc=#ABABAB><fn=1></fn> %F (%a) <fn=1></fn> %T</fc>" "date" 10
+        , Run StdinReader
+        ]
+   }

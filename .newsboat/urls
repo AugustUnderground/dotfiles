@@ -1,0 +1,96 @@
+## Linux
+https://artixlinux.org/feed.php linux distro
+https://voidlinux.org/atom.xml linux distro
+https://lukesmith.xyz/rss.xml linux rice
+http://suckless.org/atom.xml linux rice 
+https://www.pine64.org/feed linux tech
+https://news.ycombinator.com/rss linux tech
+
+## Reddit
+#http://www.reddit.com/r/commandline/.rss linux reddit
+#http://www.reddit.com/r/unixporn/.rss rice linux reddit
+#http://www.reddit.com/r/linux/.rss linux reddit
+https://teddit.net/r/unix?api=&target=reddit&type=rss
+https://teddit.net/r/linux?api=&target=reddit&type=rss
+https://teddit.net/r/BSD?api=&target=reddit&type=rss
+https://teddit.net/r/commandline?api=&target=reddit&type=rss
+https://teddit.net/r/unixporn?api=&target=reddit&type=rss
+https://teddit.net/r/ProgrammerHumor?api=&target=reddit&type=rss
+https://teddit.net/r/openbsd?api=&target=reddit&type=rss
+https://teddit.net/r/thinkpad?api=&target=reddit&type=rss
+https://teddit.net/r/linuxmemes?api=&target=reddit&type=rss
+
+## Games
+https://www.giantbomb.com/feeds/video giantbomb games
+https://www.giantbomb.com/feeds/news giantbomb games
+https://www.giantbomb.com/feeds/new_releases giantbomb games
+https://gematsu.com/feed games
+https://www.plusforward.net/rss_xml.php
+
+## Politics
+https://redice.tv/rss/red-ice-radio redice
+https://redice.tv/rss/radio-3fourteen redice
+https://redice.tv/rss/red-ice-tv redice
+https://redice.tv/rss/news redice
+https://www.ancreport.com/feed/
+https://vid.ancreport.com/feeds/videos.xml?accountId=4
+
+## Youtube
+https://invidious.exonip.de/feed/channel/UC178kThBUvGNps5cabRP_2Q youtube
+https://invidious.exonip.de/feed/channel/UCdJdEguB1F1CiYe7OEi3SBg youtube games
+https://invidious.exonip.de/feed/channel/UCQLgTk1DH_EUEldsFhmW_TQ youtube games 
+https://invidious.exonip.de/feed/channel/UCLx053rWZxCiYWsBETgdKrQ youtube games 
+https://invidious.exonip.de/feed/channel/UC0M0rxSz3IF0CsSour1iWmw youtube games 
+https://invidious.exonip.de/feed/channel/UC78PzEVn5zWK4No0dPQHVQw youtube games 
+https://invidious.exonip.de/feed/channel/UCzmP669uVr0psjtftqdt4Yg youtube games
+https://invidious.exonip.de/feed/channel/UCqDS7KWjAPKv-7ZSlro9OiQ youtube games
+https://invidious.exonip.de/feed/channel/UCs_6gVNVQOgq6MGDdt3h8HQ youtube games
+https://invidious.exonip.de/feed/channel/UCzCWehBejA23yEz3zp7jlcg youtube music
+https://invidious.exonip.de/feed/channel/UCxr-noflRdHJ2v2mVHB86rA youtube music
+https://invidious.exonip.de/feed/channel/UCSldglor1t-5E-Gy2eBdMrA youtube music
+https://invidious.exonip.de/feed/channel/UCG7AaCh_CiG6pq_rRDNw72A youtube music
+https://tube.connect.cafe/feed/channel/UC5TaZWeRgdN7klKM60Hj6rQ youtube music
+https://tube.connect.cafe/feed/channel/UCAtlZO9a52JIhQRyXDRLaZQ youtube music
+https://tube.connect.cafe/feed/channel/UCoxg3Kml41wE3IPq-PC-LQw youtube music
+https://inv.riverside.rocks/feed/channel/UCR3McX8ZB_AwKZ-bg8FQ5gQ youtube music
+https://inv.riverside.rocks/feed/channel/UC6Ud34gwq_c7hnm-Ph1i3Pg youtube music
+https://inv.riverside.rocks/feed/channel/UCKIKOBhMVKJsFkc593xrxSw youtube
+https://inv.riverside.rocks/feed/channel/UCzHlL8AjzWLfKnVOAFcqrDg youtube podcast
+https://inv.riverside.rocks/feed/channel/UCuC_WoJu5vWTGtNYAfFfSHw youtube podcast
+https://inv.riverside.rocks/feed/channel/UCPhzlthcWdYbvPCEq827Fww youtube
+https://inv.riverside.rocks/feed/channel/UCz_cDc_2arKIb6SlJoqFT0w youtube
+https://inv.riverside.rocks/feed/channel/UC-6umqcTBkl9IH4Z8Z-O1jg youtube
+https://inv.riverside.rocks/feed/channel/UCVpankR4HtoAVtYnFDUieYA youtube
+https://inv.riverside.rocks/feed/channel/UCDLkzWN1rHY4eYkGnVruHVw youtube
+https://inv.riverside.rocks/feed/channel/UC8gjEaNWpu6IMazDwph7cpA youtube
+https://inv.riverside.rocks/feed/channel/UCzkjgi_ssPh82uiro89uvNA youtube
+https://inv.riverside.rocks/feed/channel/UCDgSHG640xfj5BAaztJcxVg youtube
+https://inv.riverside.rocks/feed/channel/UCDP2177m1UYwsoGVuPjTr5g youtube
+https://inv.riverside.rocks/feed/channel/UCw2SbtOH0K9AjQTbIRI6cqA youtube
+
+# BitChute
+https://www.bitchute.com/feeds/rss/channel/RedIceTV/
+https://www.bitchute.com/feeds/rss/channel/Survive-the-Jive/
+https://www.bitchute.com/feeds/rss/channel/dawson/
+https://www.bitchute.com/feeds/rss/channel/thegreatorder/
+https://www.bitchute.com/feeds/rss/channel/derek_rants/
+
+## LBRY
+https://lbryfeed.melroy.org/channel/tv/MimirsBrunnr
+https://lbryfeed.melroy.org/channel/tv/MimirsCouncil
+
+
+## Music
+http://createfeed.fivefilters.org/extract.php?url=coreradio.ru&in_id_or_class=tcarusel-item-title&max=10&order=document music
+
+## Podcasts
+https://www.omnycontent.com/d/playlist/aaea4e69-af51-495e-afc9-a9760146922b/33e35dae-1427-49b3-9c2a-ab270163447b/02446555-228d-46eb-ad4a-ab270163448b/podcast.rss podcast
+
+## Twitter
+https://nitter.snopyta.org/realDonaldTrump/rss
+https://nitter.snopyta.org/Henrik_Palmgren/rss
+https://nitter.snopyta.org/redicetv/rss
+https://nitter.snopyta.org/LanaLokteff/rss
+https://nitter.snopyta.org/jeffgerstmann/rss
+https://nitter.snopyta.org/GandalftheWhi19/rss
+https://nitter.snopyta.org/chrispontius/rss

@@ -1,0 +1,1 @@
+export WM="$(which spectrwm)"

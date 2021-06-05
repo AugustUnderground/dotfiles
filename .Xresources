@@ -1,0 +1,97 @@
+! Urxvt specifics
+URxvt.perl-ext-common:  resize-font
+URxvt.keysym.F11:       perl:fullscreen:switch
+URxvt.keysym.C-minus:   resize-font:smaller
+URxvt.keysym.C-equal:   resize-font:bigger
+URxvt.keysym.C-0:       resize-font:reset
+URxvt.keysym.C-question:resize-font:show
+
+URxvt.transparent: true
+URxvt.shading: 10
+
+!URxvt.termName: rxvt-unicode-256color
+
+! Transparency
+*.alpha: 0.0
+
+! Scroll Bar
+*.scrollBar: false
+
+! Font
+*.font: xft:Monofur for Powerline:pixelsize=15
+
+! special
+*.foreground:   #c7c8c5
+*.background:   #121411
+*.cursorColor:  #c7c8c5
+
+! black
+*.color0:       #2c2e28
+*.color8:       #414137
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #7a8070
+*.color15:      #c8c8c5
+
+
+! DEFAULT
+! special
+!*.foreground:   #c5c8c6
+!*.background:   #0b0b0c
+!*.cursorColor:  #c5c8c6
+
+! black
+!*.color0:       #222222
+!*.color8:       #373b41
+
+! red
+!*.color1:       #a54242
+!*.color9:       #cc6666
+
+! green
+!*.color2:       #8c9440
+!*.color10:      #b5bd68
+
+! yellow
+!*.color3:       #de935f
+!*.color11:      #f0c674
+
+! blue
+!*.color4:       #5f819d
+!*.color12:      #81a2be
+
+! magenta
+!*.color5:       #85678f
+!*.color13:      #b294bb
+
+! cyan
+!*.color6:       #20665d
+!*.color14:      #8abeb7
+
+! white
+!*.color7:       #707880
+!*.color15:      #c5c8c6
