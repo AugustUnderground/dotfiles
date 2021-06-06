@@ -114,8 +114,8 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray
                        , ppUrgent  = xmobarColor colorWhite colorRed
                        , ppOutput  = hPutStrLn h
                        , ppLayout  = namedLayout
-                       -- , ppExtras = [windowCount]
-                       -- , ppOrder = \(ws : l : t : ex ) -> [ws, l] ++ ex ++ [t]
+                       --, ppExtras = [ppWindow]
+                       , ppOrder = \(ws : l : t : ex ) -> [ws, l] ++ ex ++ [t]
                        }
 
 namedLayout :: String -> String
