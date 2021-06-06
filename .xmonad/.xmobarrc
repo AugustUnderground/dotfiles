@@ -14,6 +14,8 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
        , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=16:antialias=true"
                            , "xft:Symbola:size=16:style=Regular"
                            ]
+       , iconRoot        = "./.local/share/xbm-icons/"
+       , iconOffset      = 15
        , bgColor         = "#0d0d0e"
        , fgColor         = "#dedede"
        , position        = Static { xpos = 1936
@@ -31,13 +33,12 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
 
        , lowerOnStart     = True
        , hideOnStart      = False
-       , allDesktops      = True
+       , allDesktops      = False
        , overrideRedirect = True
        , pickBroadest     = False
        , persistent       = True
 
-   , commands = 
-        [ Run Date "<fc=#ABABAB><fn=1></fn> %F (%a) <fn=1></fn> %T</fc>" "date" 10
-        , Run StdinReader
+       , commands = [ Run Date "<fc=#dedede><fn=1></fn> %F (%a) <fn=1></fn> %T</fc>" "date" 10
+                    , Run StdinReader
         ]
-   }
+       }

@@ -1,5 +1,3 @@
-{-# LANGUAGE LambdaCase #-}
-
 import System.IO
 import System.Exit
 import System.Environment
@@ -104,24 +102,28 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
 -------------------------
 -- STATUSBAR
 -------------------------
-xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite ""
-                       , ppVisible = xmobarColor colorLightGray ""
-                       , ppHidden  = xmobarColor colorGray "" 
-                       , ppSep     = xmobarColor colorRed "" " | "
-                       , ppTitle   = xmobarColor colorWhite "" . shorten 60
+xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray 
+                                   . wrap " " " "
+                       , ppVisible = xmobarColor colorLightGray colorDarkGray 
+                                   . wrap " " " "
+                       , ppHidden  = xmobarColor colorGray ""  
+                                   . wrap " " " "
+                       , ppSep     = xmobarColor colorRed "" " " 
+                       , ppTitle   = xmobarColor colorWhite "" 
+                                   . shorten 60
                        , ppUrgent  = xmobarColor colorWhite colorRed
                        , ppOutput  = hPutStrLn h
-                       , ppLayout  = xmobarColor colorLightGray "" .
-                                     \case 
-                                        "Spacing Tall"          -> "[|]"
-                                        "Spacing Full"          -> "[/]"
-                                        "Spacing Simple Float"  -> "[-]"
-                                        "Spacing ResizableTall" -> "[\\]"
-                       -- , ppLayout  = const ""
+                       , ppLayout  = namedLayout
                        -- , ppExtras = [windowCount]
                        -- , ppOrder = \(ws : l : t : ex ) -> [ws, l] ++ ex ++ [t]
                        }
 
+namedLayout :: String -> String
+namedLayout "Spacing Tall"          = xmobarColor colorRed "" "[<icon=half.xbm/>]"
+namedLayout "Spacing Full"          = xmobarColor colorPurple "" "[<icon=full.xbm/>]" 
+namedLayout "Spacing Simple Float"  = xmobarColor colorGreen "" "[<icon=empty.xbm/>]"
+namedLayout "Spacing ResizableTall" = xmobarColor colorBlue "" "[<icon=half.xbm/>]"
+namedLayout anything                = xmobarColor colorLightGray "" "[<icon=cat.xbm/>]" 
 
 -------------------------
 -- LAYTOUT
@@ -238,13 +240,16 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
 -- MOUSE BINDINGS
 -------------------------
 focusFollowsMouse' :: Bool
-focusFollowsMouse' = True
+focusFollowsMouse' = False
 
 mouseBindings' XConfig {XMonad.modMask = modMask} = M.fromList 
-  [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w) -- mod-button1, Set the window to floating mode and move by dragging
-  , ((modMask, button2), \w -> focus w >> windows W.swapMaster) -- mod-button2, Raise the window to the top of the stack
-  , ((modMask, button3), \w -> focus w >> mouseResizeWindow w) -- mod-button3, Set the window to floating mode and resize by dragging
-  ]
+    -- mod-button1, Set the window to floating mode and move by dragging
+    [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w) 
+    -- mod-button2, Raise the window to the top of the stack
+    , ((modMask, button2), \w -> focus w >> windows W.swapMaster) 
+    -- mod-button3, Set the window to floating mode and resize by dragging
+    , ((modMask, button3), \w -> focus w >> mouseResizeWindow w) 
+    ]
 
 -- Mouse Cursor Follow Focus
 pointerFollowsFocus :: Rational -> Rational -> X ()
@@ -278,7 +283,7 @@ main = do
         , layoutHook         = layoutHook'
         , manageHook         = manageHook'
         , logHook            = dynamicLogWithPP (xmobarPP' statusBar) 
-                                                >> pointerFollowsFocus 1 1
+                                                -- >> pointerFollowsFocus 1 1
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
         , normalBorderColor  = colorDarkGray
         , focusedBorderColor = colorLightGray
