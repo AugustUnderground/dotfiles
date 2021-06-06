@@ -58,8 +58,8 @@ bind-key 4-r            remote                  # Connect to remote servers
 bind-key 4-o            output                  # Screen output
 
 ### Menus
-bind-key 4-m            menu-window             # Launch window search menu.
-bind-key 4S-m           menu-window-hidden      # Launch hidden window search menu.
+bind-key 4-slash        menu-window             # Launch window search menu.
+bind-key 4S-slash       menu-window-hidden      # Launch hidden window search menu.
 bind-key 4-a            menu-cmd                # Launch application search menu.
 bind-key 4-g            menu-group              # Launch group search menu.
 bind-key 4-p            menu-exec               # Launch “exec program” menu.
@@ -69,10 +69,10 @@ bind-key 4-s            menu-ssh                # Launch “ssh” menu.
 ### Groups
 bind-key 4S-0           group-toggle-all        # Toggle visibility of all groups.
 bind-key 4S-g           window-group            # Toggle group membership of current window.
-bind-key 4S-n           group-cycle             # Forward cycle through groups.
-bind-key 4S-p           group-rcycle            # Reverse cycle through groups.
-bind-key 4-n            window-cycle-ingroup    # Forward cycle through windows in current group.
-bind-key 4-p            window-rcycle-ingroup   # Reverse cycle through windows in current group.
+bind-key MS-n           group-cycle             # Forward cycle through groups.
+bind-key MS-p           group-rcycle            # Reverse cycle through groups.
+bind-key MC-n           window-cycle-ingroup    # Forward cycle through windows in current group.
+bind-key MC-p           window-rcycle-ingroup   # Reverse cycle through windows in current group.
 
 # Toggle visibility of group n, where n is 1-9.
 bind-key 4C-1           group-toggle-1        
