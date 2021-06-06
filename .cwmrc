@@ -1,0 +1,190 @@
+# CWM Config
+#   See cwmrc(5) for documentation
+
+## Window Borders
+borderwidth             2
+gap                     8 8 8 8
+color activeborder      "#808080"
+color inactiveborder    "#2d2d2e"
+color groupborder       "#007a4f"
+color ungroupborder     "#5174e1"
+color urgencyborder     "#7a002b"
+
+## Window Behaviour
+htile                   50
+vtile                   50
+moveamount              3
+snapdist                10
+
+## Quirks
+sticky                  no
+ignore                  dmenu
+ignore                  oxbar
+ignore                  lemonbar
+
+## Menu
+fontname                "FantasqueSansMono Nerd Font Mono:size=12:antialias=true"
+color font              "#808080"
+color selfont           "#7a002b"
+color menubg            "#0d0d0e"
+color menufg            "#dedede"
+#wm
+
+## Commands
+command term            term
+command lock            screenlock
+command pass            pass.sh
+command remote          consrv.sh
+command output          output.sh
+
+## Bindings
+#   C                   Control key.
+#   M                   Meta (Alt) key.
+#   S                   Shift key.
+#   4                   Mod4 (windows) key.
+#   5                   Mod5 (AltGr) key.
+
+### Unbind-key everything
+unbind-key              all
+#unbind-mouse            all
+
+### Commands and Applications
+bind-key 4S-r           restart                 # Restart the running cwm(1).
+bind-key 4S-Escape      quit                    # Quit cwm(1).
+bind-key 4-Return       terminal                # Spawn a new terminal.
+bind-key 4-Escape       lock                    # Lock the screen.
+bind-key 4S-p           pass                    # Launch Passmenu
+bind-key 4-r            remote                  # Connect to remote servers
+bind-key 4-o            output                  # Screen output
+
+### Menus
+bind-key 4-m            menu-window             # Launch window search menu.
+bind-key 4S-m           menu-window-hidden      # Launch hidden window search menu.
+bind-key 4-a            menu-cmd                # Launch application search menu.
+bind-key 4-g            menu-group              # Launch group search menu.
+bind-key 4-p            menu-exec               # Launch “exec program” menu.
+bind-key 4-e            menu-exec-wm            # Launch “exec WindowManager” menu.
+bind-key 4-s            menu-ssh                # Launch “ssh” menu.
+
+### Groups
+bind-key 4S-0           group-toggle-all        # Toggle visibility of all groups.
+bind-key 4S-g           window-group            # Toggle group membership of current window.
+bind-key 4S-n           group-cycle             # Forward cycle through groups.
+bind-key 4S-p           group-rcycle            # Reverse cycle through groups.
+bind-key 4-n            window-cycle-ingroup    # Forward cycle through windows in current group.
+bind-key 4-p            window-rcycle-ingroup   # Reverse cycle through windows in current group.
+
+# Toggle visibility of group n, where n is 1-9.
+bind-key 4C-1           group-toggle-1        
+bind-key 4C-2           group-toggle-2
+bind-key 4C-3           group-toggle-3
+bind-key 4C-4           group-toggle-4
+bind-key 4C-5           group-toggle-5
+bind-key 4C-6           group-toggle-6
+bind-key 4C-7           group-toggle-7
+bind-key 4C-8           group-toggle-8
+bind-key 4C-9           group-toggle-9
+
+# Show only group n, where n is 1-9, hiding other groups.
+bind-key 4-1            group-only-1
+bind-key 4-2            group-only-2
+bind-key 4-3            group-only-3
+bind-key 4-4            group-only-4
+bind-key 4-5            group-only-5
+bind-key 4-6            group-only-6
+bind-key 4-7            group-only-7
+bind-key 4-8            group-only-8
+bind-key 4-9            group-only-9
+
+# Close all windows in group n, where n is 1-9.
+bind-key 4CS-1          group-close-1
+bind-key 4CS-2          group-close-2
+bind-key 4CS-3          group-close-3
+bind-key 4CS-4          group-close-4
+bind-key 4CS-5          group-close-5
+bind-key 4CS-6          group-close-6
+bind-key 4CS-7          group-close-7
+bind-key 4CS-8          group-close-8
+bind-key 4CS-9          group-close-9
+
+# Hide current window from display and move to group n, where n is 1-9.
+bind-key 4S-1           window-movetogroup-1
+bind-key 4S-2           window-movetogroup-2
+bind-key 4S-3           window-movetogroup-3
+bind-key 4S-4           window-movetogroup-4
+bind-key 4S-5           window-movetogroup-5
+bind-key 4S-6           window-movetogroup-6
+bind-key 4S-7           window-movetogroup-7
+bind-key 4S-8           window-movetogroup-8
+bind-key 4S-9           window-movetogroup-9
+
+### Windows
+bind-key M-n            window-cycle            # Forward cycle through windows.
+bind-key M-p            window-rcycle           # Reverse cycle through windows.
+bind-key 4S-c           window-close            # Close current window.
+bind-key 4S-h           window-hide             # Hide current window.
+bind-key M-minus        window-lower            # Lower current window.
+bind-key M-equal        window-raise            # Raise current window.
+bind-key M-l            window-menu-label       # Label current window.
+bind-key M-f            window-freeze           # Freeze current window geometry.
+bind-key M-s            window-stick            # Stick current window to all groups 
+                                                # (same as assigning to nogroup).
+bind-key 4-m            window-fullscreen       # Full-screen current window 
+                                                # (gap + border removed).
+bind-key 4S-m           window-maximize         # Maximize current window 
+                                                # (gap + border honored).
+bind-key 4S-v           window-vmaximize        # Vertically maximize current 
+                                                # window (gap + border honored).
+bind-key 4S-h           window-hmaximize        # Horizontally maximize current 
+                                                # window (gap + border honored).
+bind-key 4-t            window-htile            # Current window is placed at the top of the
+                                                # screen, maximized horizontally and resized to
+                                                # htile (default half) of the vertical screen
+                                                # space.  Other windows in its group share
+                                                # remaining screen space.
+bind-key 4S-t           window-vtile            # Current window is placed on the left of the
+                                                # screen, maximized vertically and resized to
+                                                # vtile (default half) of the horizontal screen
+                                                # space.  Other windows in its group share
+                                                # remaining screen space.
+
+### Move and Resize
+bind-mouse 4-1          window-move             # Move current window.
+bind-mouse 4-3          window-resize           # Resize current window.
+
+bind-key 4C-k           window-move-up          # Move window moveamount pixels up.
+bind-key 4C-j           window-move-down        # Move window moveamount pixels down.
+bind-key 4C-l           window-move-right       # Move window moveamount pixels right.
+bind-key 4C-h           window-move-left        # Move window moveamount pixels left.
+bind-key 4S-k           window-move-up-big      # Move window 10 times moveamount pixels up.
+bind-key 4S-j           window-move-down-big    # Move window 10 times moveamount pixels down.
+bind-key 4S-l           window-move-right-big   # Move window 10 times moveamount pixels right.
+bind-key 4S-h           window-move-left-big    # Move window 10 times moveamount pixels left.
+bind-key 4C-Up          window-resize-up        # Resize window moveamount pixels up.
+bind-key 4C-Down        window-resize-down      # Resize window moveamount pixels down.
+bind-key 4C-Right       window-resize-right     # Resize window moveamount pixels right.
+bind-key 4C-Left        window-resize-left      # Resize window moveamount pixels left.
+bind-key 4S-Up          window-resize-up-big    # Resize window 10 times moveamount pixels up.
+bind-key 4S-Down        window-resize-down-big  # Resize window 10 times moveamount pixels down.
+bind-key 4S-Right       window-resize-right-big # Resize window 10 times moveamount pixels right.
+bind-key 4S-Left        window-resize-left-big  # Resize window 10 times moveamount pixels left.
+bind-key MC-k           window-snap-up          # Snap window to top edge.
+bind-key MC-j           window-snap-down        # Snap window to bottom edge.
+bind-key MC-l           window-snap-right       # Snap window to right edge.
+bind-key MC-h           window-snap-left        # Snap window to left edge.
+bind-key MS-k           window-snap-up-right    # Snap window to top-right corner.
+bind-key MS-j           window-snap-up-left     # Snap window to top-left corner.
+bind-key MS-l           window-snap-down-right  # Snap window to bottom-right corner.
+bind-key MS-h           window-snap-down-left   # Snap window to bottom-left corner.
+
+## Pointer
+bind-key M-j            pointer-move-up          # Move pointer moveamount pixels up.
+bind-key M-k            pointer-move-down        # Move pointer moveamount pixels down.
+bind-key M-l            pointer-move-right       # Move pointer moveamount pixels right.
+bind-key M-h            pointer-move-left        # Move pointer moveamount pixels left.
+bind-key 4-j            pointer-move-up-big      # Move pointer 10 times moveamount pixels up.
+bind-key 4-k            pointer-move-down-big    # Move pointer 10 times moveamount pixels down.
+bind-key 4-l            pointer-move-right-big   # Move pointer 10 times moveamount pixels right.
+bind-key 4-h            pointer-move-left-big    # Move pointer 10 times moveamount pixels left.
+
+# vim: set ft=conf :
