@@ -56,7 +56,7 @@ Config { font            = "xft:UnifrakturCook:size=14:antialias=true:style=Ligh
                                    , "--high"   , "#007a4f"
                                    , "--"     --, battery specific options
                                    , "-A"       , "15"
-                                   ,"-a"        , "notify-send -u critical 'Battery @ < 15%!'"
+                                   -- ,"-a"        , "notify-send -u critical 'Battery @ < 15%!'"
                                    -- discharging status
                                    , "-o"	, "<left>% (<timeleft>)"
                                    , "--off-icon-pattern" , "<fn=1>\xf242</fn>"
