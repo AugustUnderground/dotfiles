@@ -272,8 +272,8 @@ pointerFollowsFocus h v = do
 -------------------------
 main :: IO () 
 main = do
-    numberScreens <- countScreens
-    statusBar <- spawnPipe statusBar'
+    n <- countScreens
+    statusBars <- mapM (\i -> spawnPipe $ statusBar' ++ " -x " ++ show i) [0..n-1]
     xmonad $ docks $ ewmh $ def
         { terminal           = terminal'
         , modMask            = modMask'
@@ -283,8 +283,7 @@ main = do
         , workspaces         = workSpaces'
         , layoutHook         = layoutHook'
         , manageHook         = manageHook'
-        , logHook            = dynamicLogWithPP (xmobarPP' statusBar) 
-                                                -- >> pointerFollowsFocus 1 1
+        , logHook            = mapM_ (dynamicLogWithPP . xmobarPP') statusBars
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
         , normalBorderColor  = colorDarkGray
         , focusedBorderColor = colorLightGray
