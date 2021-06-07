@@ -11,34 +11,86 @@
 -- colorCyan       = "#0085b0" 
 
 Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
+       , textOffset      = 20
        , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=16:antialias=true"
                            , "xft:Symbola:size=16:style=Regular"
                            ]
+       , textOffsets     = [ 20, 18 ]
        , iconRoot        = "./.local/share/xbm-icons/"
        , iconOffset      = 15
        , bgColor         = "#0d0d0e"
        , fgColor         = "#dedede"
-       , position        = Static { xpos = 1936
-                                  , ypos = 12
-                                  , width = 2530
-                                  , height = 30
-                                  }
+       , position        = Top
+       -- , position        = Static { xpos = 1936
+       --                            , ypos = 12
+       --                            , width = 2530
+       --                            , height = 30
+       --                            }
        , border          = FullB
        , borderColor     = "#2d2d2e"
        , borderWidth     = 0
 
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "<fn=2><fc=#dedede,#7a002b> ⸸ </fc></fn><fn=1><fc=#7a002b,#0d0d0e> </fc></fn> %StdinReader% }{ %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
+       , template = "<fn=2><fc=#dedede,#7a002b> ⸸ </fc></fn><fn=1><fc=#7a002b,#0d0d0e> </fc></fn> %StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
 
        , lowerOnStart     = True
        , hideOnStart      = False
-       , allDesktops      = False
+       , allDesktops      = True
        , overrideRedirect = True
        , pickBroadest     = False
        , persistent       = True
-
-       , commands = [ Run Date "<fc=#dedede><fn=1></fn> %F (%a) <fn=1></fn> %T</fc>" "date" 10
-                    , Run StdinReader
-        ]
+                    -- Input from XMonad
+       , commands = [ Run StdinReader
+                    -- time and date indicator 
+                    --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
+                    , Run Date "<fc=#dedede><fn=1></fn> %F <fn=1></fn> %H:%M</fc>" 
+                               "date" 50
+                    -- Battery monitor
+                    , Run Battery [ "--template", "<leftipat> <acstatus>"
+                                   , "--Low"    , "15"
+                                   , "--High"   , "70"
+                                   , "--low"    , "#e1be51"
+                                   , "--normal" , "#dedede"
+                                   , "--high"   , "#007a4f"
+                                   , "--"     --, battery specific options
+                                   , "-A"       , "15"
+                                   ,"-a"        , "notify-send -u critical 'Battery @ < 15%!'"
+                                   -- discharging status
+                                   , "-o"	, "<left>% (<timeleft>)"
+                                   , "--off-icon-pattern" , "<fn=1></fn>"
+                                   -- AC "on" status
+                                   , "-O"	, "<fc=#e1be51>Charging</fc>"
+                                   , "--on-icon-pattern"  , "<fn=1></fn>"
+                                   -- charged status
+                                   , "-i"	, "<fc=#dedede>Fully Charged</fc>"
+                                   , "--idle-icon-pattern", "<fn=1></fn>"
+                                   ] 50
+                    -- Dynamic Network Interface
+                    , Run DynNetwork [ "--template", "<dev>"
+                                     , "--Low"     , "1000"
+                                     , "--High"    , "5000"
+                                     , "--low"     , "#007a4f"
+                                     , "--normal"  , "#dedede"
+                                     , "--high"    , "#7a002b"
+                                     ] 10
+                    -- Wifi
+                    , Run Wireless "wlp4s0" [ "--template", "<fn=1></fn> <quality>%"
+                                            , "--Low"     , "30"
+                                            , "--High"    , "95"
+                                            , "--high"    , "#007a4f"
+                                            , "--normal"  , "#dedede"
+                                            , "--low"     , "#e1be51"
+                                            , "-x"        , ""
+                                            ] 10
+                    , Run Volume "default" "Master" [ "-t", "<status> <volume>%"
+                                                    , "--"
+                                                    , "-o", "<fn=1>婢</fn>"
+                                                    , "-O", "<fn=1>墳</fn>"
+                                                    , "-C", "#dedede"
+                                                    , "-c", "#4f4f4f"
+                                                    ] 20
+                    ]
        }
+
+-- vim: set ft=haskell :

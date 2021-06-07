@@ -65,8 +65,9 @@ fonts' = [ "Sazanami Mincho:size=14:style=Regular"
          , "xft:Symbola:size=16:style=Regular"
          ]
 
-workSpaces' = [ "1:一", "2:二", "3:三", "4:四", "5:五"
-              , "6:六", "7:七", "8:八", "9:九", "10:十" ]
+workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
+              , "5:五", "6:六", "7:七", "8:八", "9:九"
+              ]
 
 spacing' :: Integer
 spacing' = 10
@@ -108,7 +109,7 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray
                                    . wrap " " " "
                        , ppHidden  = xmobarColor colorGray ""  
                                    . wrap " " " "
-                       , ppSep     = xmobarColor colorRed "" " " 
+                       , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
                        , ppUrgent  = xmobarColor colorWhite colorRed
@@ -119,11 +120,11 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray
                        }
 
 namedLayout :: String -> String
-namedLayout "Spacing Tall"          = xmobarColor colorRed "" "[<icon=half.xbm/>]"
-namedLayout "Spacing Full"          = xmobarColor colorPurple "" "[<icon=full.xbm/>]" 
-namedLayout "Spacing Simple Float"  = xmobarColor colorGreen "" "[<icon=empty.xbm/>]"
-namedLayout "Spacing ResizableTall" = xmobarColor colorBlue "" "[<icon=half.xbm/>]"
-namedLayout anything                = xmobarColor colorLightGray "" "[<icon=cat.xbm/>]" 
+namedLayout "Spacing Tall"          = xmobarColor colorRed "" "<icon=half.xbm/>"
+namedLayout "Spacing Full"          = xmobarColor colorPurple "" "<icon=full.xbm/>" 
+namedLayout "Spacing Simple Float"  = xmobarColor colorGreen "" "<icon=empty.xbm/>"
+namedLayout "Spacing ResizableTall" = xmobarColor colorBlue "" "<icon=half.xbm/>"
+namedLayout anything                = xmobarColor colorLightGray "" "<icon=cat.xbm/>" 
 
 -------------------------
 -- LAYTOUT
@@ -232,7 +233,7 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xK_comma)  , shiftPrevScreen)
     ] 
     ++ [((m .|. modMask, k), windows $ f i)
-            | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+            | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
