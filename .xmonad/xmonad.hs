@@ -120,11 +120,11 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray
                        }
 
 namedLayout :: String -> String
-namedLayout "Spacing Tall"          = xmobarColor colorRed "" "<icon=half.xbm/>"
-namedLayout "Spacing Full"          = xmobarColor colorPurple "" "<icon=full.xbm/>" 
-namedLayout "Spacing Simple Float"  = xmobarColor colorGreen "" "<icon=empty.xbm/>"
-namedLayout "Spacing ResizableTall" = xmobarColor colorBlue "" "<icon=half.xbm/>"
-namedLayout anything                = xmobarColor colorLightGray "" "<icon=cat.xbm/>" 
+namedLayout "Spacing Tall"          = xmobarColor colorRed       "" "<fn=1>\xe3ce</fn>"
+namedLayout "Spacing Full"          = xmobarColor colorPurple    "" "<fn=1>\xe39b</fn>"
+namedLayout "Spacing Simple Float"  = xmobarColor colorGreen     "" "<fn=1>\xe3dc</fn>"
+namedLayout "Spacing ResizableTall" = xmobarColor colorBlue      "" "<fn=1>\xe3dc</fn>"
+namedLayout anything                = xmobarColor colorLightGray "" "<fn=1>\xf61a</fn>"
 
 -------------------------
 -- LAYTOUT
