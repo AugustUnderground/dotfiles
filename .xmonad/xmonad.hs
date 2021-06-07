@@ -11,6 +11,7 @@ import XMonad.Operations
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
+import XMonad.Actions.FloatKeys
 
 import XMonad.Util.Run
 
@@ -38,6 +39,7 @@ import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.IndependentScreens
 
 import Data.Maybe (fromJust)
+import Data.Ratio ((%))
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -233,12 +235,21 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask, xK_h)                    , sendMessage Shrink)
     , ((modMask, xK_l)                    , sendMessage Expand)
     , ((modMask, xK_t)                    , withFocused $ windows . W.sink)
+    , ((modMask, xK_f)                    , withFocused float)
     , ((modMask, xK_i)                    , sendMessage (IncMasterN 1))
     , ((modMask, xK_d)                    , sendMessage (IncMasterN (-1)))
     , ((modMask, xK_period)               , nextScreen)
     , ((modMask, xK_comma)                , prevScreen)
     , ((modMask .|. shiftMask, xK_period) , shiftNextScreen)
     , ((modMask .|. shiftMask, xK_comma)  , shiftPrevScreen)
+    , ((modMask .|. controlMask, xK_k)    , withFocused $ keysMoveWindow (0, -10))
+    , ((modMask .|. controlMask, xK_j)    , withFocused $ keysMoveWindow (0, 10))
+    , ((modMask .|. controlMask, xK_h)    , withFocused $ keysMoveWindow (-10, 0))
+    , ((modMask .|. controlMask, xK_l)    , withFocused $ keysMoveWindow (10, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_k), withFocused $ keysResizeWindow (0, -10) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_j), withFocused $ keysResizeWindow (0, 10) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_h), withFocused $ keysResizeWindow (-10, 0) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_l), withFocused $ keysResizeWindow (10, 0) (0, 0))
     ] 
     ++ [((m .|. modMask, k), windows $ f i)
             | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
