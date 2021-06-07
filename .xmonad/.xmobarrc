@@ -11,11 +11,11 @@
 -- colorCyan       = "#0085b0" 
 
 Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
-       , textOffset      = 20
+       , textOffset      = 18
        , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=16:antialias=true"
                            , "xft:Symbola:size=16:style=Regular"
                            ]
-       , textOffsets     = [ 20, 18 ]
+       , textOffsets     = [ 18, 16 ]
        , iconRoot        = "./.local/share/xbm-icons/"
        , iconOffset      = 15
        , bgColor         = "#0d0d0e"
@@ -32,7 +32,7 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
 
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "<fn=2><fc=#dedede,#7a002b> ⸸ </fc></fn><fn=1><fc=#7a002b,#0d0d0e> </fc></fn> %StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
+       , template = "<fn=2><fc=#dedede,#7a002b> ⸸  </fc></fn><fn=1><fc=#7a002b,#0d0d0e></fc></fn>%StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
 
        , lowerOnStart     = True
        , hideOnStart      = False
@@ -44,7 +44,7 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
        , commands = [ Run StdinReader
                     -- time and date indicator 
                     --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-                    , Run Date "<fc=#dedede><fn=1></fn> %F <fn=1></fn> %H:%M</fc>" 
+                    , Run Date "<fc=#dedede><fn=1>\xf073</fn> %F <fn=1>\xf017</fn> %H:%M</fc>" 
                                "date" 50
                     -- Battery monitor
                     , Run Battery [ "--template", "<leftipat> <acstatus>"
@@ -58,13 +58,13 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
                                    ,"-a"        , "notify-send -u critical 'Battery @ < 15%!'"
                                    -- discharging status
                                    , "-o"	, "<left>% (<timeleft>)"
-                                   , "--off-icon-pattern" , "<fn=1></fn>"
+                                   , "--off-icon-pattern" , "<fn=1>\xf242</fn>"
                                    -- AC "on" status
                                    , "-O"	, "<fc=#e1be51>Charging</fc>"
-                                   , "--on-icon-pattern"  , "<fn=1></fn>"
+                                   , "--on-icon-pattern"  , "<fn=1>\xf1e6</fn>"
                                    -- charged status
                                    , "-i"	, "<fc=#dedede>Fully Charged</fc>"
-                                   , "--idle-icon-pattern", "<fn=1></fn>"
+                                   , "--idle-icon-pattern", "<fn=1>\xf0e7</fn>"
                                    ] 50
                     -- Dynamic Network Interface
                     , Run DynNetwork [ "--template", "<dev>"
@@ -75,7 +75,7 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
                                      , "--high"    , "#7a002b"
                                      ] 10
                     -- Wifi
-                    , Run Wireless "wlp4s0" [ "--template", "<fn=1></fn> <quality>%"
+                    , Run Wireless "wlp4s0" [ "--template", "<fn=1>\xf1eb</fn> <quality>%"
                                             , "--Low"     , "30"
                                             , "--High"    , "95"
                                             , "--high"    , "#007a4f"
@@ -85,8 +85,8 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
                                             ] 10
                     , Run Volume "default" "Master" [ "-t", "<status> <volume>%"
                                                     , "--"
-                                                    , "-o", "<fn=1>婢</fn>"
-                                                    , "-O", "<fn=1>墳</fn>"
+                                                    , "-o", "<fn=1>\xfa80</fn>"
+                                                    , "-O", "<fn=1>\xf028</fn>"
                                                     , "-C", "#dedede"
                                                     , "-c", "#4f4f4f"
                                                     ] 20
