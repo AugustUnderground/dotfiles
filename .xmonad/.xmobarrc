@@ -26,9 +26,9 @@ Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
        --                            , width = 2530
        --                            , height = 30
        --                            }
-       , border          = FullB
+       , border          = BottomB
        , borderColor     = "#2d2d2e"
-       , borderWidth     = 0
+       , borderWidth     = 2
 
        , sepChar  = "%"
        , alignSep = "}{"
