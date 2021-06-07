@@ -190,7 +190,7 @@ passmenu'         = "pass.sh"
 remoteConnection' = "consrv.sh"
 initScreen'       = "output.sh"
 grabScreen'       = "grabscreen.sh"
-grabSection'      = "grapsection.sh"
+grabSection'      = "grabsection.sh"
 
 -------------------------
 -- KEY BINDINGS
