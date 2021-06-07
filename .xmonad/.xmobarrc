@@ -10,14 +10,15 @@
 -- colorRed        = "#7a002b"
 -- colorCyan       = "#0085b0" 
 
-Config { font            = "xft:Sazanami Mincho:size=14:style=Regular"
+Config { font            = "xft:UnifrakturCook:size=14:antialias=true:style=Light"
        , textOffset      = 18
-       , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=16:antialias=true"
+       , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=21:antialias=true"
                            , "xft:Symbola:size=16:style=Regular"
+                           , "xft:Sazanami Mincho:size=14:style=Regular"
                            ]
-       , textOffsets     = [ 18, 16 ]
-       , iconRoot        = "./.local/share/xbm-icons/"
-       , iconOffset      = 15
+       , textOffsets     = [ 20, 18, 18 ]
+       -- , iconRoot        = "./.local/share/xbm-icons/"
+       -- , iconOffset      = 15
        , bgColor         = "#0d0d0e"
        , fgColor         = "#dedede"
        , position        = Top

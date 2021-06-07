@@ -60,14 +60,17 @@ colorCyan       = "#0085b0"
 -------------------------
 -- CONFIG
 -------------------------
-fonts' = [ "Sazanami Mincho:size=14:style=Regular" 
+fonts' :: [String]
+fonts' = [ "xft:UnifrakturCook:size=14:antialias=true:style=Light"
          , "FantasqueSansMono Nerd Font Mono:size=12:antialias=true"
          , "xft:Symbola:size=16:style=Regular"
+         , "Sazanami Mincho:size=14:style=Regular" 
          ]
 
-workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
-              , "5:五", "6:六", "7:七", "8:八", "9:九"
-              ]
+-- workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
+--               , "5:五", "6:六", "7:七", "8:八", "9:九" ]
+workSpaces' :: [String]
+workSpaces' = [show x | x <- [0..9]]
 
 spacing' :: Integer
 spacing' = 10
@@ -103,12 +106,16 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
 -------------------------
 -- STATUSBAR
 -------------------------
-xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray 
-                                   . wrap " " " "
-                       , ppVisible = xmobarColor colorLightGray colorDarkGray 
-                                   . wrap " " " "
-                       , ppHidden  = xmobarColor colorGray ""  
-                                   . wrap " " " "
+xmobarPP' :: Handle -> PP
+xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorBlack colorLightGray 
+                                   . wrap "<fc=#808080,#0d0d0e><fn=1>\xe0be</fn></fc>" 
+                                          "<fc=#808080,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppVisible = xmobarColor colorDarkGray colorGray 
+                                   . wrap "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0be</fn></fc>" 
+                                          "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppHidden  = xmobarColor colorLightGray colorDarkGray
+                                   . wrap "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0be</fn></fc>" 
+                                          "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0b8</fn></fc>"
                        , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
@@ -145,9 +152,9 @@ layoutHook' = avoidStruts $ spacingRaw False (Border spacing' spacing'
 -------------------------
 -- PROMPT
 -------------------------
-promptFont'        = "xft:" ++ (fonts' !! 1)
+promptFont'        = "xft:" ++ (fonts' !! 2)
 promptBorderWidth' = 2
-promptHeight'      = 25
+promptHeight'      = 30
 
 defaultPromptConfig' :: XPConfig
 defaultPromptConfig' = def { font              = promptFont'
@@ -178,6 +185,7 @@ dangerPromptConfig' = def { font              = promptFont'
 dbusSession :: String
 dbusSession = "dbus-launch --exit-with-session"
 
+statusBar' :: String
 statusBar' = "xmobar " ++ homeDir ++ "/" ++ confDir ++ "/.xmobarrc"
     where 
         homeDir = "$HOME"
