@@ -70,7 +70,7 @@ fonts' = [ "xft:UnifrakturCook:size=14:antialias=true:style=Light"
          ]
 
 workSpaces' :: [String]
-workSpaces' = ["Ⅰ ", "Ⅱ ", "Ⅲ ", "Ⅳ ", "Ⅴ ", "Ⅵ ", "Ⅶ ", "Ⅷ ", "Ⅸ ", "Ⅹ "]
+workSpaces' = ["Ⅰ ", "Ⅱ ", "Ⅲ ", "Ⅳ ", "Ⅴ ", "Ⅵ ", "Ⅶ ", "Ⅷ ", "Ⅸ "]
 -- workSpaces' = [show x | x <- [0..9]]
 -- workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
 --               , "5:五", "6:六", "7:七", "8:八", "9:九" ]
@@ -254,7 +254,7 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. controlMask .|. shiftMask, xK_l), withFocused $ keysResizeWindow (10, 0) (0, 0))
     ] 
     ++ [((m .|. modMask, k), windows $ f i)
-            | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
+            | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
