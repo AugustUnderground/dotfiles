@@ -33,7 +33,7 @@ Config { font            = "xft:UnifrakturCook:size=13:antialias=true:style=Ligh
 
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "<fn=2><fc=#dedede,#7a002b> ⸸  </fc></fn><fn=1><fc=#0d0d0e,#7a002b></fc></fn>%StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
+       , template = "<fn=2><fc=#dedede,#7a002b> ⸸  </fc></fn><fn=1><fc=#7a002b,#0d0d0e> </fc></fn>%StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#7a002b,#0d0d0e><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
 
        , lowerOnStart     = True
        , hideOnStart      = False

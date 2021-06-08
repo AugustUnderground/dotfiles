@@ -120,14 +120,16 @@ xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorRed
                        , ppHidden  = xmobarColor colorLightGray colorBlack
                                    . wrap "<fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc><fn=2>"
                                           "</fn><fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc>"
+                       , ppUrgent  = xmobarColor colorBlack colorPurple 
+                                   . wrap "<fc=#6016cd,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
+                                          "</fn><fc=#6016cd,#0d0d0e><fn=1>\xe0b8</fn></fc>"
                        , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
-                       , ppUrgent  = xmobarColor colorWhite colorRed
-                       , ppOutput  = hPutStrLn h
                        , ppLayout  = namedLayout
                        --, ppExtras = [ppWindow]
                        , ppOrder = \(ws : l : t : ex ) -> [ws, l] ++ ex ++ [t]
+                       , ppOutput  = hPutStrLn h
                        }
 
 namedLayout :: String -> String
