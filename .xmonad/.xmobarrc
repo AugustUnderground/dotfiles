@@ -10,13 +10,13 @@
 -- colorRed        = "#7a002b"
 -- colorCyan       = "#0085b0" 
 
-Config { font            = "xft:UnifrakturCook:size=14:antialias=true:style=Light"
+Config { font            = "xft:UnifrakturCook:size=13:antialias=true:style=Light"
        , textOffset      = 18
-       , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=21:antialias=true"
-                           , "xft:Symbola:size=16:style=Regular"
+       , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=18:antialias=true"
+                           , "xft:Symbola:size=14:style=Regular"
                            , "xft:Sazanami Mincho:size=14:style=Regular"
                            ]
-       , textOffsets     = [ 20, 18, 18 ]
+       , textOffsets     = [ 20, 17, 18 ]
        -- , iconRoot        = "./.local/share/xbm-icons/"
        -- , iconOffset      = 15
        , bgColor         = "#0d0d0e"
@@ -33,7 +33,7 @@ Config { font            = "xft:UnifrakturCook:size=14:antialias=true:style=Ligh
 
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "<fn=2><fc=#dedede,#7a002b> ⸸  </fc></fn><fn=1><fc=#7a002b,#0d0d0e></fc></fn>%StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
+       , template = "<fn=2><fc=#dedede,#7a002b> ⸸  </fc></fn><fn=1><fc=#0d0d0e,#7a002b></fc></fn>%StdinReader% }{ %wlp4s0wi% <fn=1></fn> %dynnetwork% <fn=1></fn> %battery% <fn=1></fn> %default:Master% <fn=1></fn> %date% <fc=#0d0d0e,#7a002b><fn=1></fn></fc><fc=#dedede,#7a002b><fn=2> ⸸ </fn></fc>"
 
        , lowerOnStart     = True
        , hideOnStart      = False

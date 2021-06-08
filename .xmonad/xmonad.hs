@@ -69,10 +69,12 @@ fonts' = [ "xft:UnifrakturCook:size=14:antialias=true:style=Light"
          , "Sazanami Mincho:size=14:style=Regular" 
          ]
 
+workSpaces' :: [String]
+workSpaces' = ["Ⅰ ", "Ⅱ ", "Ⅲ ", "Ⅳ ", "Ⅴ ", "Ⅵ ", "Ⅶ ", "Ⅷ ", "Ⅸ ", "Ⅹ "]
+-- workSpaces' = [show x | x <- [0..9]]
 -- workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
 --               , "5:五", "6:六", "7:七", "8:八", "9:九" ]
-workSpaces' :: [String]
-workSpaces' = [show x | x <- [0..9]]
+-- workSpaces' = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
 spacing' :: Integer
 spacing' = 10
@@ -110,14 +112,14 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
 -------------------------
 xmobarPP' :: Handle -> PP
 xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorBlack colorLightGray 
-                                   . wrap "<fc=#808080,#0d0d0e><fn=1>\xe0be</fn></fc>" 
-                                          "<fc=#808080,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                                   . wrap "<fc=#808080,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
+                                          "</fn><fc=#808080,#0d0d0e><fn=1>\xe0b8</fn></fc>"
                        , ppVisible = xmobarColor colorDarkGray colorGray 
-                                   . wrap "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0be</fn></fc>" 
-                                          "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                                   . wrap "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>"
+                                          "</fn><fc=#4f4f4f,#0d0d0e><fn=1>\xe0b8</fn></fc>"
                        , ppHidden  = xmobarColor colorLightGray colorDarkGray
-                                   . wrap "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0be</fn></fc>" 
-                                          "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                                   . wrap "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>"
+                                          "</fn><fc=#2d2d2e,#0d0d0e><fn=1>\xe0b8</fn></fc>"
                        , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
