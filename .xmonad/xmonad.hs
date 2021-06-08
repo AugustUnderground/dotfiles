@@ -111,15 +111,15 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
 -- STATUSBAR
 -------------------------
 xmobarPP' :: Handle -> PP
-xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorBlack colorLightGray 
-                                   . wrap "<fc=#808080,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
-                                          "</fn><fc=#808080,#0d0d0e><fn=1>\xe0b8</fn></fc>"
-                       , ppVisible = xmobarColor colorDarkGray colorGray 
+xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorRed 
+                                   . wrap "<fc=#7a002b,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
+                                          "</fn><fc=#7a002b,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppVisible = xmobarColor colorWhite colorGray 
                                    . wrap "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>"
                                           "</fn><fc=#4f4f4f,#0d0d0e><fn=1>\xe0b8</fn></fc>"
-                       , ppHidden  = xmobarColor colorLightGray colorDarkGray
-                                   . wrap "<fc=#2d2d2e,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>"
-                                          "</fn><fc=#2d2d2e,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppHidden  = xmobarColor colorLightGray colorBlack
+                                   . wrap "<fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc><fn=2>"
+                                          "</fn><fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc>"
                        , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
