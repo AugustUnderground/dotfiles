@@ -13,10 +13,10 @@
 Config { font            = "xft:UnifrakturCook:size=13:antialias=true:style=Light"
        , textOffset      = 18
        , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=18:antialias=true"
-                           , "xft:Symbola:size=14:style=Regular"
+                           , "xft:Symbola:size=16:style=Regular"
                            , "xft:Sazanami Mincho:size=14:style=Regular"
                            ]
-       , textOffsets     = [ 20, 17, 18 ]
+       , textOffsets     = [ 20, 18, 18 ]
        -- , iconRoot        = "./.local/share/xbm-icons/"
        -- , iconOffset      = 15
        , bgColor         = "#0d0d0e"
