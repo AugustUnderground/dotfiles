@@ -11,6 +11,7 @@ import XMonad.Operations
 
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
+import XMonad.Actions.FloatKeys
 
 import XMonad.Util.Run
 
@@ -38,6 +39,7 @@ import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.IndependentScreens
 
 import Data.Maybe (fromJust)
+import Data.Ratio ((%))
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -60,13 +62,19 @@ colorCyan       = "#0085b0"
 -------------------------
 -- CONFIG
 -------------------------
-fonts' = [ "Sazanami Mincho:size=14:style=Regular" 
+fonts' :: [String]
+fonts' = [ "xft:UnifrakturCook:size=14:antialias=true:style=Light"
          , "FantasqueSansMono Nerd Font Mono:size=12:antialias=true"
          , "xft:Symbola:size=16:style=Regular"
+         , "Sazanami Mincho:size=14:style=Regular" 
          ]
 
-workSpaces' = [ "1:一", "2:二", "3:三", "4:四", "5:五"
-              , "6:六", "7:七", "8:八", "9:九", "10:十" ]
+workSpaces' :: [String]
+workSpaces' = ["Ⅰ ", "Ⅱ ", "Ⅲ ", "Ⅳ ", "Ⅴ ", "Ⅵ ", "Ⅶ ", "Ⅷ ", "Ⅸ ", "Ⅹ "]
+-- workSpaces' = [show x | x <- [0..9]]
+-- workSpaces' = [ "0:十", "1:一", "2:二", "3:三", "4:四"
+--               , "5:五", "6:六", "7:七", "8:八", "9:九" ]
+-- workSpaces' = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
 spacing' :: Integer
 spacing' = 10
@@ -102,28 +110,34 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
 -------------------------
 -- STATUSBAR
 -------------------------
-xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorDarkGray 
-                                   . wrap " " " "
-                       , ppVisible = xmobarColor colorLightGray colorDarkGray 
-                                   . wrap " " " "
-                       , ppHidden  = xmobarColor colorGray ""  
-                                   . wrap " " " "
-                       , ppSep     = xmobarColor colorRed "" " " 
+xmobarPP' :: Handle -> PP
+xmobarPP' h = xmobarPP { ppCurrent = xmobarColor colorWhite colorRed 
+                                   . wrap "<fc=#7a002b,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
+                                          "</fn><fc=#7a002b,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppVisible = xmobarColor colorWhite colorGray 
+                                   . wrap "<fc=#4f4f4f,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>"
+                                          "</fn><fc=#4f4f4f,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppHidden  = xmobarColor colorLightGray colorBlack
+                                   . wrap "<fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc><fn=2>"
+                                          "</fn><fc=#0d0d0e,#0d0d0e><fn=1>\xe0b9</fn></fc>"
+                       , ppUrgent  = xmobarColor colorBlack colorPurple 
+                                   . wrap "<fc=#6016cd,#0d0d0e><fn=1>\xe0be</fn></fc><fn=2>" 
+                                          "</fn><fc=#6016cd,#0d0d0e><fn=1>\xe0b8</fn></fc>"
+                       , ppSep     = xmobarColor colorWhite "" "<fn=1> \xe0b9 </fn>" 
                        , ppTitle   = xmobarColor colorWhite "" 
                                    . shorten 60
-                       , ppUrgent  = xmobarColor colorWhite colorRed
-                       , ppOutput  = hPutStrLn h
                        , ppLayout  = namedLayout
                        --, ppExtras = [ppWindow]
                        , ppOrder = \(ws : l : t : ex ) -> [ws, l] ++ ex ++ [t]
+                       , ppOutput  = hPutStrLn h
                        }
 
 namedLayout :: String -> String
-namedLayout "Spacing Tall"          = xmobarColor colorRed "" "[<icon=half.xbm/>]"
-namedLayout "Spacing Full"          = xmobarColor colorPurple "" "[<icon=full.xbm/>]" 
-namedLayout "Spacing Simple Float"  = xmobarColor colorGreen "" "[<icon=empty.xbm/>]"
-namedLayout "Spacing ResizableTall" = xmobarColor colorBlue "" "[<icon=half.xbm/>]"
-namedLayout anything                = xmobarColor colorLightGray "" "[<icon=cat.xbm/>]" 
+namedLayout "Spacing Tall"          = xmobarColor colorRed       "" "<fn=1>\xe3ce</fn>"
+namedLayout "Spacing Full"          = xmobarColor colorPurple    "" "<fn=1>\xe39b</fn>"
+namedLayout "Spacing Simple Float"  = xmobarColor colorGreen     "" "<fn=1>\xe3dc</fn>"
+namedLayout "Spacing ResizableTall" = xmobarColor colorBlue      "" "<fn=1>\xe3dc</fn>"
+namedLayout anything                = xmobarColor colorLightGray "" "<fn=1>\xf61a</fn>"
 
 -------------------------
 -- LAYTOUT
@@ -144,9 +158,9 @@ layoutHook' = avoidStruts $ spacingRaw False (Border spacing' spacing'
 -------------------------
 -- PROMPT
 -------------------------
-promptFont'        = "xft:" ++ (fonts' !! 1)
+promptFont'        = "xft:" ++ (fonts' !! 2)
 promptBorderWidth' = 2
-promptHeight'      = 25
+promptHeight'      = 30
 
 defaultPromptConfig' :: XPConfig
 defaultPromptConfig' = def { font              = promptFont'
@@ -177,6 +191,7 @@ dangerPromptConfig' = def { font              = promptFont'
 dbusSession :: String
 dbusSession = "dbus-launch --exit-with-session"
 
+statusBar' :: String
 statusBar' = "xmobar " ++ homeDir ++ "/" ++ confDir ++ "/.xmobarrc"
     where 
         homeDir = "$HOME"
@@ -189,7 +204,7 @@ passmenu'         = "pass.sh"
 remoteConnection' = "consrv.sh"
 initScreen'       = "output.sh"
 grabScreen'       = "grabscreen.sh"
-grabSection'      = "grapsection.sh"
+grabSection'      = "grabsection.sh"
 
 -------------------------
 -- KEY BINDINGS
@@ -224,17 +239,26 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask, xK_h)                    , sendMessage Shrink)
     , ((modMask, xK_l)                    , sendMessage Expand)
     , ((modMask, xK_t)                    , withFocused $ windows . W.sink)
+    , ((modMask, xK_f)                    , withFocused float)
     , ((modMask, xK_i)                    , sendMessage (IncMasterN 1))
     , ((modMask, xK_d)                    , sendMessage (IncMasterN (-1)))
     , ((modMask, xK_period)               , nextScreen)
     , ((modMask, xK_comma)                , prevScreen)
     , ((modMask .|. shiftMask, xK_period) , shiftNextScreen)
     , ((modMask .|. shiftMask, xK_comma)  , shiftPrevScreen)
-    ] 
-    ++ [((m .|. modMask, k), windows $ f i)
-            | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
+    , ((modMask .|. controlMask, xK_k)    , withFocused $ keysMoveWindow (0, -10))
+    , ((modMask .|. controlMask, xK_j)    , withFocused $ keysMoveWindow (0, 10))
+    , ((modMask .|. controlMask, xK_h)    , withFocused $ keysMoveWindow (-10, 0))
+    , ((modMask .|. controlMask, xK_l)    , withFocused $ keysMoveWindow (10, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_k), withFocused $ keysResizeWindow (0, -10) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_j), withFocused $ keysResizeWindow (0, 10) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_h), withFocused $ keysResizeWindow (-10, 0) (0, 0))
+    , ((modMask .|. controlMask .|. shiftMask, xK_l), withFocused $ keysResizeWindow (10, 0) (0, 0))
+    ] ++ 
+    [((m .|. modMask, k)                  , windows $ f i)
+            | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
+            , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+    ]
 
 -------------------------
 -- MOUSE BINDINGS
@@ -271,8 +295,8 @@ pointerFollowsFocus h v = do
 -------------------------
 main :: IO () 
 main = do
-    numberScreens <- countScreens
-    statusBar <- spawnPipe statusBar'
+    n <- countScreens
+    statusBars <- mapM (\i -> spawnPipe $ statusBar' ++ " -x " ++ show i) [0..n-1]
     xmonad $ docks $ ewmh $ def
         { terminal           = terminal'
         , modMask            = modMask'
@@ -282,8 +306,7 @@ main = do
         , workspaces         = workSpaces'
         , layoutHook         = layoutHook'
         , manageHook         = manageHook'
-        , logHook            = dynamicLogWithPP (xmobarPP' statusBar) 
-                                                -- >> pointerFollowsFocus 1 1
+        , logHook            = mapM_ (dynamicLogWithPP . xmobarPP') statusBars
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
         , normalBorderColor  = colorDarkGray
         , focusedBorderColor = colorLightGray
