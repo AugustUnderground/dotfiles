@@ -47,7 +47,7 @@ Plug 'tpope/vim-vividchalk'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'McSinyx/vim-octave'
 "Plug 'hylang/vim-hy'
 Plug 'ARM9/arm-syntax-vim'
