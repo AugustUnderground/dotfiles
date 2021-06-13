@@ -264,7 +264,7 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
 -- MOUSE BINDINGS
 -------------------------
 focusFollowsMouse' :: Bool
-focusFollowsMouse' = False
+focusFollowsMouse' = True
 
 mouseBindings' XConfig {XMonad.modMask = modMask} = M.fromList 
     -- mod-button1, Set the window to floating mode and move by dragging
