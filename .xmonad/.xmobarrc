@@ -10,7 +10,7 @@
 -- colorRed        = "#7a002b"
 -- colorCyan       = "#0085b0" 
 
-Config { font            = "xft:UnifrakturCook:size=13:antialias=true:style=Light"
+Config { font            = "xft:UnifrakturCook:size=12:antialias=true:style=Light"
        , textOffset      = 18
        , additionalFonts = [ "xft:FantasqueSansMono Nerd Font Mono:size=18:antialias=true"
                            , "xft:Symbola:size=16:style=Regular"
