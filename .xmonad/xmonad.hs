@@ -105,6 +105,7 @@ manageHook' = composeAll (([ className =? c --> doCenterFloat | c <- floats'])
                                , "Steam"
                                , "Pinentry-gtk-2"
                                , "xfreerdp"
+                               , "Startup.x86_64"
                                ]
 
 -------------------------
