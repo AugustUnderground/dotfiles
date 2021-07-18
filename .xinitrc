@@ -14,6 +14,17 @@ else
     hsetroot -solid "#0d0d0e"
 fi
 
+if [ "$(uname)" = "OpenBSD" ]; then
+    xset b off
+
+    wsconsctl mouse.tp.tapping=1
+
+    xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
+    xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
+    xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Inertia" 1
+    xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 6 7 4 5
+fi
+
 [ -n "$(command -v dunst)" ] && dunst&
 [ -n "$(command -v picom)" ] && picom --backend xr_glx_hybrid -b
 [ -n "$(command -v mpd)" ] && mpd
