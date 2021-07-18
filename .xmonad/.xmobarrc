@@ -37,10 +37,10 @@ Config { font            = "xft:UnifrakturCook:size=12:antialias=true:style=Ligh
 
        , lowerOnStart     = True
        , hideOnStart      = False
-       , allDesktops      = True
-       , overrideRedirect = True
+       , allDesktops      = False    -- Pointless?
+       , overrideRedirect = False
        , pickBroadest     = False
-       , persistent       = True
+       , persistent       = False
                     -- Input from XMonad
        , commands = [ Run StdinReader
                     -- time and date indicator 

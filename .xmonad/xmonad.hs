@@ -140,6 +140,18 @@ namedLayout "Spacing Simple Float"  = xmobarColor colorGreen     "" "<fn=1>\xe3d
 namedLayout "Spacing ResizableTall" = xmobarColor colorBlue      "" "<fn=1>\xe3dc</fn>"
 namedLayout anything                = xmobarColor colorLightGray "" "<fn=1>\xf61a</fn>"
 
+xmobarSendSignal signalName signalValue = do
+    spawn $ dbusSend ++ " \"" ++ signalName ++ " " ++ signalValue ++ "\""
+        where dbusSend = "dbus-send"
+                      ++ " --session"
+                      ++ " --dest=org.Xmobar.Control"
+                      ++ " --type=method_call"
+                      ++ " --print-reply '/org/Xmobar/Control'"
+                      ++ " org.Xmobar.Control.SendSignal"
+
+xmobarToggle = do 
+    xmobarSendSignal "string:Toggle" "-1"
+
 -------------------------
 -- LAYTOUT
 -------------------------
@@ -216,6 +228,7 @@ modMask' = mod4Mask
 keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     [ ((modMask .|. shiftMask, xK_Escape) , confirmPrompt dangerPromptConfig' "exit" $ io exitSuccess)
     , ((modMask .|. shiftMask, xK_r)      , restart "xmonad" True)
+
     -- Applications:
     , ((modMask, xK_Return)               , spawn $ XMonad.terminal conf)
     , ((modMask, xK_Escape)               , spawn screenLock') 
@@ -225,11 +238,16 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask .|. shiftMask, xK_Print)  , spawn grabSection')
     , ((modMask, xK_r)                    , spawn remoteConnection')
     , ((modMask, xK_o)                    , spawn initScreen')
+
     -- Window Managing:
     , ((modMask .|. shiftMask, xK_c)      , kill)
     , ((modMask, xK_space)                , sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space)  , setLayout $ XMonad.layoutHook conf)
     , ((modMask, xK_n)                    , refresh)
+
+    -- xmobar
+    , ((modMask, xK_b)                    , xmobarToggle)
+
     -- Movement:
     , ((modMask .|. shiftMask, xK_Return) , windows W.swapMaster)
     , ((modMask .|. shiftMask, xK_m)      , windows W.focusMaster)
@@ -247,6 +265,8 @@ keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
     , ((modMask, xK_comma)                , prevScreen)
     , ((modMask .|. shiftMask, xK_period) , shiftNextScreen)
     , ((modMask .|. shiftMask, xK_comma)  , shiftPrevScreen)
+
+    -- Move Floating Windows:
     , ((modMask .|. controlMask, xK_k)    , withFocused $ keysMoveWindow (0, -10))
     , ((modMask .|. controlMask, xK_j)    , withFocused $ keysMoveWindow (0, 10))
     , ((modMask .|. controlMask, xK_h)    , withFocused $ keysMoveWindow (-10, 0))
@@ -298,6 +318,7 @@ main :: IO ()
 main = do
     n <- countScreens
     statusBars <- mapM (\i -> spawnPipe $ statusBar' ++ " -x " ++ show i) [0..n-1]
+    -- statusBars <- mapM (\i -> spawnPipe statusBar') [0]
     xmonad $ docks $ ewmh $ def
         { terminal           = terminal'
         , modMask            = modMask'
