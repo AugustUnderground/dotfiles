@@ -62,6 +62,7 @@ Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
+Plug 'melrief/vim-frege-syntax'
 
 " My
 Plug 'augustunderground/vim-skill'
