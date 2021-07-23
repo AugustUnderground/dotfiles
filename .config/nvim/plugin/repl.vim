@@ -163,6 +163,8 @@ function CompileRun()
         execute "!term [ $(command -v matlab) ] && matlab -nosplash -nodesktop % || octave --no-gui %"
     elseif &filetype == "spice"
         execute "!ngspice %"
+    elseif &filetype == "spectre"
+        execute "!spectre %"
     else
         echo "File Type: " . &filetype . " not supported."
     endif

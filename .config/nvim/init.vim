@@ -68,6 +68,7 @@ Plug 'melrief/vim-frege-syntax'
 Plug 'augustunderground/vim-skill'
 Plug 'augustunderground/vim-mathmode'
 Plug 'augustunderground/vim-hy'
+Plug 'augustunderground/spectre.vim'
 Plug 'augustunderground/gothic.nvim'
 
 " Colorschemes
