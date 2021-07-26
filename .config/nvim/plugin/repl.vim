@@ -229,6 +229,9 @@ function InteractiveLoad()
     elseif &filetype == "spice"
         call OpenREPL("term ngspice")
         setlocal syntax=spice
+    elseif &filetype == "spectre"
+        call OpenREPL("term rlwrap spectre -64 +interactive %")
+        setlocal syntax=spectre
     elseif &filetype == "hy"
         call OpenREPL("term hy")
         setlocal syntax=hy
