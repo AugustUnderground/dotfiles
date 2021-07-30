@@ -30,6 +30,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jbyuki/nabla.nvim'
 Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
+Plug 'rootkiter/vim-hexedit'
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -62,11 +63,13 @@ Plug 'tbastos/vim-lua'
 Plug 'cespare/vim-toml'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
+Plug 'melrief/vim-frege-syntax'
 
 " My
 Plug 'augustunderground/vim-skill'
 Plug 'augustunderground/vim-mathmode'
 Plug 'augustunderground/vim-hy'
+Plug 'augustunderground/spectre.vim'
 Plug 'augustunderground/gothic.nvim'
 
 " Colorschemes
