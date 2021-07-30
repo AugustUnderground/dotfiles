@@ -58,6 +58,8 @@ function! ReplReload()
         call ReplSend(['perl ' . expand("%")])
     elseif &filetype == "haskell"
         call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
+    elseif &filetype == "purescript"
+        call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
     elseif &filetype == "ocaml"
         call ReplSend(['#use ' . '"' . expand("%:t") . '";;'])
     elseif &filetype == "elm"
@@ -133,6 +135,8 @@ function CompileRun()
     elseif &filetype == "haskell"
         execute "!stack build && stack exec %:p:h:h:t"
         "execute "!cabal run"
+    elseif &filetype == "purescript"
+        execute "!spago build && spago run"
     elseif &filetype == "ocaml"
         execute "!dune build && dune exec ./%:t:r.exe"
     elseif &filetype == "elm"
@@ -196,6 +200,9 @@ function InteractiveLoad()
         call OpenREPL("term stack ghci")
         "call OpenREPL("term cabal repl")
         setlocal syntax=haskell
+    elseif &filetype == "purescript"
+        call OpenREPL("term spago repl")
+        setlocal syntax=purescript
     elseif &filetype == "ocaml"
         call OpenREPL("term utop")
     elseif &filetype == "elm"

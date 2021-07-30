@@ -45,6 +45,10 @@ Plug 'tpope/vim-vividchalk'
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 "Plug 'vim-syntastic/syntastic'
@@ -63,6 +67,8 @@ Plug 'cespare/vim-toml'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
 Plug 'melrief/vim-frege-syntax'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'sriharshachilakapati/vimmer-ps'
 
 " My
 Plug 'augustunderground/vim-skill'
