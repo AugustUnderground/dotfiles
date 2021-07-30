@@ -108,8 +108,7 @@ function CompileRun()
     if &filetype == "sh"
         execute "!sh %"
     elseif &filetype == "java"
-        execute "!javac %"
-        execute "!java -cp ./ %:r"
+        execute "!mvn -B clean compile exec:java"
     elseif &filetype == "perl"
         execute "!perl ./%"
     elseif &filetype == "c"
@@ -236,6 +235,9 @@ function InteractiveLoad()
     elseif &filetype == "spice"
         call OpenREPL("term ngspice")
         setlocal syntax=spice
+    elseif &filetype == "spectre"
+        call OpenREPL("term rlwrap spectre -64 +interactive %")
+        setlocal syntax=spectre
     elseif &filetype == "hy"
         call OpenREPL("term hy")
         setlocal syntax=hy

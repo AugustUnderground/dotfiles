@@ -30,6 +30,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jbyuki/nabla.nvim'
 Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
+Plug 'rootkiter/vim-hexedit'
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
