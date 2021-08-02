@@ -149,23 +149,6 @@ hi LineNr ctermbg=none
 
 "set fillchars+=vert:\ 
 
-syntax on
-
-" Color Scheme
-"let g:gruvbox_italic = 1
-"let g:gruvbox_bold = 1
-"let g:gruvbox_underline = 1
-"let g:gruvbox_undercurl = 1
-"let g:gruvbox_contrast_dark = "medium"
-"let g:gruvbox_italicize_comments = 1
-"
-"colorscheme gruvbox
-"
-"highlight EndOfBuffer guifg=gray
-"highlight NonText guifg=gray
-
-colorscheme gothic "blood-moon
-
 " Plugin Settings
 
 let g:minimap_width                     = 15
@@ -563,6 +546,10 @@ inoremap <up> <NOP>
 inoremap <down> <NOP>
 inoremap <left> <NOP>
 inoremap <right> <NOP>
+
+" Colorscheme
+syntax on
+colorscheme gothic
 
 " NeoVide
 set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h18    " specify font and size
