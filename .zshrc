@@ -137,7 +137,13 @@ alias cp="cp -v"
 alias mv="mv -v"
 alias rm="rm -v"
 
+alias quit="exit"
+
 alias dmneu_exe="dmneu_run $DMENU_THEME -p 'Launch:'"
+
+if command -v alacritty > /dev/null; then
+    alias tmux="TERM=alacritty tmux"
+fi
 
 if command -v zoxide > /dev/null; then
     eval "$(zoxide init zsh)"
