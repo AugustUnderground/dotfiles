@@ -132,7 +132,7 @@ function CompileRun()
     elseif &filetype == "bib"
         execute "!bibtex %:r"
     elseif &filetype == "haskell"
-        execute "!stack build && stack exec %:p:h:h:t"
+        execute "!stack build && stack exec %:p:h:h:t-exe"
         "execute "!cabal run"
     elseif &filetype == "purescript"
         execute "!spago build && spago run"
