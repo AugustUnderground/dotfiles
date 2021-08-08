@@ -141,10 +141,8 @@ alias quit="exit"
 
 alias dmneu_exe="dmneu_run $DMENU_THEME -p 'Launch:'"
 
-if [ $(uname) = "FreeBSD" ]; then
-    if command -v alacritty > /dev/null; then
-        alias tmux="TERM=alacritty tmux"
-    fi
+if command -v alacritty > /dev/null; then
+    alias tmux="TERM=alacritty tmux"
 fi
 
 if command -v zoxide > /dev/null; then

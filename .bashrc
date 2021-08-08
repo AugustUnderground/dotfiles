@@ -122,6 +122,10 @@ alias cd..='cd ..'
 alias la='ls -al'
 alias clk='~/clk.sh'
 
+if [ -n $(command -v alacritty) ]; then
+    alias tmux="TERM=alacritty tmux"
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/ynk/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
