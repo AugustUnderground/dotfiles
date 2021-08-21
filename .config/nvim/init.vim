@@ -70,6 +70,7 @@ Plug 'alvan/vim-closetag'
 Plug 'melrief/vim-frege-syntax'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'sriharshachilakapati/vimmer-ps'
+Plug 'neovimhaskell/haskell-vim'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -156,78 +157,87 @@ hi LineNr ctermbg=none
 "set fillchars+=vert:\ 
 
 " Plugin Settings
-
-let g:minimap_width                     = 15
-let g:minimap_auto_start                = 0
-let g:minimap_auto_start_win_enter      = 0
-let g:minimap_highlight                 = 'Search'
-let g:minimap_base_highlight            = 'Normal'
-let g:minimap_block_filetypes           = ['fugitive', 'nerdtree', 'tagbar', 'lightline' ]
-let g:minimap_block_buftypes            = ['nofile', 'nowrite', 'quickfix', 'terminal', 'prompt']
-let g:minimap_close_filetypes           = ['startify', 'netrw', 'vim-plug']
-let g:minimap_close_buftypes            = [  ]
-let g:minimap_left                      = 0
-let g:minimap_highlight_range           = 0
-let g:elm_setup_keybindings             = 0
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#unnamed      = '[No Name]'
-let g:lightline                         = {}
-let g:lightline.tabline                 = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand        = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type          = {'buffers': 'tabsel'}
-let g:lightline                         = { 'colorscheme': 'gothic' 
-                                        \ , 'separator': { 'left': ''
-                                                       \ , 'right': ''  
-                                                       \ }
-                                        \ , 'subseparator': { 'left': '' 
-                                                          \ , 'right': ''
-                                                          \ }
-		                                \ }
+let g:haskell_enable_quantification          = 1
+let g:haskell_enable_recursivedo             = 1
+let g:haskell_enable_arrowsyntax             = 1
+let g:haskell_enable_pattern_synonyms        = 1
+let g:haskell_enable_typeroles               = 1
+let g:haskell_enable_static_pointers         = 1
+let g:haskell_backpack                       = 1
+let g:minimap_width                          = 15
+let g:minimap_auto_start                     = 0
+let g:minimap_auto_start_win_enter           = 0
+let g:minimap_highlight                      = 'Search'
+let g:minimap_base_highlight                 = 'Normal'
+let g:minimap_block_filetypes                = [ 'fugitive', 'nerdtree'
+                                             \ , 'tagbar', 'lightline' ]
+let g:minimap_block_buftypes                 = [ 'nofile', 'nowrite'
+                                             \ , 'quickfix', 'terminal'
+                                             \ , 'prompt' ]
+let g:minimap_close_filetypes                = ['startify', 'netrw', 'vim-plug']
+let g:minimap_close_buftypes                 = [ ]
+let g:minimap_left                           = 0
+let g:minimap_highlight_range                = 0
+let g:elm_setup_keybindings                  = 0
+let g:lightline#bufferline#show_number       = 1
+let g:lightline#bufferline#shorten_path      = 0
+let g:lightline#bufferline#unnamed           = '[No Name]'
+let g:lightline                              = {}
+let g:lightline.tabline                      = { 'left': [['buffers']]
+                                             \ , 'right': [['close']] }
+let g:lightline.component_expand             = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type               = {'buffers': 'tabsel'}
+let g:lightline                              = { 'colorscheme': 'gothic'
+                                             \ , 'separator': { 'left': ''
+                                                            \ , 'right': ''  
+                                                            \ }
+                                             \ , 'subseparator': { 'left': '' 
+                                                               \ , 'right': ''
+                                                               \ }
+		                                     \ }
 au BufWritePost,TextChanged,TextChangedI * call lightline#update()
 call vimfiler#custom#profile('default', 'context', {'safe' : 0})
 let g:syntastic_enable_racket_racket_checker = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:vimspector_enable_mappings = 'HUMAN'
-let g:colorizer_auto_color = 0
-let g:colorizer_skip_comments = 1
-let g:colorizer_syntax = 0
-let g:Hexokinase_optInPatterns = 'full_hex,triple_hex,rgb,rgba,hsl,hsla,colour_names'
-let g:Hexokinase_highlighters = ['backgroundfull']
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'default', 'ext': '.wiki'}]
-let g:vimwiki_global_ext = 0
-let g:livepreview_previewer = 'zathura'
-let g:bufferline_echo = 0
-let g:vimfiler_safe_mode_by_default = 0
-let g:rainbow_active = 1
-let g:slime_target = "tmux"
-let g:slime_cell_delimiter = "#%%"
-let vim_markdown_preview_browser='firefox'
-let asmsytnax = 'armasm'
-let filetype_inc = 'armasm'
-let vimclojure#FuzzyIndent=4
-let g:jedi#completions_enabled = 1
-let g:jedi#rename_command = "<leader>c"
-let g:latex_to_unicode_auto = 1
-let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
-let g:closetag_filetypes = 'html,xhtml,phtml'
-let g:closetag_xhtml_filetypes = 'xhtml,jsx'
-let g:closetag_emptyTags_caseSensitive = 1
-let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ 'typescriptreact': 'jsxRegion,tsxRegion',
-    \ 'javascriptreact': 'jsxRegion',
-    \ }
-let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '<leader>>'
-let g:rainbow_conf = {
+let g:syntastic_always_populate_loc_list     = 1
+let g:syntastic_auto_loc_list                = 1
+let g:elm_syntastic_show_warnings            = 1
+let g:indentLine_char_list                   = ['|', '¦', '┆', '┊']
+let g:vimspector_enable_mappings             = 'HUMAN'
+let g:colorizer_auto_color                   = 0
+let g:colorizer_skip_comments                = 1
+let g:colorizer_syntax                       = 0
+let g:Hexokinase_optInPatterns               = 'full_hex,triple_hex,rgb,rgba,hsl,hsla,colour_names'
+let g:Hexokinase_highlighters                = ['backgroundfull']
+let g:qs_highlight_on_keys                   = ['f', 'F', 't', 'T']
+let g:vimwiki_list                           = [{'path': '~/vimwiki/', 'syntax': 'default', 'ext': '.wiki'}]
+let g:vimwiki_global_ext                     = 0
+let g:livepreview_previewer                  = 'zathura'
+let g:bufferline_echo                        = 0
+let g:vimfiler_safe_mode_by_default          = 0
+let g:slime_target                           = "tmux"
+let g:slime_cell_delimiter                   = "#%%"
+let vim_markdown_preview_browser             = 'firefox'
+let asmsytnax                                = 'armasm'
+let filetype_inc                             = 'armasm'
+let vimclojure#FuzzyIndent                   = 4
+let g:jedi#completions_enabled               = 1
+let g:jedi#rename_command                    = "<leader>c"
+let g:latex_to_unicode_auto                  = 1
+let g:AutoClosePumvisible                    = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
+let g:closetag_filenames                     = '*.html,*.xhtml,*.phtml'
+let g:closetag_xhtml_filenames               = '*.xhtml,*.jsx'
+let g:closetag_filetypes                     = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes               = 'xhtml,jsx'
+let g:closetag_emptyTags_caseSensitive       = 1
+let g:closetag_regions                       = { 'typescript.tsx': 'jsxRegion,tsxRegion'
+                                             \ , 'javascript.jsx': 'jsxRegion'
+                                             \ , 'typescriptreact': 'jsxRegion,tsxRegion'
+                                             \ , 'javascriptreact': 'jsxRegion'
+                                             \ }
+let g:closetag_shortcut                      = '>'
+let g:closetag_close_shortcut                = '<leader>>'
+let g:rainbow_active                         = 1
+let g:rainbow_conf                           = {
 \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 \	'guis': [''],
@@ -245,9 +255,9 @@ let g:rainbow_conf = {
 \		'hy': {
 \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
 \		},
-\		'haskell': {
-\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
-\		},
+\		'haskell': { 
+\           'guifgs': ['white'],
+\        },
 \		'vim': {
 \			'parentheses_options': 'containedin=vimFuncBody',
 \		},
@@ -261,11 +271,7 @@ let g:rainbow_conf = {
 \	}
 \}
 
-" Slime
-"xmap <c-c><c-r> <Plug>SlimeRegionSend
-"nmap <c-c><c-r> <Plug>SlimeParagraphSend
-"nmap <c-c>v     <Plug>SlimeConfig
-"nmap <leader>r  <Plug>SlimeSendCell
+" Mini Map
 map <leader>mm :MinimapToggle<cr>
 
 " Greek Variable Names
