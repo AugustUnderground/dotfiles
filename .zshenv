@@ -10,6 +10,7 @@ export PATH=$HOME/perl5/bin:$PATH       # Perl
 export PATH=$HOME/.cabal/bin:$PATH      # Haskell
 export PATH=$HOME/.cargo/bin:$PATH      # Rust
 export PATH=$HOME/go/bin:$PATH          # Go
+export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
 
 # History
 export HISTFILE=$HOME/.zsh_history
@@ -29,12 +30,21 @@ setopt EXTENDED_HISTORY
 ZVM_VI_HIGHLIGHT_BACKGROUND=white      # Color name
 
 # LATEX
-TEXLIVEPATH="/opt/texlive/2020/bin/x86_64-linux"
-TEXLIVEMAN="/opt/texlive/2020/texmf-dist/doc/man"
-TEXLIVEINFO="/opt/texlive/2020/texmf-dist/doc/info"
-[ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
-[ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
-[ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
+if [ $(uname) = "Linux" ]; then
+    TEXLIVEPATH="/opt/texlive/2020/bin/x86_64-linux"
+    TEXLIVEMAN="/opt/texlive/2020/texmf-dist/doc/man"
+    TEXLIVEINFO="/opt/texlive/2020/texmf-dist/doc/info"
+    [ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
+    [ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
+    [ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
+elif [ $(uname) = "FreeBSD" ];then
+    TEXLIVEPATH="/usr/local/texlive/2021/bin/amd64-freebsd"
+    TEXLIVEMAN="/usr/local/texlive/2021/texmf-dist/doc/man"
+    TEXLIVEINFO="/usr/local/texlive/2021/texmf-dist/doc/info"
+    [ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
+    [ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
+    [ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
+fi
 
 # Preferred Editor for Local and Remote Sessions
 if [[ -n $SSH_CONNECTION ]]; then
