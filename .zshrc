@@ -205,6 +205,10 @@ alias passpush="pass git add . && pass git commit -m 'Password Updates' && pass 
 bindkey -v
 export KEYTIMEOUT=1
 
+# Haskell
+
+[ -f "/home/ynk/.ghcup/env" ] && source "/home/ynk/.ghcup/env" # ghcup-env
+
 # Conda
 
 # >>> conda initialize >>>
