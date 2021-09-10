@@ -137,7 +137,7 @@ function CompileRun()
         execute "!stack build && stack exec %:p:h:h:t-exe"
         "execute "!cabal run"
     elseif &filetype == "frege"
-        execute "!sbt compile && sbt run"
+        execute "!sbt -no-colors compile && sbt run"
     elseif &filetype == "purescript"
         execute "!spago build && spago run"
     elseif &filetype == "ocaml"
