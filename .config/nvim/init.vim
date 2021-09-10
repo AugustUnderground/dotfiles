@@ -103,6 +103,8 @@ Plug 'dguo/blood-moon', {'rtp': 'applications/vim'}
 Plug 'widatama/vim-phoenix'
 Plug 'owozsh/amora'
 
+Plug 'vim-scripts/SyntaxAttr.vim'
+
 call plug#end()
 
 " File Type specific settings

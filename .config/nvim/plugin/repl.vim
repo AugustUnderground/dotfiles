@@ -137,7 +137,7 @@ function CompileRun()
         execute "!stack build && stack exec %:p:h:h:t-exe"
         "execute "!cabal run"
     elseif &filetype == "frege"
-        execute "!make"
+        execute "!sbt compile && sbt run"
     elseif &filetype == "purescript"
         execute "!spago build && spago run"
     elseif &filetype == "ocaml"
@@ -204,7 +204,7 @@ function InteractiveLoad()
         "call OpenREPL("term cabal repl")
         setlocal syntax=haskell
     elseif &filetype == "frege"
-        call OpenREPL("term frepl")
+        call OpenREPL("term TERM=xterm-color sbt fregeRepl")
         setlocal syntax=frege
     elseif &filetype == "purescript"
         call OpenREPL("term spago repl")
