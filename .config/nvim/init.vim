@@ -31,11 +31,13 @@ Plug 'jbyuki/nabla.nvim'
 Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
 Plug 'rootkiter/vim-hexedit'
+Plug 'rbgrouleff/bclose.vim' " GHCup dependency
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 
 " tpope
 Plug 'tpope/vim-repeat'
@@ -71,6 +73,8 @@ Plug 'melrief/vim-frege-syntax'
 Plug 'purescript-contrib/purescript-vim'
 Plug 'sriharshachilakapati/vimmer-ps'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'monkoose/fzf-hoogle.vim'
+Plug 'hasufell/ghcup.vim'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -121,6 +125,7 @@ au BufNewFile,BufRead *.net,*.mod set filetype=spice
 "au BufNewFile,BufRead *.m set filetype=matlab
 au BufNewFile,BufRead *.py let g:repl_ipython = 1
 au BufNewFile,BufRead *.hs let g:repl_ghci = 1
+au BufNewFile,BufRead *.fr let g:repl_ghci = 1
 au BufNewFile,BufRead *.hy set tabstop=4 shiftwidth=4 softtabstop=4
 au BufNewFile,BufRead *.* call MapGermanCharacters()
 
