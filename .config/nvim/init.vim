@@ -31,7 +31,7 @@ Plug 'jbyuki/nabla.nvim'
 Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
 Plug 'rootkiter/vim-hexedit'
-Plug 'rbgrouleff/bclose.vim' " GHCup dependency
+ Plug 'rbgrouleff/bclose.vim' " GHCup dependency
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -75,6 +75,7 @@ Plug 'sriharshachilakapati/vimmer-ps'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'monkoose/fzf-hoogle.vim'
 Plug 'hasufell/ghcup.vim'
+Plug 'vim-scripts/SyntaxAttr.vim'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -106,8 +107,6 @@ Plug 'itchyny/landscape.vim'
 Plug 'dguo/blood-moon', {'rtp': 'applications/vim'}
 Plug 'widatama/vim-phoenix'
 Plug 'owozsh/amora'
-
-Plug 'vim-scripts/SyntaxAttr.vim'
 
 call plug#end()
 
