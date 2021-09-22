@@ -11,6 +11,7 @@ export PATH=$HOME/.cabal/bin:$PATH      # Haskell
 export PATH=$HOME/.cargo/bin:$PATH      # Rust
 export PATH=$HOME/go/bin:$PATH          # Go
 export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
+export PATH=/u/usr/local/cuda/bin:$PATH      # Haskell
 
 # History
 export HISTFILE=$HOME/.zsh_history
