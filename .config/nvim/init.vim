@@ -166,6 +166,18 @@ let g:haskell_enable_pattern_synonyms        = 1
 let g:haskell_enable_typeroles               = 1
 let g:haskell_enable_static_pointers         = 1
 let g:haskell_backpack                       = 1
+let g:haskell_classic_highlighting           = 1
+let g:haskell_indent_disable                 = 0
+let g:haskell_indent_if                      = 3
+let g:haskell_indent_case                    = 2
+let g:haskell_indent_let                     = 4
+let g:haskell_indent_where                   = 6
+let g:haskell_indent_before_where            = 2
+let g:haskell_indent_after_bare_where        = 2
+let g:haskell_indent_do                      = 3
+let g:haskell_indent_in                      = 1
+let g:haskell_indent_guard                   = 4
+let g:haskell_indent_case_alternative        = 1
 let g:minimap_width                          = 15
 let g:minimap_auto_start                     = 0
 let g:minimap_auto_start_win_enter           = 0
@@ -257,9 +269,7 @@ let g:rainbow_conf                           = {
 \		'hy': {
 \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
 \		},
-\		'haskell': { 
-\           'guifgs': ['white'],
-\        },
+\		'haskell': 0,
 \		'vim': {
 \			'parentheses_options': 'containedin=vimFuncBody',
 \		},
