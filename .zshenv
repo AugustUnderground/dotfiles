@@ -11,6 +11,7 @@ export PATH=$HOME/.cabal/bin:$PATH      # Haskell
 export PATH=$HOME/.cargo/bin:$PATH      # Rust
 export PATH=$HOME/go/bin:$PATH          # Go
 export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
+export PATH=/u/usr/local/cuda/bin:$PATH      # Haskell
 
 # History
 export HISTFILE=$HOME/.zsh_history
@@ -84,3 +85,4 @@ export GTK_IM_MODULE='fcitx'
 export QT_IM_MODULE='fcitx'
 export SDL_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
+if [ -e /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh ]; then . /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
