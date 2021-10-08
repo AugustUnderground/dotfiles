@@ -120,8 +120,8 @@ while true; do
     getVolume
     getBattery
 
-    DATE=" $(date +"%Y-%m-%d")"
-    TIME=" $(date +"%H:%M")"
+    DATE=" $(/bin/date +"%Y-%m-%d")"
+    TIME=" $(/bin/date +"%H:%M")"
     SOUND="$SPEAKER $VOL%"
 
     case $SIG in
