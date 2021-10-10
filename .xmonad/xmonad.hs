@@ -225,7 +225,7 @@ grabSection'      = "grabsection.sh"
 modMask' :: KeyMask
 modMask' = mod4Mask
 
-keys' conf@ XConfig {XMonad.modMask = modMask} = M.fromList $
+keys' conf@XConfig {XMonad.modMask = modMask} = M.fromList $
     [ ((modMask .|. shiftMask, xK_Escape) , confirmPrompt dangerPromptConfig' "exit" $ io exitSuccess)
     , ((modMask .|. shiftMask, xK_r)      , restart "xmonad" True)
 
