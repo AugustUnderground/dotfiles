@@ -24,9 +24,10 @@ getNetwork()
                 #SIG=$(echo "2 * ($DBM + 100)" | bc)
                 SIG="$(ifconfig athn0 | awk '{if ($1 == "ieee80211:") {print $8}}')"
             elif [ -n "$IF_TYPE" ] && [ "$IF_TYPE" == "Ethernet" ]; then
-                SIG=""
+                SIG="wired"
                 CON=""
             else
+                SIG="disc"
                 CON=""
             fi
         fi
@@ -128,8 +129,11 @@ while true; do
         (*dBm*)
             NET="$CON $SIG"
             ;;
-        ("")
-            NET="$CON"
+        (wired)
+            NET="$CON $SIG"
+            ;;
+        (disc)
+            NET="$CON $SIG"
             ;;
         (*)
             NET="$CON $SIG%"
