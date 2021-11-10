@@ -47,6 +47,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'rubik/vim-dg'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -163,6 +164,11 @@ hi LineNr ctermbg=none
 "set fillchars+=vert:\ 
 
 " Plugin Settings
+let g:dg_highlight_builtin_objs              = 1
+let g:dg_highlight_builtin_funcs             = 1
+let g:dg_highlight_exceptions                = 1
+let g:dg_highlight_indent_errors             = 1
+let g:dg_highlight_space_errors              = 1
 let g:haskell_enable_quantification          = 1
 let g:haskell_enable_recursivedo             = 1
 let g:haskell_enable_arrowsyntax             = 1

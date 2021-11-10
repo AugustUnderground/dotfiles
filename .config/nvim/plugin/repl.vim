@@ -87,6 +87,8 @@ function! ReplReload()
         call ReplSend([expand("%")])
     elseif &filetype == "hy"
         call ReplSend(['(import ' . expand("%:t:r") . ')'])
+    elseif &filetype == "dg"
+        call ReplSend(['import /' . expand("%:t:r")])
     elseif &filetype == "python"
         if g:repl_ipython
             call ReplSend(['%load ' . expand("%")])
@@ -166,6 +168,8 @@ function CompileRun()
         execute "!lein run"
     elseif &filetype == "hy"
         execute "!hy %"
+    elseif &filetype == "dg"
+        execute "!python -m dg %"
     elseif &filetype == "python"
         execute "!python %"
     elseif &filetype == "octave" || &filetype == "matlab"
@@ -250,6 +254,9 @@ function InteractiveLoad()
     elseif &filetype == "hy"
         call OpenREPL("term hy")
         setlocal syntax=hy
+    elseif &filetype == "dg"
+        call OpenREPL("term python -m dg")
+        setlocal syntax=dg
     elseif &filetype == "python"
         call OpenREPL("term ipython")
         "setlocal syntax=python
