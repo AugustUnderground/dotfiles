@@ -496,6 +496,10 @@ nnoremap <silent> <c-down> :res +2<CR>
 nnoremap <silent> <c-right> :vertical res +2<CR>
 nnoremap <silent> <c-left> :vertical res -2<CR>
 
+" APL Character Picker
+set wildcharm=<C-Z>
+map <leader>2 :emenu APL.<C-Z>
+
 " German special characters: ä, ö, ü, ß
 function MapGermanCharacters()
     if &filetype == "nroff"
