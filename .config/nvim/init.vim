@@ -166,7 +166,7 @@ hi LineNr ctermbg=none
 
 " Plugin Settings
 let g:python3_host_prog                      = trim(system('which python3'))
-let g:magma_automatically_open_output        = v:false
+let g:magma_automatically_open_output        = v:true
 let g:dg_highlight_builtin_objs              = 1
 let g:dg_highlight_builtin_funcs             = 1
 let g:dg_highlight_exceptions                = 1
