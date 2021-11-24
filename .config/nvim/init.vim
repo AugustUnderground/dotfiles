@@ -63,6 +63,7 @@ Plug 'SkyLeach/pudb.vim'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'wlangstroth/vim-racket'
 "Plug 'davidhalter/jedi-vim'
+Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'arrufat/vala.vim'
 Plug 'elmcast/elm-vim'
 Plug 'voldikss/vim-mma'
@@ -164,6 +165,8 @@ hi LineNr ctermbg=none
 "set fillchars+=vert:\ 
 
 " Plugin Settings
+let g:python3_host_prog                      = trim(system('which python3'))
+let g:magma_automatically_open_output        = v:false
 let g:dg_highlight_builtin_objs              = 1
 let g:dg_highlight_builtin_funcs             = 1
 let g:dg_highlight_exceptions                = 1
@@ -188,6 +191,7 @@ let g:haskell_indent_do                      = 3
 let g:haskell_indent_in                      = 1
 let g:haskell_indent_guard                   = 4
 let g:haskell_indent_case_alternative        = 1
+let g:skill_repl                             = 'rlwrap virtuoso -nograph'
 let g:minimap_width                          = 15
 let g:minimap_auto_start                     = 0
 let g:minimap_auto_start_win_enter           = 0
@@ -564,6 +568,14 @@ noremap <leader>cp :r!colorpicker --one-shot --short +\%c<CR>
 
 " Nabla
 nnoremap <F10> :lua require("nabla").place_inline()<CR>
+
+" Magma
+nnoremap <silent><expr> <LocalLeader>j  :MagmaEvaluateOperator<CR>
+nnoremap <silent>       <LocalLeader>jl :MagmaEvaluateLine<CR>
+xnoremap <silent>       <LocalLeader>j  :<C-u>MagmaEvaluateVisual<CR>
+nnoremap <silent>       <LocalLeader>jr :MagmaReevaluateCell<CR>
+nnoremap <silent>       <LocalLeader>jd :MagmaDelete<CR>
+nnoremap <silent>       <LocalLeader>jo :MagmaShowOutput<CR>
 
 " Easy Align
 xmap ga <Plug>(EasyAlign)
