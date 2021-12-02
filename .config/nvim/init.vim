@@ -64,6 +64,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'wlangstroth/vim-racket'
 "Plug 'davidhalter/jedi-vim'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'manicmaniac/coconut.vim'
 Plug 'arrufat/vala.vim'
 Plug 'elmcast/elm-vim'
 Plug 'voldikss/vim-mma'
@@ -580,6 +581,9 @@ xnoremap <silent>       <LocalLeader>j  :<C-u>MagmaEvaluateVisual<CR>
 nnoremap <silent>       <LocalLeader>jr :MagmaReevaluateCell<CR>
 nnoremap <silent>       <LocalLeader>jd :MagmaDelete<CR>
 nnoremap <silent>       <LocalLeader>jo :MagmaShowOutput<CR>
+
+" Buffer close
+noremap <leader>b :Bclose<CR>
 
 " Easy Align
 xmap ga <Plug>(EasyAlign)

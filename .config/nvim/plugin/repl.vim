@@ -87,6 +87,8 @@ function! ReplReload()
         call ReplSend([expand("%")])
     elseif &filetype == "hy"
         call ReplSend(['(import ' . expand("%:t:r") . ')'])
+    elseif &filetype == "coconut"
+        call ReplSend(['import ' . expand("%:t:r") . ')'])
     elseif &filetype == "dg"
         call ReplSend(['import /' . expand("%:t:r")])
     elseif &filetype == "python"
@@ -168,6 +170,8 @@ function CompileRun()
         execute "!lein run"
     elseif &filetype == "hy"
         execute "!hy %"
+    elseif &filetype == "coconut"
+        execute "!coconut %"
     elseif &filetype == "dg"
         execute "!python -m dg %"
     elseif &filetype == "python"
@@ -254,6 +258,9 @@ function InteractiveLoad()
     elseif &filetype == "hy"
         call OpenREPL("term hy")
         setlocal syntax=hy
+    elseif &filetype == "coconut"
+        call OpenREPL("term coconut")
+        "setlocal syntax=hy
     elseif &filetype == "dg"
         call OpenREPL("term python -m dg")
         setlocal syntax=dg
