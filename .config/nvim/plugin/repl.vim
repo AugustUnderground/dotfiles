@@ -75,6 +75,8 @@ function! ReplReload()
         call ReplSend(['(load "' . expand("%") . '")'])
     elseif &filetype == "racket"
         call ReplSend(['(load "' . expand("%") . '")'])
+    elseif &filetype == "bqn"
+        call ReplSend(['•Import "' . expand("%") . '"'])
     elseif &filetype == "r" || &filetype == "rmd"
         call ReplSend(['source("' . expand("%:t") . '")'])
     elseif &filetype == "julia"
@@ -156,6 +158,8 @@ function CompileRun()
         execute "!guile -f %"
     elseif &filetype == "racket"
         execute "!racket %"
+    elseif &filetype == "bqn"
+        execute "!bqn -f %"
     elseif &filetype == "r"
         execute "!R --no-save < %"
     elseif &filetype == "rust"
@@ -236,6 +240,9 @@ function InteractiveLoad()
     elseif &filetype == "racket"
         call OpenREPL("term racket")
         setlocal syntax=racket
+    elseif &filetype == "bqn"
+        call OpenREPL("term bqn")
+        setlocal syntax=bqn
     elseif &filetype == "r" || &filetype == "rmd"
         call OpenREPL("term R")
         setlocal syntax=r

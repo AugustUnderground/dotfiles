@@ -47,6 +47,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
+Plug 'https://git.sr.ht/~detegr/nvim-bqn'
 Plug 'rubik/vim-dg'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
