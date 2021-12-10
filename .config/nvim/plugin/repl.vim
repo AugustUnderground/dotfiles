@@ -241,7 +241,7 @@ function InteractiveLoad()
         call OpenREPL("term racket")
         setlocal syntax=racket
     elseif &filetype == "bqn"
-        call OpenREPL("term bqn")
+        call OpenREPL("term rlwrap bqn")
         setlocal syntax=bqn
     elseif &filetype == "r" || &filetype == "rmd"
         call OpenREPL("term R")
