@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -n "$(command -v chafa)" ]; then
-    IMVIEWER=chafa
+    IMVIEWER="chafa -s 80x80"
 elif [ -n "$(command -v pixterm)" ]; then
     IMVIEWER=pixterm
 elif [ -n "$(command -v termpix)" ]; then
