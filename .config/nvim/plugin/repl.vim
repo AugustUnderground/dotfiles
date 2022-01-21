@@ -90,10 +90,10 @@ function! ReplReload()
     elseif &filetype == "hy"
         call ReplSend(['(import ' . expand("%:t:r") . ')'])
     elseif &filetype == "coconut"
-        call ReplSend(['import ' . expand("%:t:r") . ')'])
+        call ReplSend(['import ' . expand("%:t:r")])
     elseif &filetype == "dg"
         call ReplSend(['import /' . expand("%:t:r")])
-    elseif &filetype == "python"
+    elseif &filetype == "python" " || &filetype == "coconut"
         if g:repl_ipython
             call ReplSend(['%load ' . expand("%")])
         else

@@ -66,7 +66,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'wlangstroth/vim-racket'
 "Plug 'davidhalter/jedi-vim'
 Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'manicmaniac/coconut.vim'
+"Plug 'manicmaniac/coconut.vim'
 Plug 'arrufat/vala.vim'
 Plug 'elmcast/elm-vim'
 Plug 'voldikss/vim-mma'
@@ -86,6 +86,7 @@ Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'augustunderground/vim-skill'
 Plug 'augustunderground/vim-mathmode'
 Plug 'augustunderground/vim-hy'
+Plug 'augustunderground/coconut.vim'
 Plug 'augustunderground/spectre.vim'
 Plug 'augustunderground/gothic.nvim'
 
@@ -128,6 +129,7 @@ au BufNewFile,BufRead *.il,*.ils set filetype=skill
 au BufNewFile,BufRead *.net,*.mod set filetype=spice
 "au BufNewFile,BufRead *.m set filetype=matlab
 au BufNewFile,BufRead *.py let g:repl_ipython = 1
+"au BufNewFile,BufRead *.coco let g:repl_ipython = 1
 au BufNewFile,BufRead *.hs let g:repl_ghci = 1
 au BufNewFile,BufRead *.fr let g:repl_ghci = 1
 au BufNewFile,BufRead *.hy set tabstop=4 shiftwidth=4 softtabstop=4
