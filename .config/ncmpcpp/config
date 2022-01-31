@@ -30,7 +30,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/Media/Music
+mpd_music_dir = ~/Music/Music
 #
 #mpd_crossfade_time = 5
 #
