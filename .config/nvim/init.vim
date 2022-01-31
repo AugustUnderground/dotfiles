@@ -47,6 +47,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'vim-skk/eskk.vim'
+Plug 'vim-skk/skkdict.vim'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
 Plug 'https://git.sr.ht/~detegr/nvim-bqn'
 Plug 'rubik/vim-dg'
@@ -211,6 +213,9 @@ let g:minimap_close_filetypes                = ['startify', 'netrw', 'vim-plug']
 let g:minimap_close_buftypes                 = [ ]
 let g:minimap_left                           = 0
 let g:minimap_highlight_range                = 0
+let g:eskk#large_dictionary                  = { 'path': '/usr/share/skk/SKK-JISYO.L'
+                                             \ , 'sorted': 1
+                                             \ , 'encoding': 'euc-jp' }
 let g:elm_setup_keybindings                  = 0
 let g:lightline#bufferline#show_number       = 1
 let g:lightline#bufferline#shorten_path      = 0
@@ -304,6 +309,12 @@ let g:rainbow_conf                           = {
 
 " Mini Map
 map <leader>mm :MinimapToggle<cr>
+
+" ESKK
+imap <Leader>j <Plug>(eskk:toggle)
+cmap <Leader>j <Plug>(eskk:toggle)
+lmap <Leader>j <Plug>(eskk:toggle)
+set completeopt+=menuone
 
 " Greek Variable Names
 map <leader>$ :call Toggle_math_mode()<CR>a
