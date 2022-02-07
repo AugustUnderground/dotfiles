@@ -31,6 +31,27 @@ getNetwork()
                 CON=""
             fi
         fi
+    elif [ $(uname) = "FreeBSD" ]; then
+        INTERFACE=$(ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active')
+        if [ -z $INTERFACE ]; then
+            INTERFACE=$(ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: associated')
+        fi
+        if [ -z $INTERFACE ]; then
+            SIG="disc"
+            CON=""
+        else
+            DEVICE=$(echo $INTERFACE | awk 'NR==1 {print $1}')
+            if [ "${INTERFACE#wlan}" != "${INTERFACE}" ]; then
+                SIG="wifi"
+                CON=""
+            elif [ "${INTERFACE#em}" != "${INTERFACE}" ]; then
+                SIG="wired"
+                CON=""
+            else
+                SIG="disc"
+                CON=""
+            fi
+        fi
     fi
 }
 
@@ -133,6 +154,9 @@ while true; do
             NET="$CON $SIG"
             ;;
         (disc)
+            NET="$CON $SIG"
+            ;;
+        (wifi)
             NET="$CON $SIG"
             ;;
         (*)
