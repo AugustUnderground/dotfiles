@@ -33,10 +33,10 @@ getNetwork()
         fi
     elif [ $(uname) = "FreeBSD" ]; then
         INTERFACE=$(ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active')
-        if [ -z $INTERFACE ]; then
+        if [ -z "$INTERFACE" ]; then
             INTERFACE=$(ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: associated')
         fi
-        if [ -z $INTERFACE ]; then
+        if [ -z "$INTERFACE" ]; then
             SIG="disc"
             CON=""
         else
