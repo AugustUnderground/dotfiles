@@ -18,45 +18,46 @@ URxvt.shading: 10
 *.scrollBar: false
 
 ! Font
-*.font: xft:Monofur for Powerline:pixelsize=15
+!*.font: xft:FantasqueSansMono Nerd Font Mono:pixelsize=15
+*.faceName: FantasqueSansMono Nerd Font Mono
+*.faceSize: 15
 
 ! special
-*.foreground:   #c7c8c5
-*.background:   #121411
-*.cursorColor:  #c7c8c5
+*.foreground:   #DEDEDE
+*.background:   #0D0D0E
+*.cursorColor:  #DEDEDE
 
 ! black
-*.color0:       #2c2e28
-*.color8:       #414137
+*.color0:       #0D0D0E
+*.color8:       #4F4F4F
 
 ! red
-*.color1:       #a54242
-*.color9:       #cc6666
+*.color1:       #7A002B
+*.color9:       #DB004D
 
 ! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
+*.color2:       #007A4F
+*.color10:      #00C881
 
 ! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
+*.color3:       #E1BE51
+*.color11:      #CCA323
 
 ! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+*.color4:       #5174E1
+*.color12:      #8EA5EB
 
 ! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+*.color5:       #6016CD
+*.color13:      #74009D
 
 ! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
+*.color6:       #0085B0
+*.color14:      #15C6FF
 
 ! white
-*.color7:       #7a8070
-*.color15:      #c8c8c5
-
+*.color7:       #E2E2E4
+*.color15:      #DEDEE0
 
 ! DEFAULT
 ! special
