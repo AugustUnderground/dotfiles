@@ -149,6 +149,10 @@ if command -v zoxide > /dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
+#if [ -d "$HOME/opt/z.lua" ]; then
+#    eval "$(lua $HOME/opt/z.lua/z.lua --init zsh enhanced once fzf)"
+#fi
+
 if command -v fzy > /dev/null; then
     alias hst="history 1 | fzy"
 elif command -v fzf > /dev/null; then
