@@ -11,6 +11,9 @@ URxvt.shading: 10
 
 !URxvt.termName: rxvt-unicode-256color
 
+! XClip
+*.selectToClipboard: true
+
 ! Transparency
 *.alpha: 0.0
 
