@@ -6,8 +6,8 @@ URxvt.keysym.C-equal:   resize-font:bigger
 URxvt.keysym.C-0:       resize-font:reset
 URxvt.keysym.C-question:resize-font:show
 
-URxvt.transparent: true
-URxvt.shading: 10
+!URxvt.transparent: true
+!URxvt.shading: 10
 
 !URxvt.termName: rxvt-unicode-256color
 
@@ -15,7 +15,7 @@ URxvt.shading: 10
 *.selectToClipboard: true
 
 ! Transparency
-*.alpha: 0.0
+!*.alpha: 0.0
 
 ! Scroll Bar
 *.scrollBar: false
