@@ -73,7 +73,7 @@ function +vi-git-untracked() {
 # Prompt
 setopt PROMPT_SUBST
 PROMPT='%F{white}%T %B%F{red}⸸ %b%f'
-RPROMPT='%(?..%F{red}⏎ ) ${vcs_info_msg_0_}%b%f %B%F{red}⛧ %b%f%F{white}%h'
+RPROMPT='%(?..%F{red}⏎ ) ${vcs_info_msg_0_}%b%f %F{red}⛧ %f%F{white}%h'
 
 # Functions
 
