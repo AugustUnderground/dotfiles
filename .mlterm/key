@@ -1,0 +1,49 @@
+#### Default settings
+# UNUSED=IM_HOTKEY
+# Control+F1=OPEN_SCREEN
+# Control+F2=OPEN_PTY
+# Control+F3=NEXT_PTY
+# Control+F4=PREV_PTY
+# Shift+F1=HSPLIT_SCREEN
+# Shift+F2=VSPLIT_SCREEN
+# Shift+F3=NEXT_SCREEN
+# Shift+F5=CLOSE_SCREEN
+# Shift+F6=HEXPAND_SCREEN
+# Shift+F7=VEXPAND_SCREEN
+# Shift+Prior=PAGE_UP
+# Shift+Up=SCROLL_UP
+# Control+Shift+Up=SCROLL_UP_TO_MARK
+# Control+Shift+Down=SCROLL_DOWN_TO_MARK
+# Control+Shift+m=SET_MARK
+# Shift+Insert=INSERT_SELECTION
+# UNUSED=INSERT_CLIPBOARD
+# Pause=RESET
+# Control+Shift+Return=COPY_MODE
+# Control+Button1="menu:mlterm-menu"
+# Control+Button3="menu:mlconfig"
+
+#### Examples
+# Control+Right=NEXT_PTY
+# Control+Left=PREV_PTY
+# Button7=NEXT_PTY
+# Button6=PREV_PTY
+# Control+F5="proto:mlclient --serv localhost -e screen -xR"
+# Control+F6="w3m http://www.google.co.jp/\n"
+# Control+F7="proto:font_size=12;encoding=utf8"
+# Control+F8="proto:(echo)input_method=ibus"
+# Control+F9="proto:aafont:DEFAULT=Kochi Gothic"
+# Control+F10="proto:color:black=rgb:ff/00/00"
+# Control+F11="proto:(echo)use_local_echo=true"
+# Control+F12="proto:(echo)use_local_echo=false"
+# Control+F13="proto:(echo)broadcast=switch"
+# Control+F14="proto:(echo)ignore_broadcasted_chars=switch"
+# Control+F15="proto:(echo)allow_osc52=switch"
+# Shift+Button3="exesel:mlclient -e w3m"
+# Shift+Button3="exesel:\"/cygdrive/c/Program Files/Internet Explorer/iexplore.exe\" \"%s\""
+# Shift+Button3="exesel:/cygdrive/c/Program\\ Files/Internet\\ Explorer/iexplore.exe \"%s\""
+# (Enclose %s by "" to invalidate special characters of cmd.exe)
+# Shift+Button3="exesel:cmd.exe /C \"start microsoft-edge:\\"%s\\"\""
+# (This doesn't necessarily work because MS-Edge doesn't start if "%s" contains "=")
+# Shift+Button3="exesel:explorer.exe microsoft-edge:\"%s\""
+# Button4="\x1bOA\x1bOA"
+# Button5="\x1bOB\x1bOB"
