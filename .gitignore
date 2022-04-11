@@ -19,3 +19,4 @@
 .xmonad/xmonad.o
 .xmonad/xmonad-x86_64-*
 .mlterm/challenge
+.mlterm/msg.log

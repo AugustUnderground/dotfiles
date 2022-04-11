@@ -1,5 +1,7 @@
 DEFAULT=FantasqueSansMono Nerd Font Mono
-charset_BOLD=FantasqueSansMono Nerd Font Mono
+DEFAULT_BOLD=FantasqueSansMono Nerd Font Mono
+DEFAULT_ITALIC=FantasqueSansMono Nerd Font Mono
+DEFAULT_BOLD_ITALIC=FantasqueSansMono Nerd Font Mono
 
 #ISO8859_1=Courier 10 Pitch
 #ISO8859_2=Thryomanes
