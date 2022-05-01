@@ -197,6 +197,10 @@ case "$(uname)" in
         alias vpnup="doas sh -c 'openconnect --protocol=anyconnect vpn.reutlingen-university.de'"
         alias vpndn="doas sh -c 'kill -9 $(pgrep openconnect) && sh /etc/netstart'"
         ;;
+    "Darwin")
+        alias vpnup="doas sh -c 'openconnect --protocol=anyconnect vpn.reutlingen-university.de'"
+        alias vpndn="doas sh -c 'kill -9 $(pgrep openconnect) && sh /etc/netstart'"
+        ;;
 esac
 
 alias pdf=openpdf
