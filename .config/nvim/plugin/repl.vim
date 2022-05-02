@@ -88,16 +88,16 @@ function! ReplReload()
     elseif &filetype == "spice"
         call ReplSend([expand("%")])
     elseif &filetype == "hy"
-        call ReplSend(['(import ' . expand("%:t:r") . ')'])
+        call ReplSend(['(import [' . expand("%:t:r") . '[[*]])'])
     elseif &filetype == "coconut"
-        call ReplSend(['import ' . expand("%:t:r")])
+        call ReplSend(['from ' . expand("%:t:r") . ' import *'])
     elseif &filetype == "dg"
         call ReplSend(['import /' . expand("%:t:r")])
     elseif &filetype == "python" " || &filetype == "coconut"
         if g:repl_ipython
             call ReplSend(['%load ' . expand("%")])
         else
-            call ReplSend(['import ' . expand("%:t:r")])
+            call ReplSend(['from ' . expand("%:t:r") . ' import *'])
         endif
     elseif &filetype == "nroff"
         execute "!groff -URpetms % -Kutf8 -Tutf8 > %:r.utf8"
@@ -175,7 +175,7 @@ function CompileRun()
     elseif &filetype == "hy"
         execute "!hy %"
     elseif &filetype == "coconut"
-        execute "!coconut %"
+        execute "!coconut-run %"
     elseif &filetype == "dg"
         execute "!python -m dg %"
     elseif &filetype == "python"
