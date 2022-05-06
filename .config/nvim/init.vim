@@ -621,7 +621,7 @@ syntax on
 colorscheme gothic
 
 " NeoVide
-set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h18    " specify font and size
+set guifont=FantasqueSansMono\ Nerd\ Font\ Mono:h14    " specify font and size
 let g:neovide_refresh_rate                 = 144       " refresh rate of gfx window
 let g:neovide_transparency                 = 1.0       " window background opacity
 let g:neovide_no_idle                      = v:false   " immediately redraw
