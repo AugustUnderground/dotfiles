@@ -47,6 +47,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'ziglang/zig.vim'
 Plug 'vim-skk/eskk.vim'
 Plug 'vim-skk/skkdict.vim'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}

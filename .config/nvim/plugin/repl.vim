@@ -119,6 +119,8 @@ function CompileRun()
         execute "!mvn -B clean compile exec:java"
     elseif &filetype == "perl"
         execute "!perl ./%"
+    elseif &filetype == "zig"
+        execute "!zig build-exe ./%"
     elseif &filetype == "c"
         execute "!gcc -o %:r.out %"
         execute "!chmod a+x %:r.out"
