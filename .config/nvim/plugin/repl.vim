@@ -121,6 +121,8 @@ function CompileRun()
         execute "!perl ./%"
     elseif &filetype == "zig"
         execute "!zig build-exe ./%"
+    elseif &filetype == "fortran"
+        execute "!gfortran % -o %:r"
     elseif &filetype == "c"
         execute "!gcc -o %:r.out %"
         execute "!chmod a+x %:r.out"
