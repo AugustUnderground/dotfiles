@@ -47,6 +47,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-skk/eskk.vim'
 Plug 'vim-skk/skkdict.vim'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
@@ -172,6 +173,8 @@ hi LineNr ctermbg=none
 "set fillchars+=vert:\ 
 
 " Plugin Settings
+" let g:AirLatexUsername                       = "augustunderground@pm.me"
+let g:AirLatexUsername                       = "cookies:CO2niYza0oH0-QE"
 let g:python3_host_prog                      = trim(system('which python3'))
 let g:magma_automatically_open_output        = v:true
 let g:dg_highlight_builtin_objs              = 1

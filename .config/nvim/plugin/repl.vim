@@ -262,6 +262,9 @@ function InteractiveLoad()
     elseif &filetype == "spectre"
         call OpenREPL("term rlwrap spectre -64 +interactive %")
         setlocal syntax=spectre
+    elseif &filetype == "gnuplot"
+        call OpenREPL("term gnuplot")
+        setlocal syntax=gnuplot
     elseif &filetype == "hy"
         call OpenREPL("term hy")
         setlocal syntax=hy
