@@ -48,6 +48,7 @@ Plug 'tpope/vim-vividchalk'
 
 " Language
 Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
+Plug 'ziglang/zig.vim'
 Plug 'vim-skk/eskk.vim'
 Plug 'vim-skk/skkdict.vim'
 Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
