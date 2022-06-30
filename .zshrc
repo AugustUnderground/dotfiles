@@ -159,6 +159,8 @@ elif command -v fzf > /dev/null; then
     alias hst="history 1 | fzf"
 fi
 
+alias p9='export PATH=/usr/local/plan9/bin:$PATH'
+
 alias nvid="neovide"
 
 if command -v exa > /dev/null; then
