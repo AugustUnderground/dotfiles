@@ -13,10 +13,11 @@ function load_plugin()
 
 ZSH_PLUGINS=( "zsh-completions/zsh-completions.plugin.zsh"
               "zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-              "zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+              "fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
               "zsh-vi-mode/zsh-vi-mode.plugin.zsh"
               "zsh-titles/titles.plugin.zsh"
             )
+              # "zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 for plugin in $ZSH_PLUGINS; do load_plugin $plugin; done
 
