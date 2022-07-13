@@ -150,6 +150,10 @@ if command -v zoxide > /dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
+if command -v fuck > /dev/null; then
+    eval "$(thefuck --alias)"
+fi
+
 #if [ -d "$HOME/opt/z.lua" ]; then
 #    eval "$(lua $HOME/opt/z.lua/z.lua --init zsh enhanced once fzf)"
 #fi
