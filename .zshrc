@@ -16,6 +16,7 @@ ZSH_PLUGINS=( "zsh-completions/zsh-completions.plugin.zsh"
               "fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
               "zsh-vi-mode/zsh-vi-mode.plugin.zsh"
               "zsh-titles/titles.plugin.zsh"
+              "zsh-thefuck/zsh-thefuck.plugin.zsh"
             )
               # "zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
