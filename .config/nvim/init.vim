@@ -8,7 +8,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'mattn/calendar-vim'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler'
+Plug 'ms-jpq/chadtree'
 Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/utl.vim'
@@ -85,6 +85,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'monkoose/fzf-hoogle.vim'
 Plug 'hasufell/ghcup.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
+Plug 'derekelkins/agda-vim'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -131,6 +132,7 @@ au BufNewFile,BufRead *.bib set filetype=bib
 au BufNewFile,BufRead *.java set filetype=java
 au BufNewFile,BufRead *.il,*.ils set filetype=skill
 au BufNewFile,BufRead *.net,*.mod set filetype=spice
+au BufNewFile,BufRead *.agda set filetype=agda
 "au BufNewFile,BufRead *.m set filetype=matlab
 au BufNewFile,BufRead *.py let g:repl_ipython = 1
 "au BufNewFile,BufRead *.coco let g:repl_ipython = 1
@@ -238,7 +240,6 @@ let g:lightline                              = { 'colorscheme': 'gothic'
                                                                \ }
 		                                     \ }
 au BufWritePost,TextChanged,TextChangedI * call lightline#update()
-call vimfiler#custom#profile('default', 'context', {'safe' : 0})
 let g:syntastic_enable_racket_racket_checker = 1
 let g:syntastic_always_populate_loc_list     = 1
 let g:syntastic_auto_loc_list                = 1
@@ -255,7 +256,6 @@ let g:vimwiki_list                           = [{'path': '~/vimwiki/', 'syntax':
 let g:vimwiki_global_ext                     = 0
 let g:livepreview_previewer                  = 'zathura'
 let g:bufferline_echo                        = 0
-let g:vimfiler_safe_mode_by_default          = 0
 let g:slime_target                           = "tmux"
 let g:slime_cell_delimiter                   = "#%%"
 let vim_markdown_preview_browser             = 'firefox'
@@ -498,7 +498,7 @@ nnoremap <A-x> <C-x>
 nnoremap <silent> <C-N> :bnext<CR>
 nnoremap <silent> <C-P> :bprev<CR>
 nnoremap <silent> <C-U> :Unite file buffer<CR>
-nnoremap <silent> <C-F> :VimFilerExplorer<CR>
+nnoremap <silent> <C-F> :CHADopen<CR>
 
 " Move to Split
 "nnoremap <silent> <c-k> :wincmd k<CR>
