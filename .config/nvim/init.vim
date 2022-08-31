@@ -8,7 +8,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'mattn/calendar-vim'
 Plug 'Shougo/unite.vim'
-Plug 'ms-jpq/chadtree'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/utl.vim'
