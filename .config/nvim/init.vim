@@ -55,10 +55,6 @@ Plug 'mlochbaum/BQN', {'rtp': 'editors/vim'}
 Plug 'https://git.sr.ht/~detegr/nvim-bqn'
 Plug 'rubik/vim-dg'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 "Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 "Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 "Plug 'vim-syntastic/syntastic'
@@ -381,7 +377,13 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<TAB>"
+"inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<TAB>"
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 function! s:check_back_space() abort
     let col = col('.') - 1
