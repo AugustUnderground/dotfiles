@@ -19,6 +19,10 @@
       "filetypes": ["haskell", "lhaskell"],
       "trace.server": "verbose"
     },
+    "agda": {
+        "command": "als",
+        "filetypes": ["agda"]
+    },
     "clojure-lsp": {
       "command": "bash",
       "args": ["-c", "clojure-lsp"],
