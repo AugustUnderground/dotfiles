@@ -47,6 +47,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
 
 " Language
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'vim-scripts/coq-syntax'
 Plug 'da-h/AirLatex.vim', {'do': ':UpdateRemotePlugins'}
 Plug 'ziglang/zig.vim'
 Plug 'vim-skk/eskk.vim'
@@ -129,6 +133,7 @@ au BufNewFile,BufRead *.java set filetype=java
 au BufNewFile,BufRead *.il,*.ils set filetype=skill
 au BufNewFile,BufRead *.net,*.mod set filetype=spice
 au BufNewFile,BufRead *.agda set filetype=agda
+au BufNewFile,BufRead *.v set filetype=coq
 "au BufNewFile,BufRead *.m set filetype=matlab
 au BufNewFile,BufRead *.py let g:repl_ipython = 1
 "au BufNewFile,BufRead *.coco let g:repl_ipython = 1

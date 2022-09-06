@@ -58,6 +58,8 @@ function! ReplReload()
         call ReplSend(['perl ' . expand("%")])
     elseif &filetype == "haskell"
         call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
+    elseif &filetype == "coq"
+        call ReplSend(['Require Import ' . expand("%:t:r") ])
     elseif &filetype == "frege"
         call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
     elseif &filetype == "purescript"
@@ -148,6 +150,8 @@ function CompileRun()
     elseif &filetype == "haskell"
         execute "!stack build && stack exec %:p:h:h:t-exe"
         "execute "!cabal run"
+    elseif &filteype == "coq"
+        execute "!gmake"
     elseif &filetype == "frege"
         execute "!sbt -no-colors compile && sbt -no-colors run"
     elseif &filetype == "purescript"
@@ -221,6 +225,8 @@ function InteractiveLoad()
         call OpenREPL("term stack ghci")
         "call OpenREPL("term cabal repl")
         setlocal syntax=haskell
+    elseif &filetype == "coq"
+        call OpenREPL("term rlwrap coqtop")
     elseif &filetype == "frege"
         call OpenREPL("term TERM=xterm-color sbt fregeRepl")
         setlocal syntax=frege
