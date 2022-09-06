@@ -86,3 +86,4 @@ export QT_IM_MODULE='fcitx'
 export SDL_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
 if [ -e /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh ]; then . /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+. "$HOME/.cargo/env"
