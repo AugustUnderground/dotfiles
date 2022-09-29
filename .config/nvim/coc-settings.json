@@ -4,7 +4,7 @@
 
   "zig.enabled": true,
   "zig.startUpMessage": true,
-  "zig.path": "/home/uhlmanny/opt/zls/bin/zls",
+  "zig.path": "zls",
   "zig.debugLog": false,
 
   "languageserver": {
