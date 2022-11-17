@@ -13,6 +13,11 @@
       "filetypes": ["fortran"],
       "rootPatterns": [".fortls", ".git/"]
     },
+    "racket": {
+      "command": "racket",
+      "args": [ "-l", "racket-langserver" ],
+      "filetypes": [ "racket", "rkt" ]
+    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
