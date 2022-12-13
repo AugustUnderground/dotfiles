@@ -8,7 +8,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'mattn/calendar-vim'
 Plug 'Shougo/unite.vim'
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+"Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/utl.vim'
@@ -505,7 +507,11 @@ nnoremap <A-x> <C-x>
 nnoremap <silent> <C-N> :bnext<CR>
 nnoremap <silent> <C-P> :bprev<CR>
 nnoremap <silent> <C-U> :Unite file buffer<CR>
-nnoremap <silent> <C-F> :CHADopen<CR>
+"nnoremap <silent> <C-F> :CHADopen<CR>
+nnoremap <leader>f :NERDTreeFocus<CR>
+"nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
+"nnoremap <C-f> :NERDTreeFind<CR>
 
 " Move to Split
 "nnoremap <silent> <c-k> :wincmd k<CR>
