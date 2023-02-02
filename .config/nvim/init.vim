@@ -376,6 +376,9 @@ map <F7> :call ToggleConcealLevel()<CR>
 setlocal spell spelllang=en_us
 nnoremap <silent> <leader>s :set spell!<cr>
 
+" Quick save
+nmap W :w<CR>
+
 " COC
 set nobackup
 set nowritebackup
