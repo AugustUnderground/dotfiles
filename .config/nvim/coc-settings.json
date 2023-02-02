@@ -8,6 +8,12 @@
   "zig.debugLog": false,
 
   "languageserver": {
+    "julia": {
+      "command": "/home/uhlmanny/.local/bin/julia",
+      "args" : ["--startup-file=no", "--history-file=no", "-e",
+      "using LanguageServer;\nusing Pkg;\nimport StaticLint;\nimport SymbolServer;\nenv_path = \"./\"\nserver = LanguageServer.LanguageServerInstance(stdin, stdout, env_path, \"\");\nserver.runlinter = true;\nrun(server);" ],
+      "filetypes": ["julia"]
+    },
     "fortran": {
       "command": "fortls",
       "filetypes": ["fortran"],
