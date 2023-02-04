@@ -40,6 +40,9 @@ zstyle ':vcs_info:*' stagedstr      "%F{green}"
 zstyle ':vcs_info:*' actionformats  "%a %F{red} %F{white}%u%c%b%F{white}:%f %m"
 zstyle ':vcs_info:*' formats        "%F{red} %F{white}%u%c%b%F{white}:%f %m"
 
+# Tetris
+autoload -Uz tetriscurses
+
 precmd () { vcs_info }
 
 function +vi-git-st() {
