@@ -216,8 +216,7 @@ for_window [title="megapixels"] inhibit_idle open
 
 client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
 client.focused_inactive "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
-client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
-client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
+client.unfocused        "#4F4F4F" "#4F4F4F" "#E2E2E4" "#4F4F4F" "#4F4F4F"
 
 default_border pixel 3
 titlebar_border_thickness 3
