@@ -1,0 +1,11 @@
+#!/bin/sh
+# configversion: d01afd5e96905ad49d3cc150e099c16d
+
+dbus-update-activation-environment DISPLAY XDG_CURRENT_DESKTOP
+
+feh --bg-fill "$(xdg_data_path sxmo/background.jpg)"
+
+# Run actions on start
+# By default, setup audio over the main speaker
+# and set a sane default volume
+sxmo_hook_start.sh &
