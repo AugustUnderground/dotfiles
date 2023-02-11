@@ -47,15 +47,15 @@ export BEMENU_OPTS="--fn 'GoMono Nerd Font:size=12'\
  --scrollbar autohide\
  -s -n -w -c -l8 -M 40 -H 20\
  --cb '#1d1d1f'\
- --cf '#3c3c40'\
+ --cf '#cfcfd2'\
  --tb '#7a002b'\
  --tf '#dedee0'\
  --fb '#1d1d1f'\
- --ff '#3c3c40'\
+ --ff '#cfcfd2'\
  --nb '#1d1d1f'\
- --af '#3c3c40'\
+ --af '#cfcfd2'\
  --ab '#1d1d1f'\
- --nf '#3c3c40'\
+ --nf '#cfcfd2'\
  --hb '#7a002b'\
  --hf '#dedee0'\
  --scb '#7a002b'\
