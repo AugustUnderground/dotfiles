@@ -15,7 +15,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term sxmo_terminal.sh
+# set $term sxmo_terminal.sh
+set $term alacritty 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -44,16 +45,16 @@ input "0:0:PinePhone_Keyboard" {
     bindsym $mod+Return exec $term
 
     # Launch appmenu
-    bindsym $mod+p exec sxmo_appmenu.sh
+    bindsym $mod+Shift+p exec sxmo_appmenu.sh
 
     # Launch scripts menu
     bindsym $mod+i exec sxmo_appmenu.sh scripts
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+c kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+p exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -63,7 +64,7 @@ input "0:0:PinePhone_Keyboard" {
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -200,19 +201,27 @@ bar {
     pango_markup enabled
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-        font "Mono"
+        statusline #DEDEDE
+        background #0D0D0E
+        focused_workspace  #4F4F4F #7A002B #DEDEDE
+        active_workspace   #4F4F4F #7A002B #DEDEDE
+        #inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #4F4F4F #4F4F4F #DEDEE0
+        font "GoMono Nerd Font"
     }
 }
 
 for_window [app_id="foot" title=".*sxmo/modem/.*/draft.txt.*"] resize set height 25
 for_window [title="megapixels"] inhibit_idle open
 
+client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
+client.focused_inactive "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
+client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
+client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
+
 default_border pixel 3
 titlebar_border_thickness 3
-hide_edge_borders smart
+# hide_edge_borders smart
 
 include /etc/sway/config.d/*
 
