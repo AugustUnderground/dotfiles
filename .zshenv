@@ -55,7 +55,7 @@ else
 fi
 
 # dmenu Theme
-export DMENU_THEME="-fn 'FantasqueSansMono Nerd Font:size=15' \
+export DMENU_THEME="-fn 'GoMono Nerd Font:size=15' \
                     -nb '#1d1d1f' \
                     -nf '#cfcfd2' \
                     -sb '#3c3c40' \

@@ -220,7 +220,7 @@ alias yt="straw-viewer"
 
 alias woman="man"
 
-alias fp="fontpreview-ueberzug -f '#d8dee9' -b '#2e3440'"
+alias fp="fontpreview-ueberzug -f '#e2e2e4' -b '#0d0d0e'"
 
 alias passpush="pass git add . && pass git commit -m 'Password Updates' && pass git push origin master"
 
