@@ -67,11 +67,11 @@ window:
   #title: Alacritty
 
   # Window class (Linux/BSD only):
-  #class:
+  class:
     # Application instance name
-    #instance: Alacritty
+    instance: Alacritty
     # General application class
-    #general: Alacritty
+    general: Alacritty
 
   # GTK theme variant (Linux/BSD only)
   #
@@ -96,26 +96,26 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: FantasqueSansMono Nerd Font Mono
+    family: GoMono Nerd Font Mono
     style: Regular
 
   # Bold font face
   bold:
-    family: FantasqueSansMono Nerd Font Mono
+    family: GoMono Nerd Font Mono
     style: Bold
 
   # Italic font face
   italic:
-    family: FantasqueSansMono Nerd Font Mono
+    family: GoMono Nerd Font Mono
     style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: FantasqueSansMono Nerd Font Mono
+    family: GoMono Nerd Font Mono
     style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 11.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
