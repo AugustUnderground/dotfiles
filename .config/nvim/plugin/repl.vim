@@ -136,7 +136,7 @@ function CompileRun()
             execute "!groff -URpetms % -Kutf8 -Tpdf > %:r.pdf"
         endif
     elseif &filetype == "gnuplot"
-        execute "!gnuplot %"
+        execute "!gnuplot -persist %"
     elseif &filetype == "tex"
         execute "!pdflatex --shell-escape %"
     elseif &filetype == "markdown"
