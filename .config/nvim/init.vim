@@ -33,7 +33,9 @@ Plug 'jbyuki/nabla.nvim'
 Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
 Plug 'rootkiter/vim-hexedit'
- Plug 'rbgrouleff/bclose.vim' " GHCup dependency
+Plug 'rbgrouleff/bclose.vim' " GHCup dependency
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -483,6 +485,12 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Mappings using CoCList:
 " Show all diagnostics.
