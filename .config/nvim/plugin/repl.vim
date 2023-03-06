@@ -57,7 +57,7 @@ function! ReplReload()
     elseif &filetype == "perl"
         call ReplSend(['perl ' . expand("%")])
     elseif &filetype == "lua"
-        call ReplSend(['lua53 ' . expand("%")])
+        call ReplSend(['lua54 ' . expand("%")])
     elseif &filetype == "haskell"
         call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
     elseif &filetype == "coq"
@@ -124,7 +124,7 @@ function CompileRun()
     elseif &filetype == "perl"
         execute "!perl ./%"
     elseif &filetype == "lua"
-        execute "!lua53 ./%"
+        execute "!lua54 ./%"
     elseif &filetype == "zig"
         execute "!zig build-exe ./%"
     elseif &filetype == "fortran"
@@ -226,7 +226,7 @@ function InteractiveLoad()
         call OpenREPL("term rlwrap sh")
         setlocal syntax=perl
     elseif &filetype == "lua"
-        call OpenREPL("term lua53")
+        call OpenREPL("term lua54")
         "setlocal syntax=lua
     elseif &filetype == "haskell"
         call OpenREPL("term stack ghci")
