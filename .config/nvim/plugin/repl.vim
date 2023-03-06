@@ -227,7 +227,7 @@ function InteractiveLoad()
         setlocal syntax=perl
     elseif &filetype == "lua"
         call OpenREPL("term lua54")
-        "setlocal syntax=lua
+        setlocal syntax=lua
     elseif &filetype == "haskell"
         call OpenREPL("term stack ghci")
         "call OpenREPL("term cabal repl")
