@@ -226,8 +226,8 @@ function InteractiveLoad()
         call OpenREPL("term rlwrap sh")
         setlocal syntax=perl
     elseif &filetype == "lua"
-        call OpenREPL("lua53")
-        setlocal syntax=lua
+        call OpenREPL("term lua53")
+        "setlocal syntax=lua
     elseif &filetype == "haskell"
         call OpenREPL("term stack ghci")
         "call OpenREPL("term cabal repl")
