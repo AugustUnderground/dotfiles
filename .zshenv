@@ -12,6 +12,7 @@ export PATH=$HOME/.cargo/bin:$PATH      # Rust
 export PATH=$HOME/go/bin:$PATH          # Go
 export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
 export PATH=/usr/local/cuda/bin:$PATH   # CUDA
+export PATH=$HOME/.luarocks/bin:$PATH   # Lua
 
 # History
 export HISTFILE=$HOME/.zsh_history

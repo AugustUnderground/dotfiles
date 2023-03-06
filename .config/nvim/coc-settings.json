@@ -24,6 +24,12 @@
       "args": [ "-l", "racket-langserver" ],
       "filetypes": [ "racket", "rkt" ]
     },
+    "languageserver": {
+      "lua": {
+        "command": "lua-lsp",
+        "filetypes": ["lua"]
+      }
+    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
