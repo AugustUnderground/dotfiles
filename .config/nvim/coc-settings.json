@@ -24,12 +24,6 @@
       "args": [ "-l", "racket-langserver" ],
       "filetypes": [ "racket", "rkt" ]
     },
-    "languageserver": {
-      "lua": {
-        "command": "lua-lsp",
-        "filetypes": ["lua"]
-      }
-    },
     "haskell": {
       "command": "haskell-language-server-wrapper",
       "args": ["--lsp"],
@@ -97,5 +91,6 @@
       "offsetColumnEnd": 1,
       "formatLines": 1
     }
-  }
+  },
+  "Lua.telemetry.enable": false
 }
