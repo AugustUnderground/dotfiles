@@ -13,6 +13,7 @@ export PATH=$HOME/go/bin:$PATH          # Go
 export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
 export PATH=/usr/local/cuda/bin:$PATH   # CUDA
 export PATH=$HOME/.luarocks/bin:$PATH   # Lua
+export PATH=$HOME/.nimble/bin:$PATH     # nim
 
 # History
 export HISTFILE=$HOME/.zsh_history
