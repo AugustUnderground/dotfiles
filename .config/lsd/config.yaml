@@ -10,7 +10,7 @@ blocks:
 
 color:
   when: auto
-  theme: light # default
+  theme: default
 
 date: date
 
