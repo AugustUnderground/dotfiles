@@ -228,52 +228,52 @@ font:
 #   #indexed_colors: []
 
 # Colors (Dark)
-#colors:
-#  primary:
-#      background: '#131313'
-#      foreground: '#f0f0f0'
-#  normal:
-#    black:   '#131313'
-#    red:     '#d73a49'
-#    green:   '#09814A'
-#    yellow:  '#FFB20F'
-#    blue:    '#005cc5'
-#    magenta: '#8921FF'
-#    cyan:    '#00A5CF'
-#    white:   '#f0f0f0'
-#  bright:
-#    black:   '#303030'
-#    red:     '#ff4557'
-#    green:   '#0cab63'
-#    yellow:  '#FED442'
-#    blue:    '#0077ff'
-#    magenta: '#ea7af4'
-#    cyan:    '#00ccff'
-#    white:   '#767676'
- 
-# Colors (Light)
 colors:
   primary:
-    background: '#f0f0f0'
-    foreground: '#131313'
+      background: '#131313'
+      foreground: '#f0f0f0'
   normal:
-    white:   '#131313'
+    black:   '#131313'
     red:     '#d73a49'
     green:   '#09814A'
-    yellow:  '#e8871e'
+    yellow:  '#FFB20F'
     blue:    '#005cc5'
     magenta: '#8921FF'
     cyan:    '#00A5CF'
-    black:   '#f0f0f0'
+    white:   '#f0f0f0'
   bright:
-    white:   '#303030'
+    black:   '#303030'
     red:     '#ff4557'
     green:   '#0cab63'
-    yellow:  '#FFB20F'
+    yellow:  '#FED442'
     blue:    '#0077ff'
-    magenta: '#5d2e8c'
+    magenta: '#ea7af4'
     cyan:    '#00ccff'
-    black:   '#767676'
+    white:   '#767676'
+ 
+# Colors (Light)
+#colors:
+#  primary:
+#    background: '#f0f0f0'
+#    foreground: '#131313'
+#  normal:
+#    white:   '#131313'
+#    red:     '#d73a49'
+#    green:   '#09814A'
+#    yellow:  '#e8871e'
+#    blue:    '#005cc5'
+#    magenta: '#8921FF'
+#    cyan:    '#00A5CF'
+#    black:   '#f0f0f0'
+#  bright:
+#    white:   '#303030'
+#    red:     '#ff4557'
+#    green:   '#0cab63'
+#    yellow:  '#FFB20F'
+#    blue:    '#0077ff'
+#    magenta: '#5d2e8c'
+#    cyan:    '#00ccff'
+#    black:   '#767676'
 
 # Background opacity
 #

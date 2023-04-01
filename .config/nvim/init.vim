@@ -650,7 +650,7 @@ inoremap <right> <NOP>
 " Colorscheme
 syntax on
 colorscheme komau
-set background=light
+set background=dark
 
 " NeoVide
 set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
