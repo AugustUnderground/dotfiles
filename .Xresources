@@ -21,46 +21,45 @@ URxvt.keysym.C-question:resize-font:show
 *.scrollBar: false
 
 ! Font
-!*.font: xft:FantasqueSansMono Nerd Font Mono:pixelsize=15
-*.faceName: FantasqueSansMono Nerd Font Mono
+*.faceName: GoMono Nerd Font Mono
 *.faceSize: 15
 
 ! special
-*.foreground:   #DEDEDE
-*.background:   #0D0D0E
-*.cursorColor:  #DEDEDE
+*.foreground:   #f0f0f0
+*.background:   #131313
+*.cursorColor:  #f0f0f0
 
 ! black
-*.color0:       #0D0D0E
-*.color8:       #4F4F4F
+*.color0:       #131313
+*.color8:       #767676
 
 ! red
-*.color1:       #7A002B
-*.color9:       #DB004D
+*.color1:       #d73a49
+*.color9:       #ff4557
 
 ! green
-*.color2:       #007A4F
-*.color10:      #00C881
+*.color2:       #09814A
+*.color10:      #0cab63
 
 ! yellow
-*.color3:       #E1BE51
-*.color11:      #CCA323
+*.color3:       #FFB20F
+*.color11:      #FED442
 
 ! blue
-*.color4:       #5174E1
-*.color12:      #8EA5EB
+*.color4:       #005cc5
+*.color12:      #0077ff
 
 ! magenta
-*.color5:       #6016CD
-*.color13:      #74009D
+*.color5:       #8921FF#6016CD
+*.color13:      #ea7af4#74009D
 
 ! cyan
-*.color6:       #0085B0
-*.color14:      #15C6FF
+*.color6:       #00A5CF
+*.color14:      #00ccff
 
 ! white
-*.color7:       #E2E2E4
-*.color15:      #DEDEE0
+*.color7:       #f0f0f0
+*.color15:      #303030
 
 ! DEFAULT
 ! special

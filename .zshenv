@@ -58,14 +58,14 @@ fi
 
 # dmenu Theme
 export DMENU_THEME="-fn 'GoMono Nerd Font:size=12' \
-                    -nb '#1d1d1f' \
-                    -nf '#cfcfd2' \
-                    -sb '#3c3c40' \
-                    -sf '#dedee0' \
-                    -nhb '#1d1d1f' \
-                    -nhf '#51001d' \
-                    -shb '#3c3c40' \
-                    -shf '#7a002b' \
+                    -nb '#131313' \
+                    -nf '#f0f0f0' \
+                    -sb '#222222' \
+                    -sf '#f0f0f0' \
+                    -nhb '#131313' \
+                    -nhf '#d73a49' \
+                    -shb '#222222' \
+                    -shf '#ff4557' \
                     -bw 2 -l 5 -h 25 -x 390 -y 150 -w 600 -i"
 
 # Preferred pager settings man pages
