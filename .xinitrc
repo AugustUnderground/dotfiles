@@ -9,9 +9,9 @@ if [ -z ${LANG+x} ]; then
 fi
 
 if [ -f $HOME/wp ]; then
-    hsetroot -tile $HOME/wp -tint '#525252' # -tint "#d73a49"
+    hsetroot -tile $HOME/wp -tint '#424242' # -tint "#d73a49"
 else
-    hsetroot -solid "#131313"
+    hsetroot -solid "#181818"
 fi
 
 if [ "$(uname)" = "OpenBSD" ]; then

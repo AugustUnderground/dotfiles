@@ -19,14 +19,14 @@ export PATH=/usr/local/cuda/bin:$PATH
 #export PATH=/usr/local/plan9/bin:$PATH
 
 export DMENU_THEME="-fn 'GoMono Nerd Font:size=12' \
-                    -nb '#131313' \
-                    -nf '#f0f0f0' \
+                    -nb '#060404' \
+                    -nf '#FFF6F6' \
                     -sb '#222222' \
-                    -sf '#f0f0f0' \
-                    -nhb '#131313' \
-                    -nhf '#d73a49' \
+                    -sf '#FFF6F6' \
+                    -nhb '#060404' \
+                    -nhf '#8F0024' \
                     -shb '#222222' \
-                    -shf '#ff4557' \
+                    -shf '#8F0024' \
                     -bw 2 -l 5 -h 25 -x 390 -y 150 -w 600 -i"
 
 export LESS="--RAW-CONTROL-CHARS"

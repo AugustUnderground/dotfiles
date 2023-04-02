@@ -25,41 +25,41 @@ URxvt.keysym.C-question:resize-font:show
 *.faceSize: 15
 
 ! special
-*.foreground:   #f0f0f0
-*.background:   #131313
-*.cursorColor:  #f0f0f0
+*.foreground:   #FFF6F6
+*.background:   #060404
+*.cursorColor:  #FFF6F6
 
 ! black
-*.color0:       #131313
-*.color8:       #767676
+*.color0:       #060404
+*.color8:       #EEF7F7
 
 ! red
-*.color1:       #d73a49
-*.color9:       #ff4557
+*.color1:       #8F0024
+*.color9:       #A10028
 
 ! green
-*.color2:       #09814A
-*.color10:      #0cab63
+*.color2:       #0EAD69
+*.color10:      #0FBD72
 
 ! yellow
 *.color3:       #FFB20F
-*.color11:      #FED442
+*.color11:      #FFBA25
 
 ! blue
-*.color4:       #005cc5
-*.color12:      #0077ff
+*.color4:       #0047AB
+*.color12:      #004FBE
 
 ! magenta
-*.color5:       #8921FF#6016CD
-*.color13:      #ea7af4#74009D
+*.color5:       #8D029B
+*.color13:      #9F03AD
 
 ! cyan
-*.color6:       #00A5CF
-*.color14:      #00ccff
+*.color6:       #20B2AA
+*.color14:      #22BFB7
 
 ! white
-*.color7:       #f0f0f0
-*.color15:      #303030
+*.color7:       #FFF6F6
+*.color15:      #161414
 
 ! DEFAULT
 ! special
