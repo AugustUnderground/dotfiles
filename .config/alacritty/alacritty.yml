@@ -242,14 +242,14 @@ colors:
     cyan:    '#20B2AA'
     white:   '#FFF6F6'
   bright:
-    black:   '#EEF7F7'
+    black:   '#363434'
     red:     '#A10028'
     green:   '#0FBD72'
     yellow:  '#FFBA25'
     blue:    '#004FBE'
     magenta: '#9F03AD'
     cyan:    '#22BFB7'
-    white:   '#161414'
+    white:   '#CFC6C6'
  
 # Colors (Light)
 #colors:
@@ -266,14 +266,14 @@ colors:
 #    cyan:    '#20B2AA'
 #    white:   '#060404'
 #  bright:
-#    black:   '#161414'
+#    black:   '#CFC6C6'
 #    red:     '#A10028'
 #    green:   '#0FBD72'
 #    yellow:  '#FFBA25'
 #    blue:    '#004FBE'
 #    magenta: '#9F03AD'
 #    cyan:    '#22BFB7'
-#    white:   '#EEF7F7'
+#    white:   '#363434'
  
 # Background opacity
 #
