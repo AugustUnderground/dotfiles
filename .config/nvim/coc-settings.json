@@ -35,6 +35,10 @@
         "command": "als",
         "filetypes": ["agda"]
     },
+    "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
+    },
     "clojure-lsp": {
       "command": "bash",
       "args": ["-c", "clojure-lsp"],
@@ -91,5 +95,6 @@
       "offsetColumnEnd": 1,
       "formatLines": 1
     }
-  }
+  },
+  "Lua.telemetry.enable": false
 }

@@ -56,6 +56,10 @@ function! ReplReload()
         call ReplSend(['source ' . expand("%")])
     elseif &filetype == "perl"
         call ReplSend(['perl ' . expand("%")])
+    elseif &filetype == "lua"
+        call ReplSend(['lua ' . expand("%")])
+    elseif &filetype == "nim"
+        call ReplSend(['nim ' . expand("%")])
     elseif &filetype == "haskell"
         call ReplSend([':l ' . expand("%:p:h:t") . '/' . expand("%:p:t")])
     elseif &filetype == "coq"
@@ -121,6 +125,10 @@ function CompileRun()
         execute "!mvn -B clean compile exec:java"
     elseif &filetype == "perl"
         execute "!perl ./%"
+    elseif &filetype == "lua"
+        execute "!lua ./%"
+    elseif &filetype == "nim"
+        execute "!nim compile --run ./%"
     elseif &filetype == "zig"
         execute "!zig build-exe ./%"
     elseif &filetype == "fortran"
@@ -221,6 +229,12 @@ function InteractiveLoad()
     elseif &filetype == "perl"
         call OpenREPL("term rlwrap sh")
         setlocal syntax=perl
+    elseif &filetype == "lua"
+        call OpenREPL("term lua")
+        setlocal syntax=lua
+    elseif &filetype == "nim"
+        call OpenREPL("term nim secret")
+        setlocal syntax=nim
     elseif &filetype == "haskell"
         call OpenREPL("term stack ghci")
         "call OpenREPL("term cabal repl")

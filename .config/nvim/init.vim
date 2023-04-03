@@ -99,6 +99,7 @@ Plug 'augustunderground/vim-hy'
 Plug 'augustunderground/coconut.vim'
 Plug 'augustunderground/spectre.vim'
 Plug 'augustunderground/gothic.nvim'
+Plug 'augustunderground/komau.vim'
 
 " Colorschemes
 "Plug 'kjwon15/vim-transparent'
@@ -123,6 +124,10 @@ Plug 'itchyny/landscape.vim'
 Plug 'dguo/blood-moon', {'rtp': 'applications/vim'}
 Plug 'widatama/vim-phoenix'
 Plug 'owozsh/amora'
+Plug 'plan9-for-vimspace/acme-colors'
+Plug 'huyvohcmc/atlas.vim'
+Plug 'mcchrish/zenbones.nvim'
+Plug 'Jorengarenar/vim-darkness'
 
 call plug#end()
 
@@ -237,7 +242,7 @@ let g:lightline.tabline                      = { 'left': [['buffers']]
                                              \ , 'right': [['close']] }
 let g:lightline.component_expand             = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type               = {'buffers': 'tabsel'}
-let g:lightline                              = { 'colorscheme': 'gothic'
+let g:lightline                              = { 'colorscheme': 'komau'
                                              \ , 'separator': { 'left': ''
                                                             \ , 'right': ''  
                                                             \ }
@@ -284,7 +289,7 @@ let g:closetag_regions                       = { 'typescript.tsx': 'jsxRegion,ts
                                              \ }
 let g:closetag_shortcut                      = '>'
 let g:closetag_close_shortcut                = '<leader>>'
-let g:rainbow_active                         = 1
+let g:rainbow_active                         = 0
 let g:rainbow_conf                           = {
 \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
@@ -304,6 +309,7 @@ let g:rainbow_conf                           = {
 \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
 \		},
 \		'haskell': 0,
+\		'nerdtree': 0,
 \		'vim': {
 \			'parentheses_options': 'containedin=vimFuncBody',
 \		},
@@ -488,7 +494,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -643,7 +650,8 @@ inoremap <right> <NOP>
 
 " Colorscheme
 syntax on
-colorscheme gothic
+colorscheme komau
+set background=dark
 
 " NeoVide
 set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size

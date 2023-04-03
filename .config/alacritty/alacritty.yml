@@ -149,116 +149,138 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (GruvBox)
+# Colors
+# colors:
+#   # Default colors
+#   primary:
+#       background: '#0D0D0E'
+#       foreground: '#DEDEDE'
+# 
+#     # Bright and dim foreground colors
+#     #
+#     # The dimmed foreground color is calculated automatically if it is not present.
+#     # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+#     # is `false`, the normal foreground color will be used.
+#     #dim_foreground: '#9a9a9a'
+#     #bright_foreground: '#ffffff'
+# 
+#   # Cursor colors
+#   #
+#   # Colors which should be used to draw the terminal cursor. If these are unset,
+#   # the cursor color will be the inverse of the cell color.
+#   #cursor:
+#   #  text: '#000000'
+#   #  cursor: '#ffffff'
+# 
+#   # Selection colors
+#   #
+#   # Colors which should be used to draw the selection area. If selection
+#   # background is unset, selection color will be the inverse of the cell colors.
+#   # If only text is unset the cell text color will remain the same.
+#   #selection:
+#   #  text: '#eaeaea'
+#   #  background: '#404040'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '#0D0D0E'
+#     red:     '#7A002B'
+#     green:   '#007A4F'
+#     yellow:  '#E1BE51'
+#     blue:    '#5174E1'
+#     magenta: '#6016CD'
+#     cyan:    '#0085B0'
+#     white:   '#E2E2E4'
+#  
+#   # Bright colors
+#   bright:
+#     black:   '#4F4F4F'
+#     red:     '#DB004D'
+#     green:   '#00C881'
+#     yellow:  '#CCA323'
+#     blue:    '#8EA5EB'
+#     magenta: '#74009D'
+#     cyan:    '#15C6FF'
+#     white:   '#DEDEE0'
+#    
+#   # Dim colors
+#   #
+#   # If the dim colors are not set, they will be calculated automatically based
+#   # on the `normal` colors.
+#   #dim:
+#   #  black:      '#373e4d'
+#   #  red:        '#94545d'
+#   #  green:      '#809575'
+#   #  yellow:     '#b29e75'
+#   #  blue:       '#68809a'
+#   #  magenta:    '#8c738c'
+#   #  cyan:       '#6d96a5'
+#   #  white:      '#aeb3bb'
+# 
+#   # Indexed Colors
+#   #
+#   # The indexed colors include all colors from 16 to 256.
+#   # When these are not set, they're filled with sensible defaults.
+#   #
+#   # Example:
+#   #   `- { index: 16, color: '#ff00ff' }`
+#   #
+#   #indexed_colors: []
+
+# Colors (Dark)
 colors:
-  # Default colors
   primary:
-      background: '#0D0D0E'
-      foreground: '#DEDEDE'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '#9a9a9a'
-    #bright_foreground: '#ffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '#000000'
-  #  cursor: '#ffffff'
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  #selection:
-  #  text: '#eaeaea'
-  #  background: '#404040'
-
-  # Normal colors
+    background: '#060404'
+    foreground: '#FFF6F6'
   normal:
-    black:   '#0D0D0E'
-    red:     '#7A002B'
-    green:   '#007A4F'
-    yellow:  '#E1BE51'
-    blue:    '#5174E1'
-    magenta: '#6016CD'
-    cyan:    '#0085B0'
-    white:   '#E2E2E4'
- 
-  # Bright colors
+    black:   '#060404'
+    red:     '#8F0024'
+    green:   '#0EAD69'
+    yellow:  '#FFB20F'
+    blue:    '#0047AB'
+    magenta: '#8D029B'
+    cyan:    '#20B2AA'
+    white:   '#FFF6F6'
   bright:
-    black:   '#4F4F4F'
-    red:     '#DB004D'
-    green:   '#00C881'
-    yellow:  '#CCA323'
-    blue:    '#8EA5EB'
-    magenta: '#74009D'
-    cyan:    '#15C6FF'
-    white:   '#DEDEE0'
-   
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:      '#373e4d'
-  #  red:        '#94545d'
-  #  green:      '#809575'
-  #  yellow:     '#b29e75'
-  #  blue:       '#68809a'
-  #  magenta:    '#8c738c'
-  #  cyan:       '#6d96a5'
-  #  white:      '#aeb3bb'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '#ff00ff' }`
-  #
-  #indexed_colors: []
-
-# Visual Bell
-#
-# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
-# rung, the terminal background will be set to white and transition back to the
-# default background color. You can control the rate of this transition by
-# setting the `duration` property (represented in milliseconds). You can also
-# configure the transition function by setting the `animation` property.
-#
-# Values for `animation`:
-#   - Ease
-#   - EaseOut
-#   - EaseOutSine
-#   - EaseOutQuad
-#   - EaseOutCubic
-#   - EaseOutQuart
-#   - EaseOutQuint
-#   - EaseOutExpo
-#   - EaseOutCirc
-#   - Linear
-#
-# Specifying a `duration` of `0` will disable the visual bell.
-#visual_bell:
-#  animation: EaseOutExpo
-#  duration: 0
-#  color: '#ffffff'
-
+    black:   '#363434'
+    red:     '#A10028'
+    green:   '#0FBD72'
+    yellow:  '#FFBA25'
+    blue:    '#004FBE'
+    magenta: '#9F03AD'
+    cyan:    '#22BFB7'
+    white:   '#CFC6C6'
+ 
+# Colors (Light)
+#colors:
+#  primary:
+#    background: '#FFF6F6'
+#    foreground: '#060404'
+#  normal:
+#    black:   '#FFF6F6'
+#    red:     '#8F0024'
+#    green:   '#0EAD69'
+#    yellow:  '#FFB20F'
+#    blue:    '#0047AB'
+#    magenta: '#8D029B'
+#    cyan:    '#20B2AA'
+#    white:   '#060404'
+#  bright:
+#    black:   '#CFC6C6'
+#    red:     '#A10028'
+#    green:   '#0FBD72'
+#    yellow:  '#FFBA25'
+#    blue:    '#004FBE'
+#    magenta: '#9F03AD'
+#    cyan:    '#22BFB7'
+#    white:   '#363434'
+ 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
 #background_opacity: 0.75
-window.opacity: 0.75
+window.opacity: 1.0
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

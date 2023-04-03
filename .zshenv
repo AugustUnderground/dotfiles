@@ -12,6 +12,8 @@ export PATH=$HOME/.cargo/bin:$PATH      # Rust
 export PATH=$HOME/go/bin:$PATH          # Go
 export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
 export PATH=/usr/local/cuda/bin:$PATH   # CUDA
+export PATH=$HOME/.luarocks/bin:$PATH   # Lua
+export PATH=$HOME/.nimble/bin:$PATH     # nim
 
 # History
 export HISTFILE=$HOME/.zsh_history
@@ -56,14 +58,14 @@ fi
 
 # dmenu Theme
 export DMENU_THEME="-fn 'GoMono Nerd Font:size=12' \
-                    -nb '#1d1d1f' \
-                    -nf '#cfcfd2' \
-                    -sb '#3c3c40' \
-                    -sf '#dedee0' \
-                    -nhb '#1d1d1f' \
-                    -nhf '#51001d' \
-                    -shb '#3c3c40' \
-                    -shf '#7a002b' \
+                    -nb '#060404' \
+                    -nf '#FFF6F6' \
+                    -sb '#222222' \
+                    -sf '#FFF6F6' \
+                    -nhb '#060404' \
+                    -nhf '#8F0024' \
+                    -shb '#222222' \
+                    -shf '#8F0024' \
                     -bw 2 -l 5 -h 25 -x 390 -y 150 -w 600 -i"
 
 # Preferred pager settings man pages
