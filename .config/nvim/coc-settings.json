@@ -52,7 +52,7 @@
     }
   },
   "diagnostic-languageserver.filetypes": {
-    "python": "pylint"
+    "python": "mypy"
   },
   "diagnostic-languageserver.linters": {
     "pylint": {
