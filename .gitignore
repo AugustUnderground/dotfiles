@@ -20,3 +20,5 @@
 .xmonad/xmonad-x86_64-*
 .mlterm/challenge
 .mlterm/msg.log
+
+.DS_Store
