@@ -1,0 +1,2 @@
+:set prompt "\ESC[1;31mλ \ESC[0m"
+:set prompt-cont  "|   "
