@@ -8,13 +8,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'mattn/calendar-vim'
 Plug 'Shougo/unite.vim'
-"Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/utl.vim'
-Plug 'Townk/vim-autoclose'
+Plug 'cohama/lexima.vim'
 Plug 'luochen1990/rainbow'
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
@@ -30,12 +29,12 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'lifepillar/vim-colortemplate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jbyuki/nabla.nvim'
-Plug 'shadmansaleh/colorscheme_generator.nvim'
+"Plug 'shadmansaleh/colorscheme_generator.nvim'
 "Plug 'puremourning/vimspector'
 Plug 'rootkiter/vim-hexedit'
 Plug 'rbgrouleff/bclose.vim' " GHCup dependency
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim'
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -176,14 +175,6 @@ augroup qs_colors
     autocmd ColorScheme * hi LineNr ctermbg=none
 augroup END
 
-hi Search cterm=NONE ctermfg=black ctermbg=yellow
-hi CursorLine term=NONE cterm=NONE ctermbg=0
-hi QuickScopePrimary ctermfg=155 cterm=underline
-hi QuickScopeSecondary ctermfg=81 cterm=underline
-hi Normal ctermbg=none
-hi NonText ctermbg=none
-hi LineNr ctermbg=none
-
 "set fillchars+=vert:\ 
 
 " Plugin Settings
@@ -249,13 +240,13 @@ let g:lightline                              = { 'colorscheme': 'komau'
                                              \ , 'subseparator': { 'left': '' 
                                                                \ , 'right': ''
                                                                \ }
-		                                     \ }
+                                             \ }
 au BufWritePost,TextChanged,TextChangedI * call lightline#update()
 let g:syntastic_enable_racket_racket_checker = 1
 let g:syntastic_always_populate_loc_list     = 1
 let g:syntastic_auto_loc_list                = 1
 let g:elm_syntastic_show_warnings            = 1
-let g:indentLine_char_list                   = ['|', '¦', '┆', '┊']
+" let g:indentLine_char_list                   = ['|', '¦', '┆', '┊']
 let g:vimspector_enable_mappings             = 'HUMAN'
 let g:colorizer_auto_color                   = 0
 let g:colorizer_skip_comments                = 1
@@ -291,36 +282,36 @@ let g:closetag_shortcut                      = '>'
 let g:closetag_close_shortcut                = '<leader>>'
 let g:rainbow_active                         = 0
 let g:rainbow_conf                           = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\	'guis': [''],
-\	'cterms': [''],
-\	'operators': '_,_',
-\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-\	'separately': {
-\		'*': {},
-\		'markdown': {
-\			'parentheses_options': 'containedin=markdownCode contained',
-\		},
-\		'clojure': {
-\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-\		},
-\		'hy': {
-\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-\		},
-\		'haskell': 0,
-\		'nerdtree': 0,
-\		'vim': {
-\			'parentheses_options': 'containedin=vimFuncBody',
-\		},
-\		'perl': {
-\			'syn_name_prefix': 'perlBlockFoldRainbow',
-\		},
-\		'stylus': {
-\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
-\		},
-\		'css': 0,
-\	}
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'guis': [''],
+\   'cterms': [''],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\   'separately': {
+\       '*': {},
+\       'markdown': {
+\           'parentheses_options': 'containedin=markdownCode contained',
+\       },
+\       'clojure': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'hy': {
+\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\       },
+\       'haskell': 0,
+\       'nerdtree': 0,
+\       'vim': {
+\           'parentheses_options': 'containedin=vimFuncBody',
+\       },
+\       'perl': {
+\           'syn_name_prefix': 'perlBlockFoldRainbow',
+\       },
+\       'stylus': {
+\           'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+\       },
+\       'css': 0,
+\   }
 \}
 
 " Mini Map
@@ -637,16 +628,22 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Disable Arrow keys in Normal mode
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
+noremap <up>    <nop>
+noremap <down>  <nop>
+noremap <left>  <nop>
 noremap <right> <nop>
 
 " Disable Arrow keys in Insert mode
-inoremap <up> <NOP>
-inoremap <down> <NOP>
-inoremap <left> <NOP>
-inoremap <right> <NOP>
+inoremap <up>    <nop>
+inoremap <down>  <nop>
+inoremap <left>  <nop>
+inoremap <right> <nop>
+
+" Disable Arrow keys in Insert mode
+vnoremap <up>    <nop>
+vnoremap <down>  <nop>
+vnoremap <left>  <nop>
+vnoremap <right> <nop>
 
 " Colorscheme
 syntax on
