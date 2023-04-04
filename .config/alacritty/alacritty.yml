@@ -242,14 +242,14 @@ colors:
     cyan:    '#20B2AA'
     white:   '#FFF6F6'
   bright:
-    black:   '#363434'
+    black:   '#767474'
     red:     '#A10028'
     green:   '#0FBD72'
     yellow:  '#FFBA25'
     blue:    '#0087EB'
     magenta: '#9F03AD'
     cyan:    '#22BFB7'
-    white:   '#CFC6C6'
+    white:   '#363434'
  
 # Colors (Light)
 #colors:
