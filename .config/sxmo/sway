@@ -1,5 +1,5 @@
 # Default config for sway
-# configversion: 88cdbb6305d4ce7c7cdf560a5f5c71e2
+# configversion: 5eff902ecca36b4e75567322335cc81c
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -201,22 +201,22 @@ bar {
     pango_markup enabled
 
     colors {
-        statusline #DEDEDE
-        background #0D0D0E
-        focused_workspace  #4F4F4F #7A002B #DEDEDE
-        active_workspace   #4F4F4F #7A002B #DEDEDE
-        #inactive_workspace #32323200 #32323200 #5c5c5c
-        inactive_workspace #4F4F4F #4F4F4F #DEDEE0
+        statusline #F6F6FF
+        background #060404
+        focused_workspace  #363636 #8F0024 #F6F6FF
+        active_workspace   #363636 #8F0024 #F6F6FF
+        #inactive_workspace #2C2C2C00 #2C2C2C00 #515151
+        inactive_workspace #363636 #363636 #F6F6FF
         font "GoMono Nerd Font 9"
     }
 }
 
 for_window [app_id="foot" title=".*sxmo/modem/.*/draft.txt.*"] resize set height 25
 for_window [title="megapixels"] inhibit_idle open
-
-client.focused          "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
-client.focused_inactive "#7A002B" "#7A002B" "#E2E2E4" "#DB004D" "#7A002B"
-client.unfocused        "#4F4F4F" "#4F4F4F" "#E2E2E4" "#4F4F4F" "#4F4F4F"
+#client.<class>         <border><background><text><indicator><child_border> 
+client.focused          "#8D8D8D" "#8D8D8D" "#E2E2E2" "#E2E2E2" "#E2E2E2"
+client.focused_inactive "#2C2C2C" "#8D8D8D" "#E2E2E2" "#E2E2E2" "#E2E2E2"
+client.unfocused        "#363636" "#363636" "#E2E2E2" "#8D8D8D" "#8D8D8D"
 
 default_border pixel 3
 titlebar_border_thickness 3
