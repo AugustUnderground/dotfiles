@@ -207,7 +207,7 @@ bar {
         active_workspace   #4F4F4F #7A002B #DEDEDE
         #inactive_workspace #32323200 #32323200 #5c5c5c
         inactive_workspace #4F4F4F #4F4F4F #DEDEE0
-        font "GoMono Nerd Font"
+        font "GoMono Nerd Font 9"
     }
 }
 
@@ -226,6 +226,7 @@ include /etc/sway/config.d/*
 
 exec 'printf %s "$SWAYSOCK" > "$XDG_RUNTIME_DIR"/sxmo.swaysock'
 
-output * bg /usr/share/sxmo/background.jpg fill
+#output * bg /usr/share/sxmo/background.jpg fill
+output * bg /home/ynk/Pictures/1545454271521_bw.jpg tile
 
 exec sxmo_hook_start.sh
