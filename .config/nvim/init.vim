@@ -242,6 +242,9 @@ let g:lightline                              = { 'colorscheme': 'komau'
                                              \ , 'subseparator': { 'left': '' 
                                                                \ , 'right': ''
                                                                \ }
+                                             \ , 'component_function': { 'filetype': 'MyFiletype'
+                                                                     \ , 'fileformat': 'MyFileformat'
+                                                                     \ }
                                              \ }
 au BufWritePost,TextChanged,TextChangedI * call lightline#update()
 let g:syntastic_enable_racket_racket_checker = 1
@@ -373,6 +376,14 @@ function! ToggleConcealLevel()
     endif
 endfunction
 map <F7> :call ToggleConcealLevel()<CR>
+
+" Lightline Dev Icons
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 " Spell check language
 setlocal spell spelllang=en_us
