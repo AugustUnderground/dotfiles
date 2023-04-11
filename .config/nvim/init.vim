@@ -90,6 +90,7 @@ Plug 'monkoose/fzf-hoogle.vim'
 Plug 'hasufell/ghcup.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'derekelkins/agda-vim'
+Plug 'ryanoasis/vim-devicons'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -162,6 +163,7 @@ set hidden
 
 " Color settings
 set termguicolors
+set guifont=GoMono\ Nerd\ Font\ 11
 
 augroup qs_colors
     autocmd!
