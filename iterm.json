@@ -731,11 +731,11 @@
     "Green Component" : 0.96470588235294119
   },
   "Ansi 8 Color" : {
-    "Red Component" : 0.81176470588235294,
+    "Red Component" : 0.46274509803921571,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.77647058823529413,
+    "Blue Component" : 0.45490196078431372,
     "Alpha Component" : 1,
-    "Green Component" : 0.77647058823529413
+    "Green Component" : 0.45490196078431372
   },
   "Ansi 9 Color" : {
     "Red Component" : 0.63137254901960782,
