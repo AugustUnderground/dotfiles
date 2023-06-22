@@ -148,7 +148,7 @@ function CompileRun()
     elseif &filetype == "tex"
         execute "!pdflatex --shell-escape %"
     elseif &filetype == "markdown"
-        execute "!pandoc -f markdown-implicit_figures --citeproc % --number-sections --from=markdown --to=latex --output=%:r.pdf"
+        execute "!pandoc -f markdown-implicit_figures --citeproc % --from=markdown --to=latex --output=%:r.pdf"
         "execute "!pandoc -f markdown-implicit_figures --citeproc % --pdf-engine=xelatex -so %:r.pdf"
         "execute "!pandoc -F pandoc-crossref --citeproc % -so %:r.pdf"
     elseif &filetype == "pandoc"
