@@ -35,7 +35,7 @@ Plug 'rootkiter/vim-hexedit'
 Plug 'rbgrouleff/bclose.vim' " GHCup dependency
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nosduco/remote-sshfs.nvim'
+"Plug 'nosduco/remote-sshfs.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
@@ -669,10 +669,10 @@ colorscheme komau
 set background=dark
 
 " Remote SSH
-lua << EOF
-    require('remote-sshfs').setup({})
-    require('telescope').load_extension 'remote-sshfs'
-EOF
+"lua << EOF
+"    require('remote-sshfs').setup({})
+"    require('telescope').load_extension 'remote-sshfs'
+"EOF
 
 " NeoVide
 set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
