@@ -5,7 +5,7 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'itchyny/lightline.vim'
-Plug 'ap/vim-buftabline'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'mattn/calendar-vim'
 Plug 'Shougo/unite.vim'
 Plug 'preservim/nerdtree'
@@ -36,6 +36,10 @@ Plug 'rbgrouleff/bclose.vim' " GHCup dependency
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nosduco/remote-sshfs.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'lambdalisue/nerdfont.vim'
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -91,7 +95,6 @@ Plug 'monkoose/fzf-hoogle.vim'
 Plug 'hasufell/ghcup.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'derekelkins/agda-vim'
-Plug 'ryanoasis/vim-devicons'
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -161,6 +164,7 @@ filetype plugin indent on
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 set hidden
+set showtabline=2
 
 " Color settings
 set termguicolors
@@ -231,11 +235,8 @@ let g:elm_setup_keybindings                  = 0
 let g:lightline#bufferline#show_number       = 1
 let g:lightline#bufferline#shorten_path      = 0
 let g:lightline#bufferline#unnamed           = '[No Name]'
+let g:lightline#bufferline#enable_nerdfont   = 1
 let g:lightline                              = {}
-let g:lightline.tabline                      = { 'left': [['buffers']]
-                                             \ , 'right': [['close']] }
-let g:lightline.component_expand             = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type               = {'buffers': 'tabsel'}
 let g:lightline                              = { 'colorscheme': 'komau'
                                              \ , 'separator': { 'left': ''
                                                             \ , 'right': ''  
@@ -243,10 +244,13 @@ let g:lightline                              = { 'colorscheme': 'komau'
                                              \ , 'subseparator': { 'left': '' 
                                                                \ , 'right': ''
                                                                \ }
-                                             \ , 'component_function': { 'filetype': 'MyFiletype'
+                                             \ , 'component_function': { 'filetype':   'MyFiletype'
                                                                      \ , 'fileformat': 'MyFileformat'
                                                                      \ }
                                              \ }
+let g:lightline.tabline                      = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand             = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type               = {'buffers': 'tabsel'}
 au BufWritePost,TextChanged,TextChangedI * call lightline#update()
 let g:syntastic_enable_racket_racket_checker = 1
 let g:syntastic_always_populate_loc_list     = 1
