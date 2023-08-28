@@ -29,6 +29,9 @@ setopt nocaseglob
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
+# Autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4f4f4f"
+
 # Version Control
 autoload -Uz add-zsh-hook vcs_info
 #zstyle ':vcs_info:*+*:*' debug true
