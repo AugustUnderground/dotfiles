@@ -34,16 +34,16 @@ ZVM_VI_HIGHLIGHT_BACKGROUND=white      # Color name
 
 # LATEX
 if [ $(uname) = "Linux" ]; then
-    TEXLIVEPATH="/opt/texlive/2020/bin/x86_64-linux"
-    TEXLIVEMAN="/opt/texlive/2020/texmf-dist/doc/man"
-    TEXLIVEINFO="/opt/texlive/2020/texmf-dist/doc/info"
+    TEXLIVEPATH="/opt/texlive/latest/bin/x86_64-linux"
+    TEXLIVEMAN="/opt/texlive/latest/texmf-dist/doc/man"
+    TEXLIVEINFO="/opt/texlive/latest/texmf-dist/doc/info"
     [ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
     [ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
     [ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
 elif [ $(uname) = "FreeBSD" ];then
-    TEXLIVEPATH="/usr/local/texlive/2021/bin/amd64-freebsd"
-    TEXLIVEMAN="/usr/local/texlive/2021/texmf-dist/doc/man"
-    TEXLIVEINFO="/usr/local/texlive/2021/texmf-dist/doc/info"
+    TEXLIVEPATH="/usr/local/texlive/latest/bin/amd64-freebsd"
+    TEXLIVEMAN="/usr/local/texlive/latest/texmf-dist/doc/man"
+    TEXLIVEINFO="/usr/local/texlive/latest/texmf-dist/doc/info"
     [ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
     [ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
     [ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
