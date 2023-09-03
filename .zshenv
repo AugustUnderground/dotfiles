@@ -2,18 +2,19 @@
 export ZSH_CFG="$HOME/.config/zsh"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/X11R6/bin/startx:$PATH # OpenBSD
-export PATH=$HOME/.local/bin:$PATH      # Local executables
-export PATH=$HOME/scripts:$PATH         # My scripts
-export PATH=$HOME/dots/scripts:$PATH    # My private scripts
-export PATH=$HOME/perl5/bin:$PATH       # Perl
-export PATH=$HOME/.cabal/bin:$PATH      # Haskell
-export PATH=$HOME/.cargo/bin:$PATH      # Rust
-export PATH=$HOME/go/bin:$PATH          # Go
-export PATH=$HOME/.ghcup/bin:$PATH      # Haskell
-export PATH=/usr/local/cuda/bin:$PATH   # CUDA
-export PATH=$HOME/.luarocks/bin:$PATH   # Lua
-export PATH=$HOME/.nimble/bin:$PATH     # nim
+export PATH=/usr/X11R6/bin/startx:$PATH         # OpenBSD
+export PATH=$HOME/.local/bin:$PATH              # Local executables
+export PATH=$HOME/scripts:$PATH                 # My scripts
+export PATH=$HOME/dots/scripts:$PATH            # My private scripts
+export PATH=$HOME/perl5/bin:$PATH               # Perl
+export PATH=$HOME/.cabal/bin:$PATH              # Haskell
+export PATH=$HOME/.cargo/bin:$PATH              # Rust
+export PATH=$HOME/go/bin:$PATH                  # Go
+export PATH=$HOME/.ghcup/bin:$PATH              # Haskell
+export PATH=/usr/local/cuda/bin:$PATH           # CUDA
+export PATH=$HOME/.luarocks/bin:$PATH           # Lua
+export PATH=$HOME/.nimble/bin:$PATH             # nim
+export PATH=$HOME/Library/Python/3.10/bin:$PATH # Python on MacOS
 
 # History
 export HISTFILE=$HOME/.zsh_history
