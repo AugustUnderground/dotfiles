@@ -26,7 +26,7 @@ if [ "$(uname)" = "OpenBSD" ]; then
 fi
 
 [ -n "$(command -v dunst)" ] && dunst&
-[ -n "$(command -v picom)" ] && picom --backend xr_glx_hybrid -b
+#[ -n "$(command -v picom)" ] && picom --backend xr_glx_hybrid -b
 [ -n "$(command -v mpd)" ] && mpd
 [ -n "$(command -v nm-applet)" ] && nm-applet&
 
