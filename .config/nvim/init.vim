@@ -40,6 +40,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'lambdalisue/nerdfont.vim'
+Plug 'nvimdev/hlsearch.nvim'
+"Plug 'animated-search-highlight.nvim'
+Plug 'godlygeek/tabular'
 
 " junegunn
 Plug 'junegunn/seoul256.vim'
@@ -54,6 +57,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vividchalk'
+Plug 'tpope/vim-eunuch'
 
 " Language
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -508,6 +512,16 @@ nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Search
+"lua << EOF
+"require('animated-search-highlight').setup({
+"  fg1 = "#0E0E0E",
+"  fg2 = "#000000",
+"  bg1 = "#E0E0E0",
+"  bg2 = "#FFFFFF",
+"})
+"EOF
 
 " Mappings using CoCList:
 " Show all diagnostics.
