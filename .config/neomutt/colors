@@ -1,7 +1,7 @@
 # vim: filetype=muttrc
 
 # Header colors:
-color header brightblack red ".*"
+color header brightred black ".*"
 color header brightmagenta default "^(From)"
 color header brightblue default "^(To)"
 color header brightcyan default "^(CC|BCC)"
@@ -12,7 +12,7 @@ mono underline underline
 mono indicator reverse
 mono error bold
 color normal default default
-#color indicator brightyellow default # currently selected message. default makes bar clear, disabled arrow to save space.
+color indicator brightblack white
 color sidebar_highlight black white
 color sidebar_divider brightwhite black
 color sidebar_flagged brightwhite black
@@ -20,7 +20,7 @@ color sidebar_new red black
 color normal default default
 color error yellow default
 color tilde black black
-color message cyan default
+color message red default
 color markers red white
 color attachment brightred default
 color search brightmagenta default
@@ -57,10 +57,10 @@ mono body bold "^gpg: Good signature"
 color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
 
 # Default index colors:
-color index white default '.*'
-color index_author red default '.*'
-color index_number white default
-color index_subject white default '.*'
+color index default default '.*'
+color index_author default default '.*'
+color index_number default default
+color index_subject default default '.*'
 
 # For new mail:
 color index brightwhite black "~N"
