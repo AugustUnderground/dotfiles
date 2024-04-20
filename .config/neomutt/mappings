@@ -1,0 +1,112 @@
+# vim: filetype=muttrc
+
+# Main
+#
+# | Function                    | Keybind      |
+# |-----------------------------+--------------|
+# | Go to last entry            | G            |
+# | Go to first entry           | gg           |
+# | Page down                   | d            |
+# | Page up                     | u            |
+# | Delete message              | D            |
+# | Delete thread               | Ctrl+d       |
+# | Mark thread read            | Ctrl+r       |
+# | Undelete message            | U            |
+# | Limit/Filter                | L            |
+# | Open message                | l, Enter     |
+# | Group reply                 | R            |
+# | Reply                       | r            |
+# | Forward message             | f            |
+# | New message                 | m            |
+# | View attachments            | v            |
+# | Compose to Sender           | @            |
+# | Resend message              | Esc+e        |
+# | Save message (to file)      | s            |
+# | Toggle collapse thread      | Space, Esc+v |
+# | Toggle collapse all threads | Esc+V        |
+# | Add contact to Khard        | A            |
+# | Jump to parent message      | P            |
+# | Email PGP public key        | Esc+k        |
+#
+# Pager
+#
+# | Function          | Keybind |
+# |-------------------+---------|
+# | Bottom of page    | G       |
+# | Top of page       | gg      |
+# | Next line         | j       |
+# | Previous line     | k       |
+# | View attachments  | l       |
+# | Page down         | d       |
+# | Page up           | u       |
+# | Group reply       | R,g     |
+# | Reply             | r       |
+# | Compose to Sender | @       |
+# | Delete thread     | Ctrl+d  |
+# | Mark thread read  | Ctrl+r  |
+# | Mark thread new   | N       |
+#
+# Sidebar
+#
+# | Function          | Keybind |
+# |-------------------+---------|
+# | Show sidebar      | Ctrl+f  |
+# | Up                | Ctrl+k  |
+# | Down              | Ctrl+j  |
+# | Open              | Ctrl+o  |
+# | Open next new     | Ctrl+n  |
+# | Open previous new | Ctrl+p  |
+
+# General rebindings
+bind attach <return> view-mailcap
+bind attach l view-mailcap
+bind editor <space> noop
+bind pager c imap-fetch-mail
+bind index G last-entry
+bind index g noop
+bind index gg first-entry
+bind pager,attach h exit
+bind pager j next-line
+bind pager k previous-line
+bind pager l view-attachments
+bind index D delete-message
+bind index U undelete-message
+bind index L limit
+bind index h noop
+bind index l display-message
+bind browser h goto-parent
+bind browser l select-entry
+bind pager,browser gg top-page
+bind pager,browser G bottom-page
+bind index,pager,browser d half-down
+bind index,pager,browser u half-up
+bind index,pager R group-reply
+bind index \031 previous-undeleted  # Mouse wheel
+bind index \005 next-undeleted      # Mouse wheel
+bind pager \031 previous-line       # Mouse wheel
+bind pager \005 next-line           # Mouse wheel
+
+# sidebar mappings
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager \Cf sidebar-toggle-visible
+
+# global index and pager shortcuts
+bind index,pager @ compose-to-sender
+bind index,pager D purge-message
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+
+# Email completion bindings
+bind editor <Tab> complete-query
+bind editor ^T complete
+
+# Press A to add contact to Khard address book
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+set query_command= "abook --mutt-query '%s'"
+
+## Shortcuts
+macro index,pager <f10> '<sync-mailbox><enter-command>source ~/dots/neomutt/hsrt.neomuttrc<enter><change-folder>!<enter>'

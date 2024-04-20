@@ -682,6 +682,12 @@ syntax on
 colorscheme komau
 set background=dark
 
+" Mail
+if &filetype == "mail"
+    set spell
+    SetGermanCharacters
+endif
+
 " Remote SSH
 "lua << EOF
 "    require('remote-sshfs').setup({})
