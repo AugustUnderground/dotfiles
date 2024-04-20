@@ -1,0 +1,10 @@
+# vim: filetype=muttrc
+
+# Config and Settings
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/mappings
+
+# Accounts
+source ~/dots/neomutt/hsrt.neomuttrc
+folder-hook $folder 'source ~/dots/neomutt/hsrt.neomuttrc'

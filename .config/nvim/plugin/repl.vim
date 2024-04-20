@@ -146,7 +146,7 @@ function CompileRun()
     elseif &filetype == "gnuplot"
         execute "!gnuplot -persist %"
     elseif &filetype == "tex"
-        execute "!pdflatex --shell-escape %"
+        execute "!lualatex -enable-write18 -shell-escape %"
     elseif &filetype == "markdown"
         execute "!pandoc -f markdown-implicit_figures --citeproc % --from=markdown --to=latex --output=%:r.pdf"
         "execute "!pandoc -f markdown-implicit_figures --citeproc % --pdf-engine=xelatex -so %:r.pdf"
