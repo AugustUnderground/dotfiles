@@ -95,6 +95,8 @@ Plug 'monkoose/fzf-hoogle.vim'
 Plug 'hasufell/ghcup.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'derekelkins/agda-vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'xbase-lab/xbase', { 'do': 'make install' }
 
 " My
 Plug 'augustunderground/vim-skill'
@@ -673,6 +675,10 @@ set background=dark
 "    require('remote-sshfs').setup({})
 "    require('telescope').load_extension 'remote-sshfs'
 "EOF
+
+lua << EOF
+    require('xbase').setup({})
+EOF
 
 " NeoVide
 set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
