@@ -12,11 +12,11 @@ mono underline underline
 mono indicator reverse
 mono error bold
 color normal default default
-color indicator brightblack white
-color sidebar_highlight black white
-color sidebar_divider brightwhite black
+color indicator brightblack brightred
+color sidebar_highlight brightred black
+color sidebar_divider brightred black
 color sidebar_flagged brightwhite black
-color sidebar_new red black
+color sidebar_new green black
 color normal default default
 color error yellow default
 color tilde black black
