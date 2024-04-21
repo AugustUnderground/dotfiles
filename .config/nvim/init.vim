@@ -174,7 +174,7 @@ set showtabline=2
 
 " Color settings
 set termguicolors
-set guifont=GoMono\ Nerd\ Font\ 11
+set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
 
 augroup qs_colors
     autocmd!
@@ -701,7 +701,6 @@ lua << EOF
 EOF
 
 " NeoVide
-set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
 let g:neovide_refresh_rate                 = 144       " refresh rate of gfx window
 let g:neovide_transparency                 = 1.0       " window background opacity
 let g:neovide_no_idle                      = v:false   " immediately redraw
