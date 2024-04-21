@@ -174,7 +174,7 @@ set showtabline=2
 
 " Color settings
 set termguicolors
-set guifont=GoMono\ Nerd\ Font\ Mono:h14    " specify font and size
+set guifont=GoMono\ Nerd\ Font\ Mono:h12    " specify font and size
 
 augroup qs_colors
     autocmd!
