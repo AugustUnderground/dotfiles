@@ -61,7 +61,7 @@ set tilde
 unset markers
 
 set mailcap_path = ~/.config/neomutt/mailcap
-set header_cache = "~/.cache/mutt"
-set message_cachedir = "~/.cache/mutt"
+set header_cache = "~/.local/cache/mutt"
+set message_cachedir = "~/.local/cache/mutt"
 
 # set query_command = "khard email --parsable --search-in-source-files '%s'"
