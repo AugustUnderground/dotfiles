@@ -16,7 +16,7 @@ color indicator brightblack brightred
 color sidebar_highlight brightred black
 color sidebar_divider brightred black
 color sidebar_flagged brightwhite black
-color sidebar_new green black
+color sidebar_new blue black
 color normal default default
 color error yellow default
 color tilde black black
@@ -63,8 +63,8 @@ color index_number default default
 color index_subject default default '.*'
 
 # For new mail:
-color index brightwhite black "~N"
-color index_author brightred black "~N"
-color index_subject brightwhite black "~N"
+color index brightblue black "~N"
+color index_author brightblue black "~N"
+color index_subject brightblue black "~N"
 
 color progress black red
