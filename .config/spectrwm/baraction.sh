@@ -69,7 +69,8 @@ getVolume()
         VOL=${VOL%%.*}
         MUTE="$(sndioctl -n output.mute)"
     elif [ $(uname) = "FreeBSD" ]; then
-        VOL=$(mixer vol | awk -F ':' '{print $2}')
+        VOL_FLOAT=$(mixer vol | awk -F ':' '{print $2}')
+	VOL=$(echo "($VOL_FLOAT * 100)/1" | bc)
         [ $VOL -le 0 ] && MUTE="1" || MUTE="0"
     else
         VOL="0"
