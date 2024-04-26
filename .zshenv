@@ -88,5 +88,13 @@ export GTK_IM_MODULE='fcitx'
 export QT_IM_MODULE='fcitx'
 export SDL_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
-if [ -e /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh ]; then . /home/uhlmanny/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+if [[ -f "$HOME/.cargo/env" ]]; then
+    source "$HOME/.cargo/env"
+fi
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    source $HOME/.nix-profile/etc/profile.d/nix.sh;
+fi # added by Nix installer
+
+
