@@ -180,7 +180,7 @@ message_delay_time               = 5
 ##
 
 alternative_header_first_line_format  = {$b$8$aqqu$/a$9 {{$2%t$9}|{%f}} $8$atqq$/a$9$/b}
-alternative_header_second_line_format = {by {$6$b%A$/b$9} on {$3%b$9}}|{%D}
+alternative_header_second_line_format = {by {$6$b%A$/b$9} on {$3%b$9} {$5(%y)$9}}|{%D}
 current_item_prefix                   = $b$u
 current_item_suffix                   = $/b$/u$(end)
 current_item_inactive_column_prefix   = $b
