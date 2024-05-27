@@ -1,7 +1,6 @@
 local vim = vim
 
-vim.g.mapleader      = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader      = " " vim.g.maplocalleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -43,11 +42,16 @@ lazy.setup({ { "folke/which-key.nvim"
                               , "nvim-tree/nvim-web-devicons"
                               , "MunifTanjim/nui.nvim"
                               , "3rd/image.nvim" }
-             , branch = "v3.x" }
+             , branch       = "v3.x"
+             , pin          = true }
            , { "nvim-lualine/lualine.nvim"
              , dependencies = { "nvim-tree/nvim-web-devicons" } }
            , { "folke/trouble.nvim"
-             , opts         = { } 
+             , opts         = { signs = { error       = ""
+                                        , warning     = ""
+                                        , hint        = ""
+                                        , information = ""
+                                        , other       = "" } }
              , dependencies = { "nvim-tree/nvim-web-devicons" } }
            , { "unblevable/quick-scope" 
              , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
@@ -70,34 +74,37 @@ lazy.setup({ { "folke/which-key.nvim"
            , "tpope/vim-repeat"
            , "tpope/vim-surround"
            -- Languages
-           , { "nvim-treesitter/nvim-treesitter"
-             , build = ":TSUpdate" }
+           -- , { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
+           -- , "ray-x/cmp-treesitter"
            , "neovim/nvim-lspconfig"
            , "hrsh7th/cmp-nvim-lsp"
            , "hrsh7th/cmp-buffer"
            , "hrsh7th/cmp-path"
            , "hrsh7th/cmp-cmdline"
            , "petertriho/cmp-git"
-           , "ray-x/cmp-treesitter"
            , "hrsh7th/nvim-cmp"
-           , "neovimhaskell/haskell-vim"
+           , { "mrcjkb/haskell-tools.nvim"
+             , version = "^3"
+             , lazy    = false }
            , "monkoose/fzf-hoogle.vim"
            , "hasufell/ghcup.vim"
-           , { url = "https://git.sr.ht/~detegr/nvim-bqn" }
+           , { "mlochbaum/BQN", ft = "bqn"
+             , config = function(plugin)
+                  vim.opt.rtp:append(plugin.dir .. "/editors/vim")
+                end }
            , "JuliaEditorSupport/julia-vim"
+           , "lervag/vimtex"
            -- My Plugins
            , "augustunderground/vim-skill"
            , "augustunderground/vim-mathmode"
            , "augustunderground/vim-hy"
            , "augustunderground/coconut.vim"
            , "augustunderground/spectre.vim"
-           , "augustunderground/komau.vim"
+           , "augustunderground/nocolor.nvim"
+           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", lazy = true }
            -- Color Schemes
+           , "rktjmp/lush.nvim"
            , "aditya-azad/candle-grey"
-           , "jaredgorski/fogbell.vim"
-           , "LuRsT/austere.vim"
-           , "zaki/zazen"
-           , "ryanpcmcquen/true-monochrome_vim"
 		   , })
 
 local telescope  = require("telescope.builtin")
@@ -105,7 +112,7 @@ local trouble    = require("trouble")
 local lualine    = require("lualine")
 local colorizer  = require("colorizer")
 local autoclose  = require("autoclose")
-local treesitter = require("nvim-treesitter.configs")
+-- local treesitter = require("nvim-treesitter.configs")
 local hlsearch   = require("hlsearch")
 local lsp        = require("lspconfig")
 local neotree    = require("neo-tree")
@@ -283,6 +290,26 @@ vim.keymap.set("n", "<leader>l", ":ReplSendLine()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>r", ":ReplSendRegion()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>R", ":ReplReloadFile()<CR>", {silent = true})
 
+vim.api.nvim_create_autocmd( "LspAttach"
+                           , { desc = "LSP actions"
+                             , callback = function(event)
+                                  local bufmap = function(mode, lhs, rhs)
+                                    local opts   = {buffer = event.buf}
+                                    vim.keymap.set(mode, lhs, rhs, opts)
+                                  end
+                                  -- bufmap("i", "<C-Space>", "<C-x><C-o>")
+                                  bufmap("n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<cr>")
+                                  bufmap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+                                  bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+                                  bufmap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+                                  bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+                                  bufmap("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+                                  bufmap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+                                  bufmap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
+                                  bufmap("n", "<F3>", "<cmd>lua vim.lsp.buf.format()<cr>")
+                                  bufmap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+                                end } )
+
 -- Languages
 vim.g.haskell_enable_quantification   = 1
 vim.g.haskell_enable_recursivedo      = 1
@@ -323,13 +350,14 @@ vim.api.nvim_create_autocmd( "ColorScheme"
                              , pattern = "*"
                              , command = "highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline" })
 
+
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
-                                    , theme                = 'auto'
-                                    , component_separators = { left = '', right = ''}
-                                    , section_separators   = { left = '', right = ''}
-                                    -- , component_separators = { left = '', right = ''}
-                                    -- , section_separators   = { left = '', right = ''}
+                                    , theme                = "auto"
+                                    , component_separators = { left = "", right = ""}
+                                    , section_separators   = { left = "", right = ""} 
+                                    -- , component_separators = { left = "", right = ""}
+                                    -- , section_separators   = { left = "", right = ""}
                                     , disabled_filetypes   = { statusline = {}
                                                              , winbar     = {}
                                                              , }
@@ -363,14 +391,12 @@ lualine.setup({ options           = { icons_enabled        = true
 neotree.setup({ window = { position        = "left"
                          , width           = 30
                          , mapping_options = { noremap = true
-                                             , nowait  = true }
-                         , }
+                                             , nowait  = true } }
               , default_component_configs = { name = { trailing_slash        = true
                                                      , use_git_status_colors = false
-                                                     , highlight             = "NeoTreeFileName" 
-                                                     , colored = false} }
+                                                   } }
               , })
-vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link="NeoTreeFileName" })
+-- vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link="NeoTreeFileName" })
 
 -- venn
 function _G.Toggle_venn()
@@ -396,22 +422,22 @@ end
 vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", opts)
 
 -- treesitter
-function large_file(lang, buf)
-  local max_filesize = 100 * 1024 -- 100 KB
-  local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-  if ok and stats and stats.size > max_filesize then
-    return true
-  end
-end
-treesitter.setup({ ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "haskell", "latex" }
-                 , sync_install     = false
-                 , auto_install     = true
-                 , ignore_install   = { "javascript", "rust" }
-                 , highlight        = { enable                            = true
-                                      , disable                           = { "rust" }
-                                      , disable                           = large_file
-                                      , additional_vim_regex_highlighting = false }
-                 , })
+-- function large_file(lang, buf)
+--   local max_filesize = 100 * 1024 -- 100 KB
+--   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+--   if ok and stats and stats.size > max_filesize then
+--     return true
+--   end
+-- end
+-- treesitter.setup({ ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "haskell", "latex" }
+--                  , sync_install     = false
+--                  , auto_install     = true
+--                  , ignore_install   = { "javascript", "rust" }
+--                  , highlight        = { enable                            = true
+--                                       , disable                           = { "rust" }
+--                                       , disable                           = large_file
+--                                       , additional_vim_regex_highlighting = false }
+--                  , })
 
 -- cmp
 cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
@@ -457,26 +483,15 @@ cmp.setup.cmdline(":", { mapping  = cmp.mapping.preset.cmdline()
                        , matching = { disallow_symbol_nonprefix_matching = false } })
 
 -- lsp config
-lsp.hls.setup({})
 lsp.texlab.setup({})
-
 local capabilities = cmplsp.default_capabilities()
-lsp["hls"].setup({ capabilities = capabilities })
 lsp["texlab"].setup({ capabilities = capabilities })
 
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Color Scheme
-vim.cmd.colorscheme("candle-grey-transparent")
-
-vim.cmd("highlight CursorColumn ctermbg=Gray guibg=#151515")
-vim.cmd("highlight CursorLine ctermbg=Gray guibg=#151515")
-vim.cmd("highlight ColorColumn ctermbg=Gray guibg=#171717")
-
-vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = White, bold = true })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link="CmpIntemAbbrMatch" })
-vim.api.nvim_set_hl(0, "PmenuSel", {fg = "#F2F2F2", bg = "#404040", bold = true})
-
-vim.api.nvim_set_hl(0, "SpellBad",   {undercurl = true, sp = Red})
-vim.api.nvim_set_hl(0, "SpellCap",   {undercurl = true, sp = Green})
-vim.api.nvim_set_hl(0, "SpellRare",  {undercurl = true, sp = Magenta})
-vim.api.nvim_set_hl(0, "SpellLocal", {undercurl = true, sp = Blue})
+vim.cmd.colorscheme("nocolor")
