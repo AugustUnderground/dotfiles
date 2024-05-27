@@ -100,6 +100,9 @@ bind index,pager D purge-message
 bind index <tab> sync-mailbox
 bind index <space> collapse-thread
 
+# searching
+bind index \C/ vfolder-from-query
+
 # Email completion bindings
 bind editor <Tab> complete-query
 bind editor ^T complete

@@ -14,78 +14,91 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		, })
 end
 vim.opt.rtp:prepend(lazypath)
+local lazy = require("lazy")
 
 -- Plugins
-require("lazy").setup({ { "folke/which-key.nvim"
-                        , lazy  = true 
-                        , opts  = { }
-                        , event = "VeryLazy" }
-                      , "godlygeek/tabular"
-                      , "nvim-lua/plenary.nvim"
-                      , "lewis6991/gitsigns.nvim"
-                      , "ryanoasis/vim-devicons"
-                      , "nvim-tree/nvim-web-devicons"
-                      , { "nvim-telescope/telescope.nvim"
-                        , branch       = "0.1.x"
-                        , dependencies = { 'nvim-lua/plenary.nvim' } }
-                      , { "romgrk/barbar.nvim"
-                        , dependencies = { "lewis6991/gitsigns.nvim"
-                                         , "nvim-tree/nvim-web-devicons" }
-                        , opts = { animation       = true
-                                 , insert_at_start = true
-                                 , clickable       = true } 
-                        , init = function() vim.g.barbar_auto_setup = false end }
-                      , { "nvim-neo-tree/neo-tree.nvim"
-                        , dependencies = { "nvim-lua/plenary.nvim"
-                                         , "nvim-tree/nvim-web-devicons"
-                                         , "MunifTanjim/nui.nvim"
-                                         , "3rd/image.nvim" }
-                        , branch = "v3.x" }
-                      , { "nvim-lualine/lualine.nvim"
-                        , dependencies = { "nvim-tree/nvim-web-devicons" } }
-                      , { "folke/trouble.nvim"
-                        , opts         = { } 
-                        , dependencies = { "nvim-tree/nvim-web-devicons" } }
-                      , { "unblevable/quick-scope" 
-                        , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
-                        , lazy = false }
-                      , "norcalli/nvim-colorizer.lua"
-                      , "m4xshen/autoclose.nvim"
-                      , "chrisbra/csv.vim"
-                      , "dhruvasagar/vim-table-mode"
-                      , "jbyuki/venn.nvim"
-                      , { "nvim-treesitter/nvim-treesitter"
-                        , build = ":TSUpdate" }
-                      , { "nvimdev/hlsearch.nvim"
-                        , event = "BufRead" }
-                      -- JuneGunn
-			          , "junegunn/vim-easy-align"
-			          , "junegunn/fzf.vim"
-                      , "junegunn/goyo.vim"
-                      -- T. Pope
-                      , "tpope/vim-repeat"
-                      , "tpope/vim-surround"
-                      -- Languages
-                      , "neovim/nvim-lspconfig"
-                      , "neovimhaskell/haskell-vim"
-                      , "monkoose/fzf-hoogle.vim"
-                      , "hasufell/ghcup.vim"
-                      , { url = "https://git.sr.ht/~detegr/nvim-bqn" }
-                      , "JuliaEditorSupport/julia-vim"
-                      -- My Plugins
-                      , "augustunderground/vim-skill"
-                      , "augustunderground/vim-mathmode"
-                      , "augustunderground/vim-hy"
-                      , "augustunderground/coconut.vim"
-                      , "augustunderground/spectre.vim"
-                      , "augustunderground/komau.vim"
-                      -- Color Schemes
-                      , "aditya-azad/candle-grey"
-                      , "jaredgorski/fogbell.vim"
-                      , "LuRsT/austere.vim"
-                      , "zaki/zazen"
-                      , "ryanpcmcquen/true-monochrome_vim"
-			          , })
+lazy.setup({ { "folke/which-key.nvim"
+             , lazy  = true 
+             , opts  = { }
+             , event = "VeryLazy" }
+           , "godlygeek/tabular"
+           , "nvim-lua/plenary.nvim"
+           , "lewis6991/gitsigns.nvim"
+           , "ryanoasis/vim-devicons"
+           , "nvim-tree/nvim-web-devicons"
+           , "onsails/lspkind.nvim"
+           , { "nvim-telescope/telescope.nvim"
+             , branch       = "0.1.x"
+             , dependencies = { 'nvim-lua/plenary.nvim' } }
+           , { "romgrk/barbar.nvim"
+             , dependencies = { "lewis6991/gitsigns.nvim"
+                              , "nvim-tree/nvim-web-devicons" }
+             , opts = { animation       = true
+                      , insert_at_start = true
+                      , clickable       = true 
+                      , icons = { filetype = { custom_colors = true } } } 
+             , init = function() vim.g.barbar_auto_setup = false end }
+           , { "nvim-neo-tree/neo-tree.nvim"
+             , dependencies = { "nvim-lua/plenary.nvim"
+                              , "nvim-tree/nvim-web-devicons"
+                              , "MunifTanjim/nui.nvim"
+                              , "3rd/image.nvim" }
+             , branch = "v3.x" }
+           , { "nvim-lualine/lualine.nvim"
+             , dependencies = { "nvim-tree/nvim-web-devicons" } }
+           , { "folke/trouble.nvim"
+             , opts         = { } 
+             , dependencies = { "nvim-tree/nvim-web-devicons" } }
+           , { "unblevable/quick-scope" 
+             , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
+             , lazy = false }
+           , "norcalli/nvim-colorizer.lua"
+           , "m4xshen/autoclose.nvim"
+           , "chrisbra/csv.vim"
+           , "dhruvasagar/vim-table-mode"
+           , "jbyuki/venn.nvim"
+           , { "nvimdev/hlsearch.nvim"
+             , event = "BufRead" }
+           , { "L3MON4D3/LuaSnip"
+		 , version = "v2.*"
+		 , build = "make install_jsregexp" }
+           -- JuneGunn
+		   , "junegunn/vim-easy-align"
+		   , "junegunn/fzf.vim"
+           , "junegunn/goyo.vim"
+           -- T. Pope
+           , "tpope/vim-repeat"
+           , "tpope/vim-surround"
+           -- Languages
+           , { "nvim-treesitter/nvim-treesitter"
+             , build = ":TSUpdate" }
+           , "neovim/nvim-lspconfig"
+           , "hrsh7th/cmp-nvim-lsp"
+           , "hrsh7th/cmp-buffer"
+           , "hrsh7th/cmp-path"
+           , "hrsh7th/cmp-cmdline"
+           , "petertriho/cmp-git"
+           , "ray-x/cmp-treesitter"
+           , "hrsh7th/nvim-cmp"
+           , "neovimhaskell/haskell-vim"
+           , "monkoose/fzf-hoogle.vim"
+           , "hasufell/ghcup.vim"
+           , { url = "https://git.sr.ht/~detegr/nvim-bqn" }
+           , "JuliaEditorSupport/julia-vim"
+           -- My Plugins
+           , "augustunderground/vim-skill"
+           , "augustunderground/vim-mathmode"
+           , "augustunderground/vim-hy"
+           , "augustunderground/coconut.vim"
+           , "augustunderground/spectre.vim"
+           , "augustunderground/komau.vim"
+           -- Color Schemes
+           , "aditya-azad/candle-grey"
+           , "jaredgorski/fogbell.vim"
+           , "LuRsT/austere.vim"
+           , "zaki/zazen"
+           , "ryanpcmcquen/true-monochrome_vim"
+		   , })
 
 local telescope  = require("telescope.builtin")
 local trouble    = require("trouble")
@@ -96,6 +109,12 @@ local treesitter = require("nvim-treesitter.configs")
 local hlsearch   = require("hlsearch")
 local lsp        = require("lspconfig")
 local neotree    = require("neo-tree")
+local luasnip    = require("luasnip")
+local cmpgit     = require("cmp_git")
+local cmp        = require("cmp")
+local cmplsp     = require("cmp_nvim_lsp")
+local devicons   = require("nvim-web-devicons")
+local lspkind    = require("lspkind")
 
 -- Settings
 vim.opt.number                = true
@@ -112,7 +131,7 @@ vim.o.timeoutlen              = 500
 vim.opt.syntax                = "on"
 vim.opt.encoding              = "UTF-8"
 vim.opt_local.spell.spelllang = "en_us"
--- vim.opt.shell              = "/bin/bash"
+-- vim.opt.shell                 = "/bin/bash"
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
 -- Functions
@@ -254,36 +273,38 @@ vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end)
 vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
 
--- REPL vim
+-- vim.keymap.set({"i"}, "<Tab>", function() ls.expand() end, {silent = true})
+-- vim.keymap.set({"i", "s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
+-- vim.keymap.set({"i", "s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
+
 vim.keymap.set("n", "<F11>", ":call CompileRun()<CR>", {})
 vim.keymap.set("n", "<F12>", ":call InteractiveLoad()<CR>", {})
-
 vim.keymap.set("n", "<leader>l", ":ReplSendLine()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>r", ":ReplSendRegion()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>R", ":ReplReloadFile()<CR>", {silent = true})
 
 -- Languages
-vim.g.haskell_enable_quantification          = 1
-vim.g.haskell_enable_recursivedo             = 1
-vim.g.haskell_enable_arrowsyntax             = 1
-vim.g.haskell_enable_pattern_synonyms        = 1
-vim.g.haskell_enable_typeroles               = 1
-vim.g.haskell_enable_static_pointers         = 1
-vim.g.haskell_backpack                       = 1
-vim.g.haskell_classic_highlighting           = 1
-vim.g.haskell_indent_disable                 = 0
-vim.g.haskell_indent_if                      = 3
-vim.g.haskell_indent_case                    = 2
-vim.g.haskell_indent_let                     = 4
-vim.g.haskell_indent_where                   = 6
-vim.g.haskell_indent_before_where            = 2
-vim.g.haskell_indent_after_bare_where        = 2
-vim.g.haskell_indent_do                      = 3
-vim.g.haskell_indent_in                      = 1
-vim.g.haskell_indent_guard                   = 4
-vim.g.haskell_indent_case_alternative        = 1
+vim.g.haskell_enable_quantification   = 1
+vim.g.haskell_enable_recursivedo      = 1
+vim.g.haskell_enable_arrowsyntax      = 1
+vim.g.haskell_enable_pattern_synonyms = 1
+vim.g.haskell_enable_typeroles        = 1
+vim.g.haskell_enable_static_pointers  = 1
+vim.g.haskell_backpack                = 1
+vim.g.haskell_classic_highlighting    = 1
+vim.g.haskell_indent_disable          = 0
+vim.g.haskell_indent_if               = 3
+vim.g.haskell_indent_case             = 2
+vim.g.haskell_indent_let              = 4
+vim.g.haskell_indent_where            = 6
+vim.g.haskell_indent_before_where     = 2
+vim.g.haskell_indent_after_bare_where = 2
+vim.g.haskell_indent_do               = 3
+vim.g.haskell_indent_in               = 1
+vim.g.haskell_indent_guard            = 4
+vim.g.haskell_indent_case_alternative = 1
 
-vim.g.skill_repl                             = "rlwrap virtuoso -nograph"
+vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
 -- Plugin Settings
 colorizer.setup()
@@ -319,17 +340,17 @@ lualine.setup({ options           = { icons_enabled        = true
                                                              , tabline    = 1000
                                                              , winbar     = 1000 }
                                     , }
-              , sections          = { lualine_a = {'mode'}
-                                    , lualine_b = {'branch', 'diff', 'diagnostics'}
-                                    , lualine_c = {'filename'}
-                                    , lualine_x = {'encoding', 'fileformat', 'filetype'}
-                                    , lualine_y = {'progress'}
-                                    , lualine_z = {'location'}
+              , sections          = { lualine_a = {"mode"}
+                                    , lualine_b = {"branch", "diff", "diagnostics"}
+                                    , lualine_c = {"filename"}
+                                    , lualine_x = {{"filetype", colored = false}}
+                                    , lualine_y = {"encoding", "fileformat", "progress"}
+                                    , lualine_z = {"location"}
                                     , }
               , inactive_sections = { lualine_a = {}
                                     , lualine_b = {}
-                                    , lualine_c = {'filename'}
-                                    , lualine_x = {'location'}
+                                    , lualine_c = {"filename"}
+                                    , lualine_x = {"location"}
                                     , lualine_y = {}
                                     , lualine_z = {}
                                     , }
@@ -342,9 +363,14 @@ lualine.setup({ options           = { icons_enabled        = true
 neotree.setup({ window = { position        = "left"
                          , width           = 30
                          , mapping_options = { noremap = true
-                                             , nowait = true }
+                                             , nowait  = true }
                          , }
+              , default_component_configs = { name = { trailing_slash        = true
+                                                     , use_git_status_colors = false
+                                                     , highlight             = "NeoTreeFileName" 
+                                                     , colored = false} }
               , })
+vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link="NeoTreeFileName" })
 
 -- venn
 function _G.Toggle_venn()
@@ -386,8 +412,71 @@ treesitter.setup({ ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "h
                                       , disable                           = large_file
                                       , additional_vim_regex_highlighting = false }
                  , })
+
+-- cmp
+cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
+          , window  = { -- completion = cmp.config.window.bordered(),
+                      -- , documentation = cmp.config.window.bordered(),
+                      }
+          , mapping = cmp.mapping.preset.insert({ ["<C-b>"]     = cmp.mapping.scroll_docs(-4)
+                                                , ["<C-f>"]     = cmp.mapping.scroll_docs(4)
+                                                , ["<C-Space>"] = cmp.mapping.complete()
+                                                , ["<Tab>"]     = cmp.mapping.select_next_item()
+                                                , ["<S-Tab>"]   = cmp.mapping.select_prev_item()
+                                                , ["<C-e>"]     = cmp.mapping.abort()
+                                                , ["<CR>"]      = cmp.mapping.confirm({ select = true })
+                                                , })
+          , sources = cmp.config.sources({ { name = "nvim_lsp" }
+                                         , { name = "luasnip" }
+                                         , { name = "path" } 
+                                         , { name = "treesitter" } }
+                                        , { { name = "buffer" } })
+          , formatting = { format = function(entry, vim_item)
+                if vim.tbl_contains({ "path" }, entry.source.name) then
+                  local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
+                  if icon then
+                    vim_item.kind          = icon
+                    vim_item.kind_hl_group = hl_group
+                    return vim_item
+                  end
+                end
+                return lspkind.cmp_format({ with_text = false })(entry, vim_item)
+              end }
+          , })
+cmp.setup.filetype("gitcommit", { sources = cmp.config.sources( { { name = "git" } }
+                                                              , { { name = "buffer" } } ) })
+cmpgit.setup()
+
+cmp.setup.cmdline( { "/", "?" }
+                 , { mapping = cmp.mapping.preset.cmdline()
+                   , sources = { { name = "buffer" } } })
+
+cmp.setup.cmdline(":", { mapping  = cmp.mapping.preset.cmdline()
+                       , sources  = cmp.config.sources( { { name = "path" } }
+                                                     , { { name = "cmdline" } } )
+                       , matching = { disallow_symbol_nonprefix_matching = false } })
+
+-- lsp config
+lsp.hls.setup({})
+lsp.texlab.setup({})
+
+local capabilities = cmplsp.default_capabilities()
+lsp["hls"].setup({ capabilities = capabilities })
+lsp["texlab"].setup({ capabilities = capabilities })
+
 -- Color Scheme
 vim.cmd.colorscheme("candle-grey-transparent")
-vim.cmd("highlight CursorColumn ctermbg=Gray guibg=#101010")
-vim.cmd("highlight CursorLine ctermbg=Gray guibg=#101010")
-vim.cmd("highlight ColorColumn ctermbg=Gray guibg=#151515")
+
+vim.cmd("highlight CursorColumn ctermbg=Gray guibg=#151515")
+vim.cmd("highlight CursorLine ctermbg=Gray guibg=#151515")
+vim.cmd("highlight ColorColumn ctermbg=Gray guibg=#171717")
+
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = White, bold = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link="CmpIntemAbbrMatch" })
+vim.api.nvim_set_hl(0, "PmenuSel", {fg = "#F2F2F2", bg = "#404040", bold = true})
+
+vim.api.nvim_set_hl(0, "SpellBad",   {undercurl = true, sp = Red})
+vim.api.nvim_set_hl(0, "SpellCap",   {undercurl = true, sp = Green})
+vim.api.nvim_set_hl(0, "SpellRare",  {undercurl = true, sp = Magenta})
+vim.api.nvim_set_hl(0, "SpellLocal", {undercurl = true, sp = Blue})

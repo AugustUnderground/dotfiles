@@ -65,3 +65,9 @@ set header_cache = "~/.local/cache/mutt"
 set message_cachedir = "~/.local/cache/mutt"
 
 # set query_command = "khard email --parsable --search-in-source-files '%s'"
+# set query_command = "notmuch search '%s'"
+
+# notmuch settings
+set nm_default_url = "notmuch:///home/uhlmanny/.local/cache/mutt/.notmuch"
+set nm_query_type  = messages
+set nm_config_file = "/home/uhlmanny/.notmuch-config"
