@@ -77,15 +77,15 @@ lazy.setup({ { "folke/which-key.nvim"
            -- , { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
            -- , "ray-x/cmp-treesitter"
            , "neovim/nvim-lspconfig"
+           , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
            , "hrsh7th/cmp-nvim-lsp"
            , "hrsh7th/cmp-buffer"
            , "hrsh7th/cmp-path"
            , "hrsh7th/cmp-cmdline"
            , "petertriho/cmp-git"
            , "hrsh7th/nvim-cmp"
-           , { "mrcjkb/haskell-tools.nvim"
-             , version = "^3"
-             , lazy    = false }
+           -- , { "mrcjkb/haskell-tools.nvim" , version = "^3" , lazy    = false }
+           , "neovimhaskell/haskell-vim"
            , "monkoose/fzf-hoogle.vim"
            , "hasufell/ghcup.vim"
            , { "mlochbaum/BQN", ft = "bqn"
@@ -100,45 +100,49 @@ lazy.setup({ { "folke/which-key.nvim"
            , "augustunderground/vim-hy"
            , "augustunderground/coconut.vim"
            , "augustunderground/spectre.vim"
-           , "augustunderground/nocolor.nvim"
-           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", lazy = true }
+           -- , "augustunderground/nocolor.nvim"
+           , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", lazy = true }
            -- Color Schemes
            , "rktjmp/lush.nvim"
            , "aditya-azad/candle-grey"
 		   , })
 
-local telescope  = require("telescope.builtin")
-local trouble    = require("trouble")
-local lualine    = require("lualine")
-local colorizer  = require("colorizer")
-local autoclose  = require("autoclose")
+local telescope   = require("telescope.builtin")
+local trouble     = require("trouble")
+local lualine     = require("lualine")
+local colorizer   = require("colorizer")
+local autoclose   = require("autoclose")
 -- local treesitter = require("nvim-treesitter.configs")
-local hlsearch   = require("hlsearch")
-local lsp        = require("lspconfig")
-local neotree    = require("neo-tree")
-local luasnip    = require("luasnip")
-local cmpgit     = require("cmp_git")
-local cmp        = require("cmp")
-local cmplsp     = require("cmp_nvim_lsp")
-local devicons   = require("nvim-web-devicons")
-local lspkind    = require("lspkind")
+local hlsearch    = require("hlsearch")
+local lsp         = require("lspconfig")
+local diagnostics = require("toggle_lsp_diagnostics")
+local neotree     = require("neo-tree")
+local luasnip     = require("luasnip")
+local cmpgit      = require("cmp_git")
+local cmp         = require("cmp")
+local cmplsp      = require("cmp_nvim_lsp")
+local devicons    = require("nvim-web-devicons")
+local lspkind     = require("lspkind")
 
 -- Settings
-vim.opt.number                = true
-vim.opt.relativenumber        = true
-vim.opt.cursorline            = true
-vim.opt.cursorcolumn          = true
-vim.opt.termguicolors         = true
-vim.opt.expandtab             = true
-vim.opt.tabstop               = 4
-vim.opt.shiftwidth            = 2
-vim.opt.softtabstop           = 2
-vim.o.timeout                 = true
-vim.o.timeoutlen              = 500
-vim.opt.syntax                = "on"
-vim.opt.encoding              = "UTF-8"
+vim.opt.number         = true
+vim.opt.relativenumber = true
+vim.opt.cursorline     = true
+vim.opt.cursorcolumn   = true
+vim.opt.termguicolors  = true
+vim.opt.expandtab      = true
+vim.opt.tabstop        = 4
+vim.opt.shiftwidth     = 2
+vim.opt.softtabstop    = 2
+vim.opt.conceallevel   = 2
+vim.o.timeout          = true
+vim.o.timeoutlen       = 500
+vim.o.updatetime       = 250
+vim.opt.syntax         = "on"
+vim.opt.encoding       = "UTF-8"
+-- vim.opt.shell          = "/bin/bash"
+
 vim.opt_local.spell.spelllang = "en_us"
--- vim.opt.shell                 = "/bin/bash"
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
 -- Functions
@@ -238,6 +242,9 @@ end
 vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", {})
 vim.keymap.set("x", "ga", "<Plug>(EasyAlign)", {})
 
+vim.keymap.set("n", "<leader>df", "<Plug>(toggle-lsp-diag-off)", {})
+vim.keymap.set("n", "<leader>do", "<Plug>(toggle-lsp-diag-on)", {})
+
 vim.keymap.set("n", "<leader>$", ":call Toggle_math_mode()<CR>a", {})
 
 vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
@@ -286,9 +293,9 @@ vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references")
 
 vim.keymap.set("n", "<F11>", ":call CompileRun()<CR>", {})
 vim.keymap.set("n", "<F12>", ":call InteractiveLoad()<CR>", {})
-vim.keymap.set("n", "<leader>l", ":ReplSendLine()<CR>", {silent = true})
-vim.keymap.set("n", "<leader>r", ":ReplSendRegion()<CR>", {silent = true})
-vim.keymap.set("n", "<leader>R", ":ReplReloadFile()<CR>", {silent = true})
+vim.keymap.set("n", "<leader>l", ":ReplSendLine<CR>", {silent = true})
+vim.keymap.set("n", "<leader>r", ":ReplSendRegion<CR>", {silent = true})
+vim.keymap.set("n", "<leader>R", ":ReplReloadFile<CR>", {silent = true})
 
 vim.api.nvim_create_autocmd( "LspAttach"
                            , { desc = "LSP actions"
@@ -308,6 +315,7 @@ vim.api.nvim_create_autocmd( "LspAttach"
                                   bufmap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
                                   bufmap("n", "<F3>", "<cmd>lua vim.lsp.buf.format()<cr>")
                                   bufmap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+                                  bufmap("n", "<leader>ds", "<cmd>lua vim.lsp.diagnostic.open_float()<cr>")
                                 end } )
 
 -- Languages
@@ -337,6 +345,7 @@ vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 colorizer.setup()
 autoclose.setup()
 hlsearch.setup()
+diagnostics.init()
 
 -- quickscope
 vim.g.qs_hi_priority = 1
@@ -483,9 +492,12 @@ cmp.setup.cmdline(":", { mapping  = cmp.mapping.preset.cmdline()
                        , matching = { disallow_symbol_nonprefix_matching = false } })
 
 -- lsp config
-lsp.texlab.setup({})
+vim.diagnostic.config({ virtual_text = false })
+vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})")
+
 local capabilities = cmplsp.default_capabilities()
 lsp["texlab"].setup({ capabilities = capabilities })
+lsp["hls"].setup({ capabilities = capabilities })
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
