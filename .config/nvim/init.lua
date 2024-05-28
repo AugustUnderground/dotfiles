@@ -349,16 +349,15 @@ diagnostics.init()
 
 -- quickscope
 vim.g.qs_hi_priority = 1
-local qs_colors      = vim.api.nvim_create_augroup("qs_colors", { clear = true })
-vim.api.nvim_create_autocmd( "ColorScheme"
-                           , { group   = qs_colors
-                             , pattern = "*"
-                             , command = "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline" })
-vim.api.nvim_create_autocmd( "ColorScheme"
-                           , { group   = qs_colors
-                             , pattern = "*"
-                             , command = "highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline" })
-
+-- local qs_colors      = vim.api.nvim_create_augroup("qs_colors", { clear = true })
+-- vim.api.nvim_create_autocmd( "ColorScheme"
+--                            , { group   = qs_colors
+--                              , pattern = "*"
+--                              , command = "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline" })
+-- vim.api.nvim_create_autocmd( "ColorScheme"
+--                            , { group   = qs_colors
+--                              , pattern = "*"
+--                              , command = "highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline" })
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
@@ -396,6 +395,7 @@ lualine.setup({ options           = { icons_enabled        = true
               , inactive_winbar   = {}
               , extensions        = {}
               , })
+
 -- neo-tree
 neotree.setup({ window = { position        = "left"
                          , width           = 30
