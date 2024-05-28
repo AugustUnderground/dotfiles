@@ -1,6 +1,9 @@
 local vim = vim
 
-vim.g.mapleader      = " " vim.g.maplocalleader = " "
+vim.g.mapleader          = " "
+vim.g.maplocalleader     = " "
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -20,11 +23,17 @@ lazy.setup({ { "folke/which-key.nvim"
              , lazy  = true 
              , opts  = { }
              , event = "VeryLazy" }
+           , { "folke/trouble.nvim"
+             , opts         = { signs = { error       = ""
+                                        , warning     = ""
+                                        , hint        = ""
+                                        , information = ""
+                                        , other       = "" } }
+             , dependencies = { "nvim-tree/nvim-web-devicons" } }
            , "godlygeek/tabular"
+           , "nvim-tree/nvim-web-devicons"
            , "nvim-lua/plenary.nvim"
            , "lewis6991/gitsigns.nvim"
-           , "ryanoasis/vim-devicons"
-           , "nvim-tree/nvim-web-devicons"
            , "onsails/lspkind.nvim"
            , { "nvim-telescope/telescope.nvim"
              , branch       = "0.1.x"
@@ -35,28 +44,15 @@ lazy.setup({ { "folke/which-key.nvim"
              , opts = { animation       = true
                       , insert_at_start = true
                       , clickable       = true 
-                      , icons = { filetype = { custom_colors = true } } } 
+                      , icons           = { filetype = { custom_colors = true } } } 
              , init = function() vim.g.barbar_auto_setup = false end }
-           , { "nvim-neo-tree/neo-tree.nvim"
-             , dependencies = { "nvim-lua/plenary.nvim"
-                              , "nvim-tree/nvim-web-devicons"
-                              , "MunifTanjim/nui.nvim"
-                              , "3rd/image.nvim" }
-             , branch       = "v3.x"
-             , pin          = true }
+           , { "nvim-tree/nvim-tree.lua" }
            , { "nvim-lualine/lualine.nvim"
-             , dependencies = { "nvim-tree/nvim-web-devicons" } }
-           , { "folke/trouble.nvim"
-             , opts         = { signs = { error       = ""
-                                        , warning     = ""
-                                        , hint        = ""
-                                        , information = ""
-                                        , other       = "" } }
              , dependencies = { "nvim-tree/nvim-web-devicons" } }
            , { "unblevable/quick-scope" 
              , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
              , lazy = false }
-           , "norcalli/nvim-colorizer.lua"
+           , "brenoprata10/nvim-highlight-colors"
            , "m4xshen/autoclose.nvim"
            , "chrisbra/csv.vim"
            , "dhruvasagar/vim-table-mode"
@@ -64,8 +60,8 @@ lazy.setup({ { "folke/which-key.nvim"
            , { "nvimdev/hlsearch.nvim"
              , event = "BufRead" }
            , { "L3MON4D3/LuaSnip"
-		 , version = "v2.*"
-		 , build = "make install_jsregexp" }
+		     , version = "v2.*"
+		     , build = "make install_jsregexp" }
            -- JuneGunn
 		   , "junegunn/vim-easy-align"
 		   , "junegunn/fzf.vim"
@@ -74,8 +70,6 @@ lazy.setup({ { "folke/which-key.nvim"
            , "tpope/vim-repeat"
            , "tpope/vim-surround"
            -- Languages
-           -- , { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
-           -- , "ray-x/cmp-treesitter"
            , "neovim/nvim-lspconfig"
            , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
            , "hrsh7th/cmp-nvim-lsp"
@@ -84,7 +78,6 @@ lazy.setup({ { "folke/which-key.nvim"
            , "hrsh7th/cmp-cmdline"
            , "petertriho/cmp-git"
            , "hrsh7th/nvim-cmp"
-           -- , { "mrcjkb/haskell-tools.nvim" , version = "^3" , lazy    = false }
            , "neovimhaskell/haskell-vim"
            , "monkoose/fzf-hoogle.vim"
            , "hasufell/ghcup.vim"
@@ -107,22 +100,21 @@ lazy.setup({ { "folke/which-key.nvim"
            , "aditya-azad/candle-grey"
 		   , })
 
-local telescope   = require("telescope.builtin")
-local trouble     = require("trouble")
-local lualine     = require("lualine")
-local colorizer   = require("colorizer")
-local autoclose   = require("autoclose")
--- local treesitter = require("nvim-treesitter.configs")
-local hlsearch    = require("hlsearch")
-local lsp         = require("lspconfig")
-local diagnostics = require("toggle_lsp_diagnostics")
-local neotree     = require("neo-tree")
-local luasnip     = require("luasnip")
-local cmpgit      = require("cmp_git")
-local cmp         = require("cmp")
-local cmplsp      = require("cmp_nvim_lsp")
-local devicons    = require("nvim-web-devicons")
-local lspkind     = require("lspkind")
+local devicons        = require("nvim-web-devicons")
+local telescope       = require("telescope.builtin")
+local trouble         = require("trouble")
+local lualine         = require("lualine")
+local highlightcolors = require("nvim-highlight-colors")
+local autoclose       = require("autoclose")
+local hlsearch        = require("hlsearch")
+local lsp             = require("lspconfig")
+local diagnostics     = require("toggle_lsp_diagnostics")
+local nvimtree        = require("nvim-tree")
+local luasnip         = require("luasnip")
+local cmpgit          = require("cmp_git")
+local cmp             = require("cmp")
+local cmplsp          = require("cmp_nvim_lsp")
+local lspkind         = require("lspkind")
 
 -- Settings
 vim.opt.number         = true
@@ -260,25 +252,25 @@ vim.keymap.set("n", "<C-down>", ":res +2<CR>", opts)
 vim.keymap.set("n", "<C-left>", ":res -2<CR>", opts)
 vim.keymap.set("n", "<C-right>", ":res +2<CR>", opts)
 
-vim.keymap.set("n", "<C-p>", "<Cmd>BufferPrevious<CR>", {})
-vim.keymap.set("n", "<C-n>", "<Cmd>BufferNext<CR>", {})
-vim.keymap.set("n", "<C-,>", "<Cmd>BufferMovePrevious<CR>", {})
-vim.keymap.set("n", "<C-.>", "<Cmd>BufferMoveNext<CR>", {})
-vim.keymap.set("n", "<C-1>", "<Cmd>BufferGoto 1<CR>", opts)
-vim.keymap.set("n", "<C-2>", "<Cmd>BufferGoto 2<CR>", opts)
-vim.keymap.set("n", "<C-3>", "<Cmd>BufferGoto 3<CR>", opts)
-vim.keymap.set("n", "<C-4>", "<Cmd>BufferGoto 4<CR>", opts)
-vim.keymap.set("n", "<C-5>", "<Cmd>BufferGoto 5<CR>", opts)
-vim.keymap.set("n", "<C-6>", "<Cmd>BufferGoto 6<CR>", opts)
-vim.keymap.set("n", "<C-7>", "<Cmd>BufferGoto 7<CR>", opts)
-vim.keymap.set("n", "<C-8>", "<Cmd>BufferGoto 8<CR>", opts)
-vim.keymap.set("n", "<C-9>", "<Cmd>BufferGoto 9<CR>", opts)
-vim.keymap.set("n", "<C-0>", "<Cmd>BufferLast<CR>", opts)
--- vim.keymap.set('n', '<C-p>', '<Cmd>BufferPin<CR>', opts)
-vim.keymap.set('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
-vim.keymap.set("n", "<A-p>", "<Cmd>BufferPick<CR>", opts)
+vim.keymap.set("n", "<C-p>", "<cmd>BufferPrevious<CR>", {})
+vim.keymap.set("n", "<C-n>", "<cmd>BufferNext<CR>", {})
+vim.keymap.set("n", "<C-,>", "<cmd>BufferMovePrevious<CR>", {})
+vim.keymap.set("n", "<C-.>", "<cmd>BufferMoveNext<CR>", {})
+vim.keymap.set("n", "<C-1>", "<cmd>BufferGoto 1<CR>", opts)
+vim.keymap.set("n", "<C-2>", "<cmd>BufferGoto 2<CR>", opts)
+vim.keymap.set("n", "<C-3>", "<cmd>BufferGoto 3<CR>", opts)
+vim.keymap.set("n", "<C-4>", "<cmd>BufferGoto 4<CR>", opts)
+vim.keymap.set("n", "<C-5>", "<cmd>BufferGoto 5<CR>", opts)
+vim.keymap.set("n", "<C-6>", "<cmd>BufferGoto 6<CR>", opts)
+vim.keymap.set("n", "<C-7>", "<cmd>BufferGoto 7<CR>", opts)
+vim.keymap.set("n", "<C-8>", "<cmd>BufferGoto 8<CR>", opts)
+vim.keymap.set("n", "<C-9>", "<cmd>BufferGoto 9<CR>", opts)
+vim.keymap.set("n", "<C-0>", "<cmd>BufferLast<CR>", opts)
+-- vim.keymap.set('n', '<C-p>', '<cmd>BufferPin<CR>', opts)
+vim.keymap.set('n', '<A-c>', '<cmd>BufferClose<CR>', opts)
+vim.keymap.set("n", "<A-p>", "<cmd>BufferPick<CR>", opts)
 
-vim.keymap.set("n", "<C-f>", "<Cmd>Neotree<CR>", opts)
+vim.keymap.set("n", "<C-f>", "<cmd>NvimTreeOpen<CR>", opts)
 
 vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end)
 vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end)
@@ -342,32 +334,34 @@ vim.g.haskell_indent_case_alternative = 1
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
 -- Plugin Settings
-colorizer.setup()
+devicons.setup({ color_icons = false 
+               , default     = true
+               , strict      = true })
+
 autoclose.setup()
 hlsearch.setup()
+-- colorizer.setup()
 diagnostics.init()
+
+-- Color Highlights
+highlightcolors.setup({ render = "background"
+	                  , enable_hex = true
+	                  , enable_rgb = true
+	                  , enable_hsl = true
+	                  , enable_var_usage = true
+	                  , enable_named_colors = true
+	                  , enable_tailwind = false })
 
 -- quickscope
 vim.g.qs_hi_priority = 1
--- local qs_colors      = vim.api.nvim_create_augroup("qs_colors", { clear = true })
--- vim.api.nvim_create_autocmd( "ColorScheme"
---                            , { group   = qs_colors
---                              , pattern = "*"
---                              , command = "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline" })
--- vim.api.nvim_create_autocmd( "ColorScheme"
---                            , { group   = qs_colors
---                              , pattern = "*"
---                              , command = "highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline" })
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
                                     , theme                = "auto"
                                     , component_separators = { left = "", right = ""}
                                     , section_separators   = { left = "", right = ""} 
-                                    -- , component_separators = { left = "", right = ""}
-                                    -- , section_separators   = { left = "", right = ""}
-                                    , disabled_filetypes   = { statusline = {}
-                                                             , winbar     = {}
+                                    , disabled_filetypes   = { statusline = {'NvimTree'}
+                                                             , winbar     = {'NvimTree'}
                                                              , }
                                     , ignore_focus         = {}
                                     , always_divide_middle = true
@@ -396,16 +390,18 @@ lualine.setup({ options           = { icons_enabled        = true
               , extensions        = {}
               , })
 
--- neo-tree
-neotree.setup({ window = { position        = "left"
-                         , width           = 30
-                         , mapping_options = { noremap = true
-                                             , nowait  = true } }
-              , default_component_configs = { name = { trailing_slash        = true
-                                                     , use_git_status_colors = false
-                                                   } }
-              , })
--- vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link="NeoTreeFileName" })
+-- nvimtree
+nvimtree.setup({ sort = { sorter = "case_sensitive" }
+               , view = { width = 30 }
+               , renderer = { group_empty = true 
+                            , icons = { web_devicons = { file = { enable = true
+                                                                , color  = false }
+                                                       , folder = { enable = false
+                                                                  , color = false }
+                                                       , }
+                                      , }
+			    , }
+               , filters = { dotfiles = true } })
 
 -- venn
 function _G.Toggle_venn()
@@ -430,24 +426,6 @@ function _G.Toggle_venn()
 end
 vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", opts)
 
--- treesitter
--- function large_file(lang, buf)
---   local max_filesize = 100 * 1024 -- 100 KB
---   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
---   if ok and stats and stats.size > max_filesize then
---     return true
---   end
--- end
--- treesitter.setup({ ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "haskell", "latex" }
---                  , sync_install     = false
---                  , auto_install     = true
---                  , ignore_install   = { "javascript", "rust" }
---                  , highlight        = { enable                            = true
---                                       , disable                           = { "rust" }
---                                       , disable                           = large_file
---                                       , additional_vim_regex_highlighting = false }
---                  , })
-
 -- cmp
 cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
           , window  = { -- completion = cmp.config.window.bordered(),
@@ -463,15 +441,14 @@ cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) en
                                                 , })
           , sources = cmp.config.sources({ { name = "nvim_lsp" }
                                          , { name = "luasnip" }
-                                         , { name = "path" } 
-                                         , { name = "treesitter" } }
+                                         , { name = "path" } }
                                         , { { name = "buffer" } })
           , formatting = { format = function(entry, vim_item)
                 if vim.tbl_contains({ "path" }, entry.source.name) then
-                  local icon, hl_group = devicons.get_icon(entry:get_completion_item().label)
+                  local icon, _ = devicons.get_icon(entry:get_completion_item().label)
                   if icon then
                     vim_item.kind          = icon
-                    vim_item.kind_hl_group = hl_group
+                    vim_item.kind_hl_group = Pmenu
                     return vim_item
                   end
                 end
