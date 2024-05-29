@@ -30,9 +30,17 @@ lazy.setup({ { "folke/which-key.nvim"
                                         , information = ""
                                         , other       = "" } }
              , dependencies = { "nvim-tree/nvim-web-devicons" } }
+           , { "folke/noice.nvim"
+             , event = "VeryLazy"
+             , opts = { }
+             , dependencies = { "MunifTanjim/nui.nvim"
+                              , "rcarriga/nvim-notify" }
+             , }
            , "godlygeek/tabular"
            , "nvim-tree/nvim-web-devicons"
            , "nvim-lua/plenary.nvim"
+           , "MunifTanjim/nui.nvim"
+           , "rcarriga/nvim-notify"
            , "lewis6991/gitsigns.nvim"
            , "onsails/lspkind.nvim"
            , { "nvim-telescope/telescope.nvim"
@@ -62,6 +70,8 @@ lazy.setup({ { "folke/which-key.nvim"
            , { "L3MON4D3/LuaSnip"
 		     , version = "v2.*"
 		     , build = "make install_jsregexp" }
+           , "yamatsum/nvim-cursorline"
+           , "karb94/neoscroll.nvim"
            -- JuneGunn
 		   , "junegunn/vim-easy-align"
 		   , "junegunn/fzf.vim"
@@ -104,6 +114,7 @@ local devicons        = require("nvim-web-devicons")
 local telescope       = require("telescope")
 local telescopebi     = require("telescope.builtin")
 local trouble         = require("trouble")
+local noice           = require("noice")
 local lualine         = require("lualine")
 local highlightcolors = require("nvim-highlight-colors")
 local autoclose       = require("autoclose")
@@ -116,6 +127,8 @@ local cmpgit          = require("cmp_git")
 local cmp             = require("cmp")
 local cmplsp          = require("cmp_nvim_lsp")
 local lspkind         = require("lspkind")
+local cursorline      = require("nvim-cursorline")
+local neoscroll       = require("neoscroll")
 
 -- Settings
 vim.opt.number         = true
@@ -271,7 +284,7 @@ vim.keymap.set("n", "<C-0>", "<cmd>BufferLast<CR>", opts)
 vim.keymap.set('n', '<A-c>', '<cmd>BufferClose<CR>', opts)
 vim.keymap.set("n", "<A-p>", "<cmd>BufferPick<CR>", opts)
 
-vim.keymap.set("n", "<C-f>", "<cmd>NvimTreeOpen<CR>", opts)
+vim.keymap.set("n", "<leader>of", "<cmd>NvimTreeOpen<CR>", opts)
 
 vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end)
 vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end)
@@ -352,6 +365,36 @@ highlightcolors.setup({ render = "background"
 	                  , enable_var_usage = true
 	                  , enable_named_colors = true
 	                  , enable_tailwind = false })
+
+-- cursorline
+cursorline.setup({ cursorline = { enable = false }
+                 , cursorword = { enable = true
+                                , min_length = 3
+                                , hl = { underline = true }
+                                , }
+                 , })
+
+-- neoscroll
+neoscroll.setup({ mappings             = { "<C-u>", "<C-d>", "<C-b>", "<C-f>"
+                                         , "<C-y>", "<C-e>", "zt", "zz", "zb" }
+                , hide_cursor          = false
+                , stop_eof             = false
+                , respect_scrolloff    = false
+                , cursor_scrolls_alone = true
+                , easing               = "linear"
+                , pre_hook             = nil
+                , post_hook            = nil
+                , performance_mode     = false })
+-- noice
+noice.setup({ lsp     = { override = { ["vim.lsp.util.convert_input_to_markdown_lines"] = true
+                                     , ["vim.lsp.util.stylize_markdown"]                = true
+                                     , ["cmp.entry.get_documentation"]                  = true } }
+            , presets = { bottom_search = true
+                        , command_palette = true
+                        , long_message_to_split = true
+                        , inc_rename = false
+                        , lsp_doc_border = false }
+            , })
 
 -- quickscope
 vim.g.qs_hi_priority = 1
