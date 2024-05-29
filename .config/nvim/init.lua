@@ -62,7 +62,6 @@ lazy.setup({ { "folke/which-key.nvim"
              , lazy = false }
            , "brenoprata10/nvim-highlight-colors"
            , "m4xshen/autoclose.nvim"
-           , "chrisbra/csv.vim"
            , "dhruvasagar/vim-table-mode"
            , "jbyuki/venn.nvim"
            , { "nvimdev/hlsearch.nvim"
@@ -70,7 +69,7 @@ lazy.setup({ { "folke/which-key.nvim"
            , { "L3MON4D3/LuaSnip"
 		     , version = "v2.*"
 		     , build = "make install_jsregexp" }
-           , "yamatsum/nvim-cursorline"
+           , "xiyaowong/nvim-cursorword"
            , "karb94/neoscroll.nvim"
            , { "lukas-reineke/indent-blankline.nvim"
              , main = "ibl"
@@ -126,6 +125,8 @@ lazy.setup({ { "folke/which-key.nvim"
                 end }
            , "JuliaEditorSupport/julia-vim"
            , "lervag/vimtex"
+           -- , { "chrisbra/csv.vim" , lazy = false }
+           -- , "hat0uma/csvview.nvim"
            -- My Plugins
            , "augustunderground/vim-skill"
            , "augustunderground/vim-mathmode"
@@ -156,7 +157,6 @@ local cmpgit          = require("cmp_git")
 local cmp             = require("cmp")
 local cmplsp          = require("cmp_nvim_lsp")
 local lspkind         = require("lspkind")
-local cursorline      = require("nvim-cursorline")
 local neoscroll       = require("neoscroll")
 local ibl             = require("ibl")
 
@@ -207,13 +207,14 @@ function open_terminal()
   vim.cmd("belowright split")
   vim.cmd("resize -10")
   vim.cmd("term $SHELL")
-  vim.opt_local.syntax         = "sh"
+  -- vim.opt_local.syntax         = "sh"
   vim.opt_local.modifiable     = true
   vim.opt_local.number         = false
   vim.opt_local.relativenumber = false
   vim.opt_local.signcolumn     = "no"
   vim.opt_local.cursorline     = false
   vim.opt_local.cursorcolumn   = false
+  -- vim.cmd("CursorWordDisable")
   vim.cmd.normal("A")
 end
 
@@ -397,13 +398,10 @@ highlightcolors.setup({ render = "background"
 	                  , enable_named_colors = true
 	                  , enable_tailwind = false })
 
--- cursorline
-cursorline.setup({ cursorline = { enable = false }
-                 , cursorword = { enable = true
-                                , min_length = 3
-                                , hl = { underline = true }
-                                , }
-                 , })
+-- cursorword
+vim.g.cursorword_disable_filetypes = { "tex", "NvimTree", "markdown", "roff" }
+vim.g.cursorword_min_width         = 3
+vim.g.cursorword_max_width         = 50
 
 -- neoscroll
 neoscroll.setup({ mappings             = { "<C-u>", "<C-d>", "<C-b>", "<C-f>"
@@ -416,6 +414,7 @@ neoscroll.setup({ mappings             = { "<C-u>", "<C-d>", "<C-b>", "<C-f>"
                 , pre_hook             = nil
                 , post_hook            = nil
                 , performance_mode     = false })
+
 -- noice
 noice.setup({ lsp     = { override = { ["vim.lsp.util.convert_input_to_markdown_lines"] = true
                                      , ["vim.lsp.util.stylize_markdown"]                = true
@@ -572,6 +571,8 @@ vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
                                     , pattern  = "GoyoLeave"
                                     , callback = function() require("lualine").hide({ unhide = true }) end
                                     , })
+
+-- csv
 
 -- Color Scheme
 vim.cmd.colorscheme("nocolor")
