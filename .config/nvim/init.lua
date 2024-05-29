@@ -21,8 +21,8 @@ local lazy = require("lazy")
 -- Plugins
 lazy.setup({ { "folke/which-key.nvim"
              , lazy  = true 
-             , opts  = { }
-             , event = "VeryLazy" }
+             , event = "VeryLazy"
+             , opts  = { } }
            , { "folke/trouble.nvim"
              , opts         = { signs = { error       = ""
                                         , warning     = ""
@@ -72,6 +72,35 @@ lazy.setup({ { "folke/which-key.nvim"
 		     , build = "make install_jsregexp" }
            , "yamatsum/nvim-cursorline"
            , "karb94/neoscroll.nvim"
+           , { "lukas-reineke/indent-blankline.nvim"
+             , main = "ibl"
+             , opts = {} }
+           , { "Yoolayn/nvim-intro"
+             , config = { intro      = {
+                "███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ",
+                " ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
+                "▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
+                "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
+                "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
+                "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
+                "░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
+                "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
+                "         ░    ░  ░    ░ ░        ░   ░         ░   ",
+                "                                ░                  ",
+                "                                                   ",
+                "  type :checkhealth<Enter> ->   to optimize Nvim   ",
+                "  type :Lazy<Enter>        ->   to update plugins  ",
+                "  type :help<Enter>        ->   for help           ",
+                "                                                   ",
+                "  type :help news<Enter>   ->   for help           ",
+                "                                                   ",
+                "  press <leader>ff         ->   to find files      ",
+                "  press <leader>of         ->   to open file tree  ",
+                "                                                   ", }
+                        , color      = "#c0c0c0"
+                        , scratch    = true
+                        , highlights = { ["<Enter>"]  = "#ffffff" 
+                                       , ["<leader>"] = "#ffffff" } } }
            -- JuneGunn
 		   , "junegunn/vim-easy-align"
 		   , "junegunn/fzf.vim"
@@ -129,8 +158,12 @@ local cmplsp          = require("cmp_nvim_lsp")
 local lspkind         = require("lspkind")
 local cursorline      = require("nvim-cursorline")
 local neoscroll       = require("neoscroll")
+local ibl             = require("ibl")
 
 -- Settings
+vim.o.timeout          = true
+vim.o.timeoutlen       = 500
+vim.o.updatetime       = 250
 vim.opt.number         = true
 vim.opt.relativenumber = true
 vim.opt.cursorline     = true
@@ -141,11 +174,9 @@ vim.opt.tabstop        = 4
 vim.opt.shiftwidth     = 2
 vim.opt.softtabstop    = 2
 vim.opt.conceallevel   = 2
-vim.o.timeout          = true
-vim.o.timeoutlen       = 500
-vim.o.updatetime       = 250
 vim.opt.syntax         = "on"
 vim.opt.encoding       = "UTF-8"
+vim.opt.cc             = "80"
 -- vim.opt.shell          = "/bin/bash"
 
 vim.opt_local.spell.spelllang = "en_us"
@@ -347,15 +378,15 @@ vim.g.haskell_indent_case_alternative = 1
 
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
--- Plugin Settings
+-- Plugin Setup
 devicons.setup({ color_icons = false 
                , default     = true
                , strict      = true })
 
 autoclose.setup()
 hlsearch.setup()
--- colorizer.setup()
 diagnostics.init()
+ibl.setup()
 
 -- Color Highlights
 highlightcolors.setup({ render = "background"
