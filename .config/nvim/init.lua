@@ -126,7 +126,6 @@ lazy.setup({ { "folke/which-key.nvim"
            , "JuliaEditorSupport/julia-vim"
            , "lervag/vimtex"
            -- , { "chrisbra/csv.vim" , lazy = false }
-           -- , "hat0uma/csvview.nvim"
            -- My Plugins
            , "augustunderground/vim-skill"
            , "augustunderground/vim-mathmode"
