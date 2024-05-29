@@ -101,7 +101,8 @@ lazy.setup({ { "folke/which-key.nvim"
 		   , })
 
 local devicons        = require("nvim-web-devicons")
-local telescope       = require("telescope.builtin")
+local telescope       = require("telescope")
+local telescopebi     = require("telescope.builtin")
 local trouble         = require("trouble")
 local lualine         = require("lualine")
 local highlightcolors = require("nvim-highlight-colors")
@@ -238,11 +239,11 @@ vim.keymap.set("n", "<leader>df", "<Plug>(toggle-lsp-diag-off)", {})
 vim.keymap.set("n", "<leader>do", "<Plug>(toggle-lsp-diag-on)", {})
 
 vim.keymap.set("n", "<leader>$", ":call Toggle_math_mode()<CR>a", {})
-
-vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
-vim.keymap.set("n", "<leader>fg", telescope.live_grep, {})
-vim.keymap.set("n", "<leader>fb", telescope.buffers, {})
-vim.keymap.set("n", "<leader>fh", telescope.help_tags, {})
+       
+vim.keymap.set("n", "<leader>ff", telescopebi.find_files, {})
+vim.keymap.set("n", "<leader>fg", telescopebi.live_grep, {})
+vim.keymap.set("n", "<leader>fb", telescopebi.buffers, {})
+vim.keymap.set("n", "<leader>fh", telescopebi.help_tags, {})
 
 for _,k in pairs({"h","j","k","l"}) do
   vim.keymap.set("n", "<C-" .. k .. ">", ":wincmd " .. k .. "<CR>", { silent = true })
@@ -354,6 +355,9 @@ highlightcolors.setup({ render = "background"
 
 -- quickscope
 vim.g.qs_hi_priority = 1
+
+-- telescope
+telescope.setup({ defaults = { color_devicons = false } })
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
