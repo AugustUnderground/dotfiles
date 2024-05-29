@@ -125,7 +125,7 @@ lazy.setup({ { "folke/which-key.nvim"
                 end }
            , "JuliaEditorSupport/julia-vim"
            , "lervag/vimtex"
-           -- , { "chrisbra/csv.vim" , lazy = false }
+           , { "chrisbra/csv.vim", lazy = false }
            -- My Plugins
            , "augustunderground/vim-skill"
            , "augustunderground/vim-mathmode"
@@ -142,6 +142,7 @@ lazy.setup({ { "folke/which-key.nvim"
 local devicons        = require("nvim-web-devicons")
 local telescope       = require("telescope")
 local telescopebi     = require("telescope.builtin")
+local telescopepv     = require("telescope.previewers")
 local trouble         = require("trouble")
 local noice           = require("noice")
 local lualine         = require("lualine")
@@ -429,7 +430,13 @@ noice.setup({ lsp     = { override = { ["vim.lsp.util.convert_input_to_markdown_
 vim.g.qs_hi_priority = 1
 
 -- telescope
-telescope.setup({ defaults = { color_devicons = false } })
+telescope.setup({ defaults = { color_devicons = false 
+                             , buffer_previewer_maker = function(filepath, bufnr, opts)
+                                  opts = opts or {}
+                                  if filepath:match(".*%.csv") then opts.use_ft_detect = false end 
+                                  telescopepv.buffer_previewer_maker(filepath,bufnr,opts)
+                                end
+                             , } })
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
@@ -570,8 +577,6 @@ vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
                                     , pattern  = "GoyoLeave"
                                     , callback = function() require("lualine").hide({ unhide = true }) end
                                     , })
-
--- csv
 
 -- Color Scheme
 vim.cmd.colorscheme("nocolor")
