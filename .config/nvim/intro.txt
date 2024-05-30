@@ -1,0 +1,20 @@
+███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ 
+ ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒
+▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░
+▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ 
+▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒
+░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░
+░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░
+   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   
+         ░    ░  ░    ░ ░        ░   ░         ░   
+                                ░                  
+                 
+  type :help<Enter>         →   for help           
+  type :Lazy<Enter>         →   to update plugins  
+  type :checkhealth<Enter>  →   to optimize Nvim   
+
+  type :help news<Enter>    →   for recent changes           
+
+  press <leader>ff          →   to find files      
+  press <leader>ft          →   to open file tree  
+  type :e <filename>        →   to edit a file

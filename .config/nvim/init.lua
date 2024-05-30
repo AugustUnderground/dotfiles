@@ -1,10 +1,20 @@
+local io = require("io")
+local os = require("os")
 local vim = vim
 
+-- Read intro
+local intro = {}
+for line in io.lines(os.getenv("HOME") .. "/.config/nvim/intro.txt") do
+    table.insert(intro, line)
+end
+
+-- Setup Globals
 vim.g.mapleader          = " "
 vim.g.maplocalleader     = " "
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Initialize Plugin Management
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({ "git"
@@ -18,9 +28,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 local lazy = require("lazy")
 
--- Plugins
+-- Load Plugins
 lazy.setup({ { "folke/which-key.nvim"
-             , lazy  = true 
+             , lazy  = true
              , event = "VeryLazy"
              , opts  = { } }
            , { "folke/trouble.nvim"
@@ -51,13 +61,13 @@ lazy.setup({ { "folke/which-key.nvim"
                               , "nvim-tree/nvim-web-devicons" }
              , opts = { animation       = true
                       , insert_at_start = true
-                      , clickable       = true 
-                      , icons           = { filetype = { custom_colors = true } } } 
+                      , clickable       = true
+                      , icons           = { filetype = { custom_colors = true } } }
              , init = function() vim.g.barbar_auto_setup = false end }
            , { "nvim-tree/nvim-tree.lua" }
            , { "nvim-lualine/lualine.nvim"
              , dependencies = { "nvim-tree/nvim-web-devicons" } }
-           , { "unblevable/quick-scope" 
+           , { "unblevable/quick-scope"
              , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
              , lazy = false }
            , "brenoprata10/nvim-highlight-colors"
@@ -75,30 +85,10 @@ lazy.setup({ { "folke/which-key.nvim"
              , main = "ibl"
              , opts = {} }
            , { "Yoolayn/nvim-intro"
-             , config = { intro      = {
-                "███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ",
-                " ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
-                "▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░",
-                "▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ ",
-                "▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒",
-                "░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░",
-                "░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░",
-                "   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   ",
-                "         ░    ░  ░    ░ ░        ░   ░         ░   ",
-                "                                ░                  ",
-                "                                                   ",
-                "  type :checkhealth<Enter> ->   to optimize Nvim   ",
-                "  type :Lazy<Enter>        ->   to update plugins  ",
-                "  type :help<Enter>        ->   for help           ",
-                "                                                   ",
-                "  type :help news<Enter>   ->   for help           ",
-                "                                                   ",
-                "  press <leader>ff         ->   to find files      ",
-                "  press <leader>of         ->   to open file tree  ",
-                "                                                   ", }
+             , config = { intro      = intro
                         , color      = "#c0c0c0"
                         , scratch    = true
-                        , highlights = { ["<Enter>"]  = "#ffffff" 
+                        , highlights = { ["<Enter>"]  = "#ffffff"
                                        , ["<leader>"] = "#ffffff" } } }
            -- JuneGunn
 		   , "junegunn/vim-easy-align"
@@ -185,7 +175,7 @@ vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 -- Functions
 
 -- Highlight 80th column
-function toggle_80th_column()
+function Toggle80thColumn()
   if vim.o.cc == "80" then
     vim.opt.cc = "0"
   else
@@ -194,7 +184,7 @@ function toggle_80th_column()
 end
 
 -- Toggle Conceal Level
-function toggle_conceal_level()
+function ToggleConcealLevel()
   if vim.o.conceallevel == 0 then
     vim.opt_local.conceallevel = 2
   else
@@ -203,7 +193,7 @@ function toggle_conceal_level()
 end
 
 -- Open Terminal
-function open_terminal()
+function OpenTerminal()
   vim.cmd("belowright split")
   vim.cmd("resize -10")
   vim.cmd("term $SHELL")
@@ -222,9 +212,9 @@ end
 local opts      = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>s", ":set spell!<CR>", {})
-vim.keymap.set("n", "<F7>", ":lua toggle_conceal_level()<CR>", opts)
-vim.keymap.set("n", "<F8>", ":lua toggle_80th_column()<CR>", opts)
-vim.keymap.set("n", "<F9>", ":lua open_terminal()<CR>", opts)
+vim.keymap.set("n", "<F7>", ":lua ToggleConcealLevel()<CR>", opts)
+vim.keymap.set("n", "<F8>", ":lua Toggle80thColumn()<CR>", opts)
+vim.keymap.set("n", "<F9>", ":lua OpenTerminal()<CR>", opts)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 
 -- vim.keymap.set("n", "<leader>cp", ":r!colorpicker --one-short --short<CR>", {noremap = true})
@@ -269,8 +259,8 @@ vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
                                 vim.keymap.set("i", "\\ss", "\\[ss]")
                              end })
 
-arrows = {"<up>", "<down>", "<left>", "<right>"}
-modes  = {"n", "i", "v"}
+local arrows = {"<up>", "<down>", "<left>", "<right>"}
+local modes  = {"n", "i", "v"}
 for _,mode in pairs(modes) do
   for _,arrow in pairs(arrows) do
     vim.keymap.set(mode, arrow, "<nop>")
@@ -284,7 +274,7 @@ vim.keymap.set("n", "<leader>df", "<Plug>(toggle-lsp-diag-off)", {})
 vim.keymap.set("n", "<leader>do", "<Plug>(toggle-lsp-diag-on)", {})
 
 vim.keymap.set("n", "<leader>$", ":call Toggle_math_mode()<CR>a", {})
-       
+
 vim.keymap.set("n", "<leader>ff", telescopebi.find_files, {})
 vim.keymap.set("n", "<leader>fg", telescopebi.live_grep, {})
 vim.keymap.set("n", "<leader>fb", telescopebi.buffers, {})
@@ -316,7 +306,7 @@ vim.keymap.set("n", "<C-0>", "<cmd>BufferLast<CR>", opts)
 vim.keymap.set('n', '<A-c>', '<cmd>BufferClose<CR>', opts)
 vim.keymap.set("n", "<A-p>", "<cmd>BufferPick<CR>", opts)
 
-vim.keymap.set("n", "<leader>of", "<cmd>NvimTreeOpen<CR>", opts)
+vim.keymap.set("n", "<leader>ft", "<cmd>NvimTreeOpen<CR>", opts)
 
 vim.keymap.set("n", "<leader>xx", function() trouble.toggle() end)
 vim.keymap.set("n", "<leader>xw", function() trouble.toggle("workspace_diagnostics") end)
@@ -339,8 +329,8 @@ vim.api.nvim_create_autocmd( "LspAttach"
                            , { desc = "LSP actions"
                              , callback = function(event)
                                   local bufmap = function(mode, lhs, rhs)
-                                    local opts   = {buffer = event.buf}
-                                    vim.keymap.set(mode, lhs, rhs, opts)
+                                    local kopts   = {buffer = event.buf}
+                                    vim.keymap.set(mode, lhs, rhs, kopts)
                                   end
                                   -- bufmap("i", "<C-Space>", "<C-x><C-o>")
                                   bufmap("n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<cr>")
@@ -380,7 +370,7 @@ vim.g.haskell_indent_case_alternative = 1
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
 -- Plugin Setup
-devicons.setup({ color_icons = false 
+devicons.setup({ color_icons = false
                , default     = true
                , strict      = true })
 
@@ -430,11 +420,11 @@ noice.setup({ lsp     = { override = { ["vim.lsp.util.convert_input_to_markdown_
 vim.g.qs_hi_priority = 1
 
 -- telescope
-telescope.setup({ defaults = { color_devicons = false 
-                             , buffer_previewer_maker = function(filepath, bufnr, opts)
-                                  opts = opts or {}
-                                  if filepath:match(".*%.csv") then opts.use_ft_detect = false end 
-                                  telescopepv.buffer_previewer_maker(filepath,bufnr,opts)
+telescope.setup({ defaults = { color_devicons = false
+                             , buffer_previewer_maker = function(fn, bn, op)
+                                  op = op or {}
+                                  if fn:match(".*%.csv") then opts.use_ft_detect = false end
+                                  telescopepv.buffer_previewer_maker(fn,bn,op)
                                 end
                              , } })
 
@@ -442,7 +432,7 @@ telescope.setup({ defaults = { color_devicons = false
 lualine.setup({ options           = { icons_enabled        = true
                                     , theme                = "auto"
                                     , component_separators = { left = "", right = ""}
-                                    , section_separators   = { left = "", right = ""} 
+                                    , section_separators   = { left = "", right = ""}
                                     , disabled_filetypes   = { statusline = {'NvimTree'}
                                                              , winbar     = {'NvimTree'}
                                                              , }
@@ -476,7 +466,7 @@ lualine.setup({ options           = { icons_enabled        = true
 -- nvimtree
 nvimtree.setup({ sort = { sorter = "case_sensitive" }
                , view = { width = 30 }
-               , renderer = { group_empty = true 
+               , renderer = { group_empty = true
                             , icons = { web_devicons = { file = { enable = true
                                                                 , color  = false }
                                                        , folder = { enable = false
@@ -558,6 +548,7 @@ vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {fo
 local capabilities = cmplsp.default_capabilities()
 lsp["texlab"].setup({ capabilities = capabilities })
 lsp["hls"].setup({ capabilities = capabilities })
+lsp["lua_ls"].setup({ capabilities = capabilities })
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
