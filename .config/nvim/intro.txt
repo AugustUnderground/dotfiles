@@ -10,7 +10,7 @@
                                 ░                  
                  
   type :help<Enter>         →   for help           
-  type :Lazy<Enter>         →   to update plugins  
+  type :Lazy<Enter>         →   for plugins
   type :checkhealth<Enter>  →   to optimize Nvim   
 
   type :help news<Enter>    →   for recent changes           

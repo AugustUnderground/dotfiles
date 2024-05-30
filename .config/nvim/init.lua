@@ -88,6 +88,9 @@ lazy.setup({ { "folke/which-key.nvim"
              , config = { intro      = intro
                         , color      = "#c0c0c0"
                         , scratch    = true
+                        , callback   = function()
+                            vim.opt_local.wrap = false
+                          end
                         , highlights = { ["<Enter>"]  = "#ffffff"
                                        , ["<leader>"] = "#ffffff" } } }
            -- JuneGunn
@@ -389,7 +392,7 @@ highlightcolors.setup({ render = "background"
 	                  , enable_tailwind = false })
 
 -- cursorword
-vim.g.cursorword_disable_filetypes = { "tex", "NvimTree", "markdown", "roff" }
+vim.g.cursorword_disable_filetypes = { "tex", "NvimTree", "markdown", "roff", "text" }
 vim.g.cursorword_min_width         = 3
 vim.g.cursorword_max_width         = 50
 
