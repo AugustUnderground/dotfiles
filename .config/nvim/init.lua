@@ -90,6 +90,7 @@ lazy.setup({ { "folke/which-key.nvim"
                         , scratch    = true
                         , callback   = function()
                             vim.opt_local.wrap = false
+                            vim.opt_local.cc   = "0"
                           end
                         , highlights = { ["<Enter>"]  = "#ffffff"
                                        , ["<leader>"] = "#ffffff" } } }
