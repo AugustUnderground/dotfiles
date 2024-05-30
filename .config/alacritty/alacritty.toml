@@ -1,117 +1,116 @@
 [colors.bright]
-black = "#767474"
-blue = "#0087EB"
-cyan = "#22BFB7"
-green = "#0FBD72"
+black   = "#767474"
+blue    = "#0087EB"
+cyan    = "#22BFB7"
+green   = "#0FBD72"
 magenta = "#9F03AD"
-red = "#A10028"
-white = "#363434"
-yellow = "#FFBA25"
+red     = "#A10028"
+white   = "#363434"
+yellow  = "#FFBA25"
 
 [colors.normal]
-black = "#060404"
-blue = "#0077DB"
-cyan = "#20B2AA"
-green = "#0EAD69"
+black   = "#060404"
+blue    = "#0077DB"
+cyan    = "#20B2AA"
+green   = "#0EAD69"
 magenta = "#BD05CB"
-red = "#8F0024"
-white = "#FFF6F6"
-yellow = "#FFB20F"
+red     = "#8F0024"
+white   = "#FFF6F6"
+yellow  = "#FFB20F"
 
 [colors.primary]
-background = "#060404"
-foreground = "#FFF6F6"
+background = "#060606"
+foreground = "#F6F6F6"
 
 [cursor]
-style = "Block"
+style            = "Block"
 unfocused_hollow = true
 
 [env]
 TERM = "alacritty"
 
 [font]
-size = 11.0
-
-[font.bold]
-family = "GoMono Nerd Font Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "GoMono Nerd Font Mono"
-style = "Bold Italic"
-
-[font.glyph_offset]
-x = -1
-y = 0
-
-[font.italic]
-family = "GoMono Nerd Font Mono"
-style = "Italic"
-
-[font.normal]
-family = "GoMono Nerd Font Mono"
-style = "Regular"
+size = 10.0
 
 [font.offset]
-x = -1
+x = 0
 y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "Maple Mono NF"
+style  = "Regular"
+
+[font.bold]
+family = "Maple Mono NF"
+style  = "Bold"
+
+[font.bold_italic]
+family = "Maple Mono NF"
+style  = "BoldItalic"
+
+[font.italic]
+family = "Maple Mono NF"
+style  = "Italic"
 
 [[keyboard.bindings]]
 action = "Paste"
-key = "V"
-mods = "Control|Shift"
+key    = "V"
+mods   = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "Copy"
-key = "C"
-mods = "Control|Shift"
+key    = "C"
+mods   = "Control|Shift"
 
 [[keyboard.bindings]]
 action = "PasteSelection"
-key = "Insert"
-mods = "Shift"
+key    = "Insert"
+mods   = "Shift"
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
-key = "Key0"
-mods = "Control"
+key    = "Key0"
+mods   = "Control"
 
 [[keyboard.bindings]]
 action = "IncreaseFontSize"
-key = "Equals"
-mods = "Control"
+key    = "Equals"
+mods   = "Control"
 
 [[keyboard.bindings]]
 action = "IncreaseFontSize"
-key = "Plus"
-mods = "Control"
+key    = "Plus"
+mods   = "Control"
 
 [[keyboard.bindings]]
 action = "DecreaseFontSize"
-key = "Minus"
-mods = "Control"
+key    = "Minus"
+mods   = "Control"
 
 [mouse]
 hide_when_typing = false
 
 # [mouse.hints.launcher]
-# args = []
+# args    = []
 # program = "xdg-open"
 
 [window]
-decorations = "full"
+decorations     = "full"
 dynamic_padding = true
+startup_mode    = "Windowed"
 #gtk_theme_variant = "None"
-#history = 10000
-#multiplier = 2
-startup_mode = "Windowed"
+#history           = 10000
+#multiplier        = 2
+#opacity           = 1.0
 
 [window.class]
-general = "Alacritty"
+general  = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
 x = 0
 y = 0
-#"window.opacity" = 1.0
-
