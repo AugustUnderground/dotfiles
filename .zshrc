@@ -5,22 +5,9 @@ PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "${PWD/#$HOME/\~}"'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Plugins
-function load_plugin()
-{
-    plug=$1
-    [ -d "$ZSH_CFG/${plug%/*}" ] && source "$ZSH_CFG/$plug"
-}
-
-ZSH_PLUGINS=( "zsh-completions/zsh-completions.plugin.zsh"
-              "zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-              "fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-              "zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-              "zsh-titles/titles.plugin.zsh"
-              "zsh-thefuck/zsh-thefuck.plugin.zsh"
-            )
-              # "zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-
-for plugin in $ZSH_PLUGINS; do load_plugin $plugin; done
+for plugin in $(ls $ZSH_CFG); do
+  source "$(ls $ZSH_CFG/$plugin/*.plugin.zsh)"
+done
 
 # Completion
 autoload -U compinit && compinit
@@ -71,9 +58,9 @@ function +vi-git-st() {
 function +vi-git-untracked() {
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
         git status --porcelain | grep '??' &> /dev/null ; then
-        hook_com[misc]+=" %F{white}ﱤ"
+        hook_com[misc]+=" %F{white}"
     else
-        hook_com[misc]+=" %F{white}ﱣ"
+        hook_com[misc]+=" %F{white}"
     fi
 
 }
