@@ -1,20 +1,18 @@
-███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ 
- ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒
-▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░
-▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██ 
-▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒
-░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░
-░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░
-   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░   
-         ░    ░  ░    ░ ░        ░   ░         ░   
-                                ░                  
-                 
-  type :help<Enter>         →   for help           
-  type :Lazy<Enter>         →   for plugins
-  type :checkhealth<Enter>  →   to optimize Nvim   
+                                             
+      ███████████           █████      ██
+     ███████████             █████ 
+     ████████████████ ███████████ ███   ███████
+    ████████████████ ████████████ █████ ██████████████
+   ██████████████    █████████████ █████ █████ ████ █████
+ ██████████████████████████████████ █████ █████ ████ █████
+██████  ███ █████████████████ ████ █████ █████ ████ ██████
 
-  type :help news<Enter>    →   for recent changes           
+            type :help<Enter>         →   for help
+            type :Lazy<Enter>         →   for plugins
+            type :checkhealth<Enter>  →   to optimize NeoVim
 
-  press <leader>ff          →   to find files      
-  press <leader>ft          →   to open file tree  
-  type :e <filename>        →   to edit a file
+            type :help news<Enter>    →   for recent changes
+
+            press <leader>ff          →   to find files
+            press <leader>ft          →   to open file tree
+            type :e <filename>        →   to edit <filename>
