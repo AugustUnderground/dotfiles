@@ -42,7 +42,7 @@ y = 0
 
 [font.normal]
 family = "Maple Mono NF"
-style  = "Regular"
+style  = "SemiBold"
 
 [font.bold]
 family = "Maple Mono NF"
