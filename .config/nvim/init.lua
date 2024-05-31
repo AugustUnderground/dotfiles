@@ -470,7 +470,8 @@ lualine.setup({ options           = { icons_enabled        = true
 
 -- nvimtree
 nvimtree.setup({ sort = { sorter = "case_sensitive" }
-               , view = { width = 30 }
+               , view = { width = 30
+                        , preserve_window_proportions = true }
                , renderer = { group_empty = true
                             , icons = { web_devicons = { file = { enable = true
                                                                 , color  = false }
