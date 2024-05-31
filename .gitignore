@@ -21,5 +21,6 @@
 .mlterm/challenge
 .mlterm/msg.log
 .mlterm/*.six
+.config/nvim/lazy-lock.json
 
 .DS_Store
