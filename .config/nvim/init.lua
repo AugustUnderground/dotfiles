@@ -140,7 +140,7 @@ local telescopepv     = require("telescope.previewers")
 local trouble         = require("trouble")
 local noice           = require("noice")
 local lualine         = require("lualine")
--- local highlightcolors = require("nvim-highlight-colors")
+local highlightcolors = require("nvim-highlight-colors")
 local autoclose       = require("autoclose")
 local hlsearch        = require("hlsearch")
 local lsp             = require("lspconfig")
@@ -350,7 +350,7 @@ vim.api.nvim_create_autocmd( "LspAttach"
                                   bufmap("n", "<leader>ds", "<cmd>lua vim.lsp.diagnostic.open_float()<cr>")
                                 end } )
 
--- Languages
+-- haskell 
 vim.g.haskell_enable_quantification   = 1
 vim.g.haskell_enable_recursivedo      = 1
 vim.g.haskell_enable_arrowsyntax      = 1
@@ -371,6 +371,7 @@ vim.g.haskell_indent_in               = 1
 vim.g.haskell_indent_guard            = 4
 vim.g.haskell_indent_case_alternative = 1
 
+-- repl
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
 -- Plugin Setup
@@ -384,13 +385,13 @@ diagnostics.init()
 ibl.setup()
 
 -- highlightcolors
--- highlightcolors.setup({ render              = "background"
---                       , enable_hex          = true
---                       , enable_rgb          = true
---                       , enable_hsl          = true
---                       , enable_var_usage    = true
---                       , enable_named_colors = true
---                       , enable_tailwind     = false })
+highlightcolors.setup({ render              = "background"
+                      , enable_hex          = true
+                      , enable_rgb          = true
+                      , enable_hsl          = true
+                      , enable_var_usage    = true
+                      , enable_named_colors = true
+                      , enable_tailwind     = false })
 
 -- cursorword
 vim.g.cursorword_disable_filetypes = { "tex", "NvimTree", "markdown", "roff", "text" }
