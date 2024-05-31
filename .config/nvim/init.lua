@@ -18,12 +18,12 @@ vim.g.loaded_netrwPlugin = 1
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({ "git"
-		, "clone"
-		, "--filter=blob:none"
-		, "https://github.com/folke/lazy.nvim.git"
-		, "--branch=stable" -- latest stable release
-		, lazypath
-		, })
+        , "clone"
+        , "--filter=blob:none"
+        , "https://github.com/folke/lazy.nvim.git"
+        , "--branch=stable" -- latest stable release
+        , lazypath
+        , })
 end
 vim.opt.rtp:prepend(lazypath)
 local lazy = require("lazy")
@@ -70,15 +70,15 @@ lazy.setup({ { "folke/which-key.nvim"
            , { "unblevable/quick-scope"
              , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
              , lazy = false }
-           , "brenoprata10/nvim-highlight-colors"
+           , { "brenoprata10/nvim-highlight-colors" }
            , "m4xshen/autoclose.nvim"
            , "dhruvasagar/vim-table-mode"
            , "jbyuki/venn.nvim"
            , { "nvimdev/hlsearch.nvim"
              , event = "BufRead" }
            , { "L3MON4D3/LuaSnip"
-		     , version = "v2.*"
-		     , build = "make install_jsregexp" }
+             , version = "v2.*"
+             , build = "make install_jsregexp" }
            , "xiyaowong/nvim-cursorword"
            , "karb94/neoscroll.nvim"
            , { "lukas-reineke/indent-blankline.nvim"
@@ -95,8 +95,8 @@ lazy.setup({ { "folke/which-key.nvim"
                         , highlights = { ["<Enter>"]  = "#ffffff"
                                        , ["<leader>"] = "#ffffff" } } }
            -- JuneGunn
-		   , "junegunn/vim-easy-align"
-		   , "junegunn/fzf.vim"
+           , "junegunn/vim-easy-align"
+           , "junegunn/fzf.vim"
            , "junegunn/goyo.vim"
            -- T. Pope
            , "tpope/vim-repeat"
@@ -131,7 +131,7 @@ lazy.setup({ { "folke/which-key.nvim"
            -- Color Schemes
            , "rktjmp/lush.nvim"
            , "aditya-azad/candle-grey"
-		   , })
+           , })
 
 local devicons        = require("nvim-web-devicons")
 local telescope       = require("telescope")
@@ -140,7 +140,7 @@ local telescopepv     = require("telescope.previewers")
 local trouble         = require("trouble")
 local noice           = require("noice")
 local lualine         = require("lualine")
-local highlightcolors = require("nvim-highlight-colors")
+-- local highlightcolors = require("nvim-highlight-colors")
 local autoclose       = require("autoclose")
 local hlsearch        = require("hlsearch")
 local lsp             = require("lspconfig")
@@ -383,14 +383,14 @@ hlsearch.setup()
 diagnostics.init()
 ibl.setup()
 
--- Color Highlights
-highlightcolors.setup({ render = "background"
-	                  , enable_hex = true
-	                  , enable_rgb = true
-	                  , enable_hsl = true
-	                  , enable_var_usage = true
-	                  , enable_named_colors = true
-	                  , enable_tailwind = false })
+-- highlightcolors
+-- highlightcolors.setup({ render              = "background"
+--                       , enable_hex          = true
+--                       , enable_rgb          = true
+--                       , enable_hsl          = true
+--                       , enable_var_usage    = true
+--                       , enable_named_colors = true
+--                       , enable_tailwind     = false })
 
 -- cursorword
 vim.g.cursorword_disable_filetypes = { "tex", "NvimTree", "markdown", "roff", "text" }
@@ -477,7 +477,7 @@ nvimtree.setup({ sort = { sorter = "case_sensitive" }
                                                                   , color = false }
                                                        , }
                                       , }
-			    , }
+                , }
                , filters = { dotfiles = true } })
 
 -- venn
