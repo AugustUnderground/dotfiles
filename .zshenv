@@ -58,7 +58,7 @@ else
 fi
 
 # dmenu Theme
-export DMENU_THEME="-fn 'GoMono Nerd Font:size=12' \
+export DMENU_THEME="-fn 'Maple Mono NF:size=12' \
                     -nb '#060404' \
                     -nf '#FFF6F6' \
                     -sb '#222222' \
