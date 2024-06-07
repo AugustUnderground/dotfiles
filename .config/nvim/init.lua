@@ -18,12 +18,12 @@ vim.g.loaded_netrwPlugin = 1
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({ "git"
-        , "clone"
-        , "--filter=blob:none"
-        , "https://github.com/folke/lazy.nvim.git"
-        , "--branch=stable" -- latest stable release
-        , lazypath
-        , })
+                , "clone"
+                , "--filter=blob:none"
+                , "https://github.com/folke/lazy.nvim.git"
+                , "--branch=stable" -- latest stable release
+                , lazypath
+                , })
 end
 vim.opt.rtp:prepend(lazypath)
 local lazy = require("lazy")
@@ -127,7 +127,7 @@ lazy.setup({ { "folke/which-key.nvim"
            , "augustunderground/coconut.vim"
            , "augustunderground/spectre.vim"
            , "augustunderground/nocolor.nvim"
-           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", lazy = true }
+           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", priority = 1000 }
            -- Color Schemes
            , "rktjmp/lush.nvim"
            , "aditya-azad/candle-grey"
@@ -153,6 +153,7 @@ local cmplsp          = require("cmp_nvim_lsp")
 local lspkind         = require("lspkind")
 local neoscroll       = require("neoscroll")
 local ibl             = require("ibl")
+local nocolor         = require("nocolor.lualine")
 
 -- Settings
 vim.o.timeout          = true
@@ -435,7 +436,7 @@ telescope.setup({ defaults = { color_devicons = false
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
-                                    , theme                = "auto"
+                                    , theme                = nocolor -- "auto"
                                     , component_separators = { left = "", right = ""}
                                     , section_separators   = { left = "", right = ""}
                                     , disabled_filetypes   = { statusline = {'NvimTree'}
