@@ -436,7 +436,7 @@ telescope.setup({ defaults = { color_devicons = false
 
 -- lualine
 lualine.setup({ options           = { icons_enabled        = true
-                                    , theme                = nocolor -- "auto"
+                                    , theme                = nocolor
                                     , component_separators = { left = "", right = ""}
                                     , section_separators   = { left = "", right = ""}
                                     , disabled_filetypes   = { statusline = {'NvimTree'}
