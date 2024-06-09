@@ -127,7 +127,7 @@ lazy.setup({ { "folke/which-key.nvim"
            , "augustunderground/coconut.vim"
            , "augustunderground/spectre.vim"
            , "augustunderground/nocolor.nvim"
-           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim", priority = 1000 }
+           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim" }
            -- Color Schemes
            , "rktjmp/lush.nvim"
            , "aditya-azad/candle-grey"
