@@ -101,7 +101,7 @@ lazy.setup({ { "folke/which-key.nvim"
            -- T. Pope
            , "tpope/vim-repeat"
            , "tpope/vim-surround"
-           -- Languages
+           -- Languages / Syntax
            , "neovim/nvim-lspconfig"
            , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
            , "hrsh7th/cmp-nvim-lsp"
@@ -120,6 +120,7 @@ lazy.setup({ { "folke/which-key.nvim"
            , "JuliaEditorSupport/julia-vim"
            , "lervag/vimtex"
            , { "chrisbra/csv.vim", lazy = false }
+           , "SergioBonatto/bend-vim"
            -- My Plugins
            , "augustunderground/vim-skill"
            , "augustunderground/vim-mathmode"
@@ -176,6 +177,12 @@ vim.opt.cc             = "80"
 
 vim.opt_local.spell.spelllang = "en_us"
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
+
+-- Languages / Syntax
+vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
+                           , { pattern  = "*.bend", command = "set filetype=bend" })
+vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
+                           , { pattern  = "*.bend", command = "set syntax=bend" })
 
 -- Functions
 
