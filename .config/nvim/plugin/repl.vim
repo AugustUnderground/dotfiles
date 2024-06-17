@@ -196,6 +196,8 @@ function CompileRun()
         execute "!python -m dg %"
     elseif &filetype == "python"
         execute "!python %"
+    elseif &filetype == "bend"
+        execute "!bend run-cu %"
     elseif &filetype == "octave" || &filetype == "matlab"
         execute "!term [ $(command -v matlab) ] && matlab -nosplash -nodesktop % || octave --no-gui %"
     elseif &filetype == "spice"
