@@ -155,6 +155,7 @@ local lspkind         = require("lspkind")
 local neoscroll       = require("neoscroll")
 local ibl             = require("ibl")
 local nocolor         = require("nocolor.lualine")
+local repl            = require("repl")
 
 -- Settings
 vim.o.timeout          = true
@@ -180,9 +181,11 @@ vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
 -- Languages / Syntax
 vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
-                           , { pattern  = "*.bend", command = "set filetype=bend" })
-vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
-                           , { pattern  = "*.bend", command = "set syntax=bend" })
+                           , { pattern  = "*.bend"
+                             , callback = function()
+                               vim.bo.filetype = "bend"
+                               vim.bo.syntax   = "bend"
+                             end })
 
 -- Functions
 
@@ -331,11 +334,11 @@ vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references")
 -- vim.keymap.set({"i", "s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
 
-vim.keymap.set("n", "<F11>", ":call CompileRun()<CR>", {})
-vim.keymap.set("n", "<F12>", ":call InteractiveLoad()<CR>", {})
-vim.keymap.set("n", "<leader>l", ":ReplSendLine<CR>", {silent = true})
-vim.keymap.set("n", "<leader>r", ":ReplSendRegion<CR>", {silent = true})
-vim.keymap.set("n", "<leader>R", ":ReplReloadFile<CR>", {silent = true})
+vim.keymap.set("n", "<F11>",     repl.compile_and_run, {})
+vim.keymap.set("n", "<F12>",     repl.start_repl, {})
+vim.keymap.set("n", "<leader>l", repl.repl_send_line, {silent = true})
+vim.keymap.set("n", "<leader>r", repl.repl_send_region, {silent = true})
+vim.keymap.set("n", "<leader>R", repl.repl_reload_file, {silent = true})
 
 vim.api.nvim_create_autocmd( "LspAttach"
                            , { desc = "LSP actions"
@@ -580,7 +583,9 @@ vim.api.nvim_create_autocmd("User", { desc     = "Hide lualine on goyo enter"
 vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
                                     , group    = goyo_group
                                     , pattern  = "GoyoLeave"
-                                    , callback = function() require("lualine").hide({ unhide = true }) end
+                                    , callback = function() 
+                                          require("lualine").hide({ unhide = true }) 
+                                      end
                                     , })
 
 -- Color Scheme
