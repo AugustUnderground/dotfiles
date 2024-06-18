@@ -180,7 +180,7 @@ vim.opt_local.spell.spelllang = "en_us"
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
 -- Languages / Syntax
-vim.api.nvim_create_autocmd( { "BufNewFile", "BufRead" }
+vim.api.nvim_create_autocmd( { "BufRead", "BufNewFile" }
                            , { pattern  = "*.bend"
                              , callback = function()
                                vim.bo.filetype = "bend"
