@@ -1,4 +1,5 @@
 local M = {}
+local vim = vim
 
 local roff_target  = "pdf"
 local roff_image   = false
