@@ -84,7 +84,7 @@ lazy.setup({ { "folke/which-key.nvim"
            , { "lukas-reineke/indent-blankline.nvim"
              , main = "ibl"
              , opts = {} }
-           , { "Yoolayn/nvim-intro"
+           , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
              , config = { intro      = intro
                         , color      = "#c0c0c0"
                         , scratch    = true
@@ -96,7 +96,7 @@ lazy.setup({ { "folke/which-key.nvim"
                                        , ["<leader>"] = "#ffffff" } } }
            -- JuneGunn
            , "junegunn/vim-easy-align"
-           , "junegunn/fzf.vim"
+           , { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" }
            , "junegunn/goyo.vim"
            -- T. Pope
            , "tpope/vim-repeat"
@@ -111,6 +111,9 @@ lazy.setup({ { "folke/which-key.nvim"
            , "petertriho/cmp-git"
            , "hrsh7th/nvim-cmp"
            , "neovimhaskell/haskell-vim"
+           , { "mrcjkb/haskell-tools.nvim"
+             , version = "^3"
+             , lazy    = false }
            , "monkoose/fzf-hoogle.vim"
            , "hasufell/ghcup.vim"
            , { "mlochbaum/BQN", ft = "bqn"
@@ -131,7 +134,6 @@ lazy.setup({ { "folke/which-key.nvim"
            -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim" }
            -- Color Schemes
            , "rktjmp/lush.nvim"
-           , "aditya-azad/candle-grey"
            , })
 
 local devicons        = require("nvim-web-devicons")
@@ -156,6 +158,7 @@ local neoscroll       = require("neoscroll")
 local ibl             = require("ibl")
 local nocolor         = require("nocolor.lualine")
 local repl            = require("repl")
+local haskell         = require('haskell-tools')
 
 -- Settings
 vim.o.timeout          = true
@@ -224,7 +227,9 @@ function OpenTerminal()
 end
 
 -- Keymaps
-local opts      = { noremap = true, silent = true }
+local bufnr   = vim.api.nvim_get_current_buf()
+local opts    = { noremap = true, silent = true }
+local hstOpts = { noremap = true, silent = true, buffer = bufnr }
 
 vim.keymap.set("n", "<leader>s", ":set spell!<CR>", {})
 vim.keymap.set("n", "<F7>", ":lua ToggleConcealLevel()<CR>", opts)
@@ -340,6 +345,9 @@ vim.keymap.set("n", "<leader>l", repl.repl_send_line, {silent = true})
 vim.keymap.set("n", "<leader>r", repl.repl_send_region, {silent = true})
 vim.keymap.set("n", "<leader>R", repl.repl_reload_file, {silent = true})
 
+vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, hstOpts)
+vim.keymap.set("n", "<leader>hs", haskell.hoogle.hoogle_signature, hstOpts)
+
 vim.api.nvim_create_autocmd( "LspAttach"
                            , { desc = "LSP actions"
                              , callback = function(event)
@@ -382,7 +390,7 @@ vim.g.haskell_indent_in               = 1
 vim.g.haskell_indent_guard            = 4
 vim.g.haskell_indent_case_alternative = 1
 
--- repl
+-- SKILL
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
 -- Plugin Setup
@@ -490,7 +498,7 @@ nvimtree.setup({ sort = { sorter = "case_sensitive" }
                                                                   , color = false }
                                                        , }
                                       , }
-                , }
+                            , }
                , filters = { dotfiles = true } })
 
 -- venn
@@ -560,11 +568,12 @@ cmp.setup.cmdline(":", { mapping  = cmp.mapping.preset.cmdline()
 
 -- lsp config
 vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.disable()
 vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})")
 
 local capabilities = cmplsp.default_capabilities()
 lsp["texlab"].setup({ capabilities = capabilities })
-lsp["hls"].setup({ capabilities = capabilities })
+-- lsp["hls"].setup({ capabilities = capabilities })
 lsp["lua_ls"].setup({ capabilities = capabilities })
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
@@ -578,13 +587,15 @@ local goyo_group = vim.api.nvim_create_augroup("GoyoGroup", { clear = true })
 vim.api.nvim_create_autocmd("User", { desc     = "Hide lualine on goyo enter"
                                     , group    = goyo_group
                                     , pattern  = "GoyoEnter"
-                                    , callback = function() require("lualine").hide() end
+                                    , callback = function()
+                                        require("lualine").hide()
+                                      end
                                     , })
 vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
                                     , group    = goyo_group
                                     , pattern  = "GoyoLeave"
-                                    , callback = function() 
-                                          require("lualine").hide({ unhide = true }) 
+                                    , callback = function()
+                                        require("lualine").hide({ unhide = true })
                                       end
                                     , })
 
