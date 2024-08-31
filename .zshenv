@@ -16,6 +16,10 @@ export PATH=$HOME/.luarocks/bin:$PATH           # Lua
 export PATH=$HOME/.nimble/bin:$PATH             # nim
 export PATH=$HOME/Library/Python/3.10/bin:$PATH # Python on MacOS
 
+if [ "$(uname)" = "Darwin" ]; then
+    export PATH=/opt/homebrew/bin:$PATH
+fi
+
 # History
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=100000

@@ -29,112 +29,126 @@ vim.opt.rtp:prepend(lazypath)
 local lazy = require("lazy")
 
 -- Load Plugins
-lazy.setup({ { "folke/which-key.nvim"
-             , lazy  = true
-             , event = "VeryLazy"
-             , opts  = { } }
-           , { "folke/trouble.nvim"
-             , opts         = { signs = { error       = ""
-                                        , warning     = ""
-                                        , hint        = ""
-                                        , information = ""
-                                        , other       = "" } }
-             , dependencies = { "nvim-tree/nvim-web-devicons" } }
-           , { "folke/noice.nvim"
-             , event = "VeryLazy"
-             , opts = { }
-             , dependencies = { "MunifTanjim/nui.nvim"
-                              , "rcarriga/nvim-notify" }
-             , }
-           , "godlygeek/tabular"
-           , "nvim-tree/nvim-web-devicons"
-           , "nvim-lua/plenary.nvim"
-           , "MunifTanjim/nui.nvim"
-           , "rcarriga/nvim-notify"
-           , "lewis6991/gitsigns.nvim"
-           , "onsails/lspkind.nvim"
-           , { "nvim-telescope/telescope.nvim"
-             , branch       = "0.1.x"
-             , dependencies = { 'nvim-lua/plenary.nvim' } }
-           , { "romgrk/barbar.nvim"
-             , dependencies = { "lewis6991/gitsigns.nvim"
-                              , "nvim-tree/nvim-web-devicons" }
-             , opts = { animation       = true
-                      , insert_at_start = true
-                      , clickable       = true
-                      , icons           = { filetype = { custom_colors = true } } }
-             , init = function() vim.g.barbar_auto_setup = false end }
-           , { "nvim-tree/nvim-tree.lua" }
-           , { "nvim-lualine/lualine.nvim"
-             , dependencies = { "nvim-tree/nvim-web-devicons" } }
-           , { "unblevable/quick-scope"
-             , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
-             , lazy = false }
-           , { "brenoprata10/nvim-highlight-colors" }
-           , "m4xshen/autoclose.nvim"
-           , "dhruvasagar/vim-table-mode"
-           , "jbyuki/venn.nvim"
-           , { "nvimdev/hlsearch.nvim"
-             , event = "BufRead" }
-           , { "L3MON4D3/LuaSnip"
-             , version = "v2.*"
-             , build = "make install_jsregexp" }
-           , "xiyaowong/nvim-cursorword"
-           , "karb94/neoscroll.nvim"
-           , { "lukas-reineke/indent-blankline.nvim"
-             , main = "ibl"
-             , opts = {} }
-           , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
-             , config = { intro      = intro
-                        , color      = "#c0c0c0"
-                        , scratch    = true
-                        , callback   = function()
-                            vim.opt_local.wrap = false
-                            vim.opt_local.cc   = "0"
-                          end
-                        , highlights = { ["<Enter>"]  = "#ffffff"
-                                       , ["<leader>"] = "#ffffff" } } }
-           -- JuneGunn
-           , "junegunn/vim-easy-align"
-           , { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" }
-           , "junegunn/goyo.vim"
-           -- T. Pope
-           , "tpope/vim-repeat"
-           , "tpope/vim-surround"
-           -- Languages / Syntax
-           , "neovim/nvim-lspconfig"
-           , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
-           , "hrsh7th/cmp-nvim-lsp"
-           , "hrsh7th/cmp-buffer"
-           , "hrsh7th/cmp-path"
-           , "hrsh7th/cmp-cmdline"
-           , "petertriho/cmp-git"
-           , "hrsh7th/nvim-cmp"
-           , "neovimhaskell/haskell-vim"
-           , { "mrcjkb/haskell-tools.nvim"
-             , version = "^3"
-             , lazy    = false }
-           , "monkoose/fzf-hoogle.vim"
-           , "hasufell/ghcup.vim"
-           , { "mlochbaum/BQN", ft = "bqn"
-             , config = function(plugin)
-                  vim.opt.rtp:append(plugin.dir .. "/editors/vim")
-                end }
-           , "JuliaEditorSupport/julia-vim"
-           , "lervag/vimtex"
-           , { "chrisbra/csv.vim", lazy = false }
-           , "SergioBonatto/bend-vim"
-           -- My Plugins
-           , "augustunderground/vim-skill"
-           , "augustunderground/vim-mathmode"
-           , "augustunderground/vim-hy"
-           , "augustunderground/coconut.vim"
-           , "augustunderground/spectre.vim"
-           , "augustunderground/nocolor.nvim"
-           -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim" }
-           -- Color Schemes
-           , "rktjmp/lush.nvim"
-           , })
+local plugins = { { "folke/which-key.nvim"
+                  , lazy  = true
+                  , event = "VeryLazy"
+                  , opts  = { } }
+                , { "folke/trouble.nvim"
+                  , opts         = { signs = { error       = ""
+                                             , warning     = ""
+                                             , hint        = ""
+                                             , information = ""
+                                             , other       = "" } }
+                  , dependencies = { "nvim-tree/nvim-web-devicons" } }
+                , { "folke/noice.nvim"
+                  , event = "VeryLazy"
+                  , opts = { }
+                  , dependencies = { "MunifTanjim/nui.nvim"
+                                   , "rcarriga/nvim-notify" }
+                  , }
+                , "godlygeek/tabular"
+                , "nvim-tree/nvim-web-devicons"
+                , "nvim-lua/plenary.nvim"
+                , "MunifTanjim/nui.nvim"
+                , "rcarriga/nvim-notify"
+                , "lewis6991/gitsigns.nvim"
+                , "onsails/lspkind.nvim"
+                , { "nvim-telescope/telescope.nvim"
+                  , branch       = "0.1.x"
+                  , dependencies = { 'nvim-lua/plenary.nvim' } }
+                , { "romgrk/barbar.nvim"
+                  , dependencies = { "lewis6991/gitsigns.nvim"
+                                   , "nvim-tree/nvim-web-devicons" }
+                  , opts = { animation       = true
+                           , insert_at_start = true
+                           , clickable       = true
+                           , icons           = { filetype = { custom_colors = true } } }
+                  , init = function() vim.g.barbar_auto_setup = false end }
+                , { "nvim-tree/nvim-tree.lua" }
+                , { "nvim-lualine/lualine.nvim"
+                  , dependencies = { "nvim-tree/nvim-web-devicons" } }
+                , { "unblevable/quick-scope"
+                  , init = function() vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" } end
+                  , lazy = false }
+                , { "brenoprata10/nvim-highlight-colors" }
+                , "m4xshen/autoclose.nvim"
+                , "dhruvasagar/vim-table-mode"
+                , "jbyuki/venn.nvim"
+                , { "nvimdev/hlsearch.nvim"
+                  , event = "BufRead" }
+                , { "L3MON4D3/LuaSnip"
+                  , version = "v2.*"
+                  , build = "make install_jsregexp" }
+                , "xiyaowong/nvim-cursorword"
+                , "karb94/neoscroll.nvim"
+                , { "lukas-reineke/indent-blankline.nvim"
+                  , main = "ibl"
+                  , opts = {} }
+                , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
+                  , config = { intro      = intro
+                             , color      = "#c0c0c0"
+                             , scratch    = true
+                             , callback   = function()
+                                 vim.opt_local.wrap = false
+                                 vim.opt_local.cc   = "0"
+                               end
+                             , highlights = { ["<Enter>"]  = "#ffffff"
+                                            , ["<leader>"] = "#ffffff" } } }
+                -- JuneGunn
+                , "junegunn/vim-easy-align"
+                , { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" }
+                , "junegunn/goyo.vim"
+                -- T. Pope
+                , "tpope/vim-repeat"
+                , "tpope/vim-surround"
+                -- Languages / Syntax
+                , "neovim/nvim-lspconfig"
+                , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+                , "hrsh7th/cmp-nvim-lsp"
+                , "hrsh7th/cmp-buffer"
+                , "hrsh7th/cmp-path"
+                , "hrsh7th/cmp-cmdline"
+                , "petertriho/cmp-git"
+                , "hrsh7th/nvim-cmp"
+                , "neovimhaskell/haskell-vim"
+                , { "mrcjkb/haskell-tools.nvim"
+                  , version = "^3"
+                  , lazy    = false }
+                , "monkoose/fzf-hoogle.vim"
+                , "hasufell/ghcup.vim"
+                , { "mlochbaum/BQN", ft = "bqn"
+                  , config = function(plugin)
+                       vim.opt.rtp:append(plugin.dir .. "/editors/vim")
+                     end }
+                , "JuliaEditorSupport/julia-vim"
+                , "lervag/vimtex"
+                , { "chrisbra/csv.vim", lazy = false }
+                , "SergioBonatto/bend-vim"
+                -- My Plugins
+                , "augustunderground/vim-skill"
+                , "augustunderground/vim-mathmode"
+                , "augustunderground/vim-hy"
+                , "augustunderground/coconut.vim"
+                , "augustunderground/spectre.vim"
+                , "augustunderground/nocolor.nvim"
+                -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim" }
+                -- Color Schemes
+                , "rktjmp/lush.nvim"
+                , }
+
+if jit.os == "OSX" then
+  table.insert( plugins
+              , { "wojciech-kulik/xcodebuild.nvim"
+                , dependencies = { "stevearc/oil.nvim"
+                                 , "nvim-treesitter/nvim-treesitter"
+                                 , }
+                , config = function()
+                     require("xcodebuild").setup({ })
+                   end
+                , } )
+end
+
+lazy.setup(plugins)
 
 local devicons        = require("nvim-web-devicons")
 local telescope       = require("telescope")
@@ -572,9 +586,13 @@ vim.diagnostic.config({ virtual_text = false })
 vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})")
 
 local capabilities = cmplsp.default_capabilities()
+
 lsp["texlab"].setup({ capabilities = capabilities })
 -- lsp["hls"].setup({ capabilities = capabilities })
 lsp["lua_ls"].setup({ capabilities = capabilities })
+if jit.os == "OSX" then
+  lsp["sourcekit"].setup({ capabilities = capabilities })
+end
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do

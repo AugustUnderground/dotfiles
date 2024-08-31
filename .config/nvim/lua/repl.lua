@@ -218,6 +218,8 @@ function M.compile_and_run()
     vim.cmd("!ngspice %")
   elseif filetype == "spectre" then
     vim.cmd("!spectre %")
+  elseif filetype == "swift" then
+    vim.cmd("XcodebuildBuildRun")
   else
     vim.api.nvim_err_writeln("Filetype " .. filetype .. " not supported.")
   end
