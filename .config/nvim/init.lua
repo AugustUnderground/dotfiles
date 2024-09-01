@@ -137,15 +137,7 @@ local plugins = { { "folke/which-key.nvim"
                 , }
 
 if jit.os == "OSX" then
-  table.insert( plugins
-              , { "wojciech-kulik/xcodebuild.nvim"
-                , dependencies = { "stevearc/oil.nvim"
-                                 , "nvim-treesitter/nvim-treesitter"
-                                 , }
-                , config = function()
-                     require("xcodebuild").setup({ })
-                   end
-                , } )
+  plugins = require("osx").setup(plugins)
 end
 
 lazy.setup(plugins)
