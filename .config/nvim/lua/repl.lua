@@ -60,7 +60,7 @@ function M.repl_send_region()
   local lines = select_region()
   if ipython_repl then
     for _,line in ipairs(lines) do
-      send_to_repl(line .. "\n")
+      send_to_repl((line:gsub("^%s*(.-)%s*$", "%1")) .. "\n")
     end
     send_to_repl("\n")
   elseif ghci_repl then

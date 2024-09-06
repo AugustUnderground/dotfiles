@@ -585,6 +585,7 @@ lsp["lua_ls"].setup({ capabilities = capabilities })
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
 end
+lsp["pyright"].setup({})
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
