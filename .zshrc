@@ -219,36 +219,37 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Haskell
-
 if [[ -f "/home/ynk/.ghcup/env" ]]; then
     source "/home/ynk/.ghcup/env" # ghcup-env
 fi
 
 # Conda
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+if [ "$(uname)" = "Darwin" ]; then
+    conda_base="/opt/homebrew/Caskroom/miniconda/base"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    conda_base="$HOME/miniconda3"
+fi
+
+conda_setup="$('$conda_base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$conda_setup"
+else
+    if [ -f "$conda_base/etc/profile.d/conda.sh" ]; then
+        . "$conda_base/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="$conda_base/bin:$PATH"
     fi
 fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+unset conda_setup
+  
 # Perl
-
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
+# FZF
 if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 fi
