@@ -9,11 +9,11 @@ M.osx_plugins = { { "wojciech-kulik/xcodebuild.nvim"
                        require("xcodebuild").setup({ })
                      end }
                 , { "mfussenegger/nvim-dap"
-                  , dependencies = { "wojciech-kulik/xcodebuild.nvim" }
+                  , dependencies = { "wojciech-kulik/xcodebuild.nvim"
+                                   , "nvim-neotest/nvim-nio" }
                   , config = function()
                         local xcodebuild = require("xcodebuild.integrations.dap")
-                        -- TODO: change it to your local codelldb path
-                        local codelldbPath = os.getenv("HOME") .. "/Users/ynk/opt/codelldb"
+                        local codelldbPath = os.getenv("HOME") .. "/opt/codelldb/extension/adapter/codelldb"
                         xcodebuild.setup(codelldbPath)
                         vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
                         vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })
