@@ -124,6 +124,7 @@ local plugins = { { "folke/which-key.nvim"
                 , "lervag/vimtex"
                 , { "chrisbra/csv.vim", lazy = false }
                 , "SergioBonatto/bend-vim"
+                , "tarikgraba/vim-liberty"
                 -- My Plugins
                 , "augustunderground/vim-skill"
                 , "augustunderground/vim-mathmode"
