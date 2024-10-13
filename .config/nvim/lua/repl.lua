@@ -83,6 +83,8 @@ function M.repl_reload_file()
     send_to_repl("nim " .. vim.fn.expand("%"))
   elseif filetype == "haskell" then
     send_to_repl(":l " .. vim.fn.expand("%:p:h:t") .. "/" .. vim.fn.expand("%:p:t"))
+  elseif filetype == "idris2" then
+    send_to_repl(":l \"" .. vim.fn.expand("%r") .. "\"")
   elseif filetype == "coq" then
     send_to_repl("Require Import " .. vim.fn.expand("%:t:r") )
   elseif filetype == "frege" then
@@ -172,7 +174,9 @@ function M.compile_and_run()
     vim.cmd("!biber %:r")
   elseif filetype == "haskell" then
     vim.cmd("!stack build && stack exec %:p:h:h:t-exe")
-  elseif filteype == "coq" then
+  elseif filetype == "idris2" then
+    vim.cmd("!pack build && pack run")
+  elseif filetype == "coq" then
     vim.cmd("!gmake")
   elseif filetype == "frege" then
     vim.cmd("!sbt -no-colors compile && sbt -no-colors run")
@@ -244,6 +248,10 @@ function M.start_repl()
     ghci_repl = true
     start_repl("term stack ghci")
     vim.opt_local.syntax = "haskell"
+  elseif filetype == "idris2" then
+    ghci_repl = true
+    start_repl("term rlwrap pack repl")
+    vim.opt_local.syntax = "idris2"
   elseif filetype == "coq" then
     start_repl("term rlwrap coqtop")
   elseif filetype == "frege" then

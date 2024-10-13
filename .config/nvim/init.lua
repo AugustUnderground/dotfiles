@@ -170,7 +170,6 @@ local ibl             = require("ibl")
 local nocolor         = require("nocolor.lualine")
 local repl            = require("repl")
 local haskell         = require("haskell-tools")
-local idris           = require("idris2")
 
 -- Settings
 vim.o.timeout          = true
@@ -195,12 +194,15 @@ vim.opt_local.spell.spelllang = "en_us"
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
 
 -- Languages / Syntax
+
 vim.api.nvim_create_autocmd( { "BufRead", "BufNewFile" }
                            , { pattern  = "*.bend"
                              , callback = function()
                                vim.bo.filetype = "bend"
                                vim.bo.syntax   = "bend"
                              end })
+
+-- require("idris2").setup({})
 
 -- Functions
 
@@ -402,9 +404,6 @@ vim.g.haskell_indent_in               = 1
 vim.g.haskell_indent_guard            = 4
 vim.g.haskell_indent_case_alternative = 1
 
--- Idris 2
-idris.setup({})
-
 -- SKILL
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
@@ -589,10 +588,10 @@ vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {fo
 local capabilities = cmplsp.default_capabilities()
 
 lsp["texlab"].setup({ capabilities = capabilities })
--- lsp["hls"].setup({ capabilities = capabilities })
 lsp["lua_ls"].setup({ capabilities = capabilities })
-lsp["idris2_lsp"].setup({ capabilities = capabilities })
 lsp["pyright"].setup({ capabilities = capabilities})
+-- lsp["hls"].setup({ capabilities = capabilities })
+lsp["idris2_lsp"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
