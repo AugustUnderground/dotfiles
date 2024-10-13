@@ -10,7 +10,8 @@ for plugin in $(ls $ZSH_CFG); do
 done
 
 # Completion
-autoload -U compinit && compinit
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt nocaseglob
 zstyle ':completion:*' menu select
@@ -146,6 +147,10 @@ fi
 
 if command -v fuck > /dev/null; then
     eval "$(thefuck --alias)"
+fi
+
+if command -v pack > /dev/null; then
+    eval "$(pack completion-script pack)"
 fi
 
 #if [ -d "$HOME/opt/z.lua" ]; then

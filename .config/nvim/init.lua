@@ -122,9 +122,13 @@ local plugins = { { "folke/which-key.nvim"
                      end }
                 , "JuliaEditorSupport/julia-vim"
                 , "lervag/vimtex"
-                , { "chrisbra/csv.vim", lazy = false }
+                , { "chrisbra/csv.vim"
+                  , lazy = false }
                 , "SergioBonatto/bend-vim"
                 , "tarikgraba/vim-liberty"
+                , { "ShinKage/idris2-nvim"
+                  , dependencies = { "neovim/nvim-lspconfig"
+                                   , "MunifTanjim/nui.nvim" } }
                 -- My Plugins
                 , "augustunderground/vim-skill"
                 , "augustunderground/vim-mathmode"
@@ -165,7 +169,8 @@ local neoscroll       = require("neoscroll")
 local ibl             = require("ibl")
 local nocolor         = require("nocolor.lualine")
 local repl            = require("repl")
-local haskell         = require('haskell-tools')
+local haskell         = require("haskell-tools")
+local idris           = require("idris2")
 
 -- Settings
 vim.o.timeout          = true
@@ -397,6 +402,9 @@ vim.g.haskell_indent_in               = 1
 vim.g.haskell_indent_guard            = 4
 vim.g.haskell_indent_case_alternative = 1
 
+-- Idris 2
+idris.setup({})
+
 -- SKILL
 vim.g.skill_repl                      = "rlwrap virtuoso -nograph"
 
@@ -583,10 +591,12 @@ local capabilities = cmplsp.default_capabilities()
 lsp["texlab"].setup({ capabilities = capabilities })
 -- lsp["hls"].setup({ capabilities = capabilities })
 lsp["lua_ls"].setup({ capabilities = capabilities })
+lsp["idris2_lsp"].setup({ capabilities = capabilities })
+lsp["pyright"].setup({ capabilities = capabilities})
+
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
 end
-lsp["pyright"].setup({})
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do

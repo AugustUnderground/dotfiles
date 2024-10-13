@@ -2,22 +2,23 @@
 export ZSH_CFG="$HOME/.config/zsh"
 
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/X11R6/bin/startx:$PATH         # OpenBSD
-export PATH=$HOME/.local/bin:$PATH              # Local executables
-export PATH=$HOME/scripts:$PATH                 # My scripts
-export PATH=$HOME/dots/scripts:$PATH            # My private scripts
-export PATH=$HOME/perl5/bin:$PATH               # Perl
-export PATH=$HOME/.cabal/bin:$PATH              # Haskell
-export PATH=$HOME/.cargo/bin:$PATH              # Rust
-export PATH=$HOME/go/bin:$PATH                  # Go
-export PATH=$HOME/.ghcup/bin:$PATH              # Haskell
-export PATH=/usr/local/cuda/bin:$PATH           # CUDA
-export PATH=$HOME/.luarocks/bin:$PATH           # Lua
-export PATH=$HOME/.nimble/bin:$PATH             # nim
-export PATH=$HOME/Library/Python/3.10/bin:$PATH # Python on MacOS
+export PATH="/usr/X11R6/bin/startx:$PATH"             # OpenBSD
+export PATH="$HOME/.local/bin:$PATH"                  # Local executables
+export PATH="$HOME/scripts:$PATH"                     # My scripts
+export PATH="$HOME/dots/scripts:$PATH"                # My private scripts
+export PATH="$HOME/perl5/bin:$PATH"                   # Perl
+export PATH="$HOME/.cabal/bin:$PATH"                  # Haskell (cabal)
+export PATH="$HOME/.ghcup/bin:$PATH"                  # Haskell (ghcup)
+export PATH="$HOME/.cargo/bin:$PATH"                  # Rust
+export PATH="$HOME/go/bin:$PATH"                      # Go
+export PATH="/usr/local/cuda/bin:$PATH"               # CUDA
+export PATH="$HOME/.luarocks/bin:$PATH"               # Lua
+export PATH="$HOME/.nimble/bin:$PATH"                 # nim
+export PATH="$HOME/.pack/bin:$HOME/.idris2/bin:$PATH" # Idris 2
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH=/opt/homebrew/bin:$PATH
+    export PATH=$HOME/Library/Python/3.10/bin:$PATH # Python on MacOS
 fi
 
 # History
@@ -93,12 +94,7 @@ export QT_IM_MODULE='fcitx'
 export SDL_IM_MODULE='fcitx'
 export XMODIFIERS='@im=fcitx'
 
+# Rust
 if [[ -f "$HOME/.cargo/env" ]]; then
     source "$HOME/.cargo/env"
 fi
-
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
-    source $HOME/.nix-profile/etc/profile.d/nix.sh;
-fi # added by Nix installer
-
-
