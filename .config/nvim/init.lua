@@ -84,6 +84,7 @@ local plugins = { { "folke/which-key.nvim"
                 , { "lukas-reineke/indent-blankline.nvim"
                   , main = "ibl"
                   , opts = {} }
+                , "uga-rosa/ccc.nvim"
                 , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
                   , config = { intro      = intro
                              , color      = "#c0c0c0"
@@ -161,6 +162,7 @@ local lsp             = require("lspconfig")
 local diagnostics     = require("toggle_lsp_diagnostics")
 local nvimtree        = require("nvim-tree")
 local luasnip         = require("luasnip")
+local ccc             = require("ccc")
 local cmpgit          = require("cmp_git")
 local cmp             = require("cmp")
 local cmplsp          = require("cmp_nvim_lsp")
@@ -537,6 +539,9 @@ function _G.Toggle_venn()
   end
 end
 vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", opts)
+
+-- Color Picker CCC
+ccc.setup({})
 
 -- cmp
 cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
