@@ -85,6 +85,7 @@ local plugins = { { "folke/which-key.nvim"
                   , main = "ibl"
                   , opts = {} }
                 , "uga-rosa/ccc.nvim"
+                , "fedepujol/move.nvim"
                 , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
                   , config = { intro      = intro
                              , color      = "#c0c0c0"
@@ -163,6 +164,7 @@ local diagnostics     = require("toggle_lsp_diagnostics")
 local nvimtree        = require("nvim-tree")
 local luasnip         = require("luasnip")
 local ccc             = require("ccc")
+local move            = require("move")
 local cmpgit          = require("cmp_git")
 local cmp             = require("cmp")
 local cmplsp          = require("cmp_nvim_lsp")
@@ -350,6 +352,17 @@ vim.keymap.set("n", "<leader>xd", function() trouble.toggle("document_diagnostic
 vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end)
 vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+
+vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
+vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
+vim.keymap.set('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
+vim.keymap.set('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
+vim.keymap.set('n', '<leader>wf', ':MoveWord(1)<CR>', opts)
+vim.keymap.set('n', '<leader>wb', ':MoveWord(-1)<CR>', opts)
+vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+vim.keymap.set('v', '<A-h>', ':MoveHBlock(-1)<CR>', opts)
+vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
 
 -- vim.keymap.set({"i"}, "<Tab>", function() ls.expand() end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
@@ -542,6 +555,14 @@ vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", opts)
 
 -- Color Picker CCC
 ccc.setup({})
+
+-- Move Lines and Blocks
+move.setup({ line  = { enable = true
+		             , indent = false }
+           , block = { enable = true
+		             , indent = false }
+           , word  = { enable = true }
+           , char  = { enable = false } })
 
 -- cmp
 cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
