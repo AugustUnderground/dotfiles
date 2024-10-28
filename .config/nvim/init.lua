@@ -353,17 +353,6 @@ vim.keymap.set("n", "<leader>xq", function() trouble.toggle("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() trouble.toggle("loclist") end)
 vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
 
-vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
-vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
-vim.keymap.set('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
-vim.keymap.set('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
-vim.keymap.set('n', '<leader>wf', ':MoveWord(1)<CR>', opts)
-vim.keymap.set('n', '<leader>wb', ':MoveWord(-1)<CR>', opts)
-vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
-vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
-vim.keymap.set('v', '<A-h>', ':MoveHBlock(-1)<CR>', opts)
-vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
-
 -- vim.keymap.set({"i"}, "<Tab>", function() ls.expand() end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<Tab>", function() ls.jump( 1) end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<S-Tab>", function() ls.jump(-1) end, {silent = true})
@@ -376,6 +365,15 @@ vim.keymap.set("n", "<leader>R", repl.repl_reload_file, {silent = true})
 
 vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, hstOpts)
 vim.keymap.set("n", "<leader>hs", haskell.hoogle.hoogle_signature, hstOpts)
+
+vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
+vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
+vim.keymap.set('n', '<A-h>', ':MoveHChar(-1)<CR>', opts)
+vim.keymap.set('n', '<A-l>', ':MoveHChar(1)<CR>', opts)
+vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
+vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
+vim.keymap.set('v', '<A-h>', ':MoveHBlock(-1)<CR>', opts)
+vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', opts)
 
 vim.api.nvim_create_autocmd( "LspAttach"
                            , { desc = "LSP actions"
@@ -558,11 +556,11 @@ ccc.setup({})
 
 -- Move Lines and Blocks
 move.setup({ line  = { enable = true
-		             , indent = false }
+                     , indent = false }
            , block = { enable = true
-		             , indent = false }
+                     , indent = false }
            , word  = { enable = true }
-           , char  = { enable = false } })
+           , char  = { enable = true } })
 
 -- cmp
 cmp.setup({ snippet = { expand = function(args) luasnip.lsp_expand(args.body) end }
