@@ -50,7 +50,7 @@ style  = "Bold"
 
 [font.bold_italic]
 family = "VictorMono NFM"
-style  = "BoldItalic"
+style  = "Bold Italic"
 
 [font.italic]
 family = "VictorMono NFM"
