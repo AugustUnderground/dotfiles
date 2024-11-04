@@ -41,19 +41,19 @@ x = 0
 y = 0
 
 [font.normal]
-family = "Maple Mono NF"
-style  = "SemiBold"
+family = "VictorMono NFM"
+style  = "Medium"
 
 [font.bold]
-family = "Maple Mono NF"
+family = "VictorMono NFM"
 style  = "Bold"
 
 [font.bold_italic]
-family = "Maple Mono NF"
+family = "VictorMono NFM"
 style  = "BoldItalic"
 
 [font.italic]
-family = "Maple Mono NF"
+family = "VictorMono NFM"
 style  = "Italic"
 
 [[keyboard.bindings]]
