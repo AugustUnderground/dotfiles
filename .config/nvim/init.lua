@@ -184,6 +184,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline     = true
 vim.opt.cursorcolumn   = true
 vim.opt.termguicolors  = true
+vim.opt.guifont        = "VictorMono Nerd Font Mono:h12"
 vim.opt.expandtab      = true
 vim.opt.tabstop        = 4
 vim.opt.shiftwidth     = 2
@@ -646,3 +647,19 @@ vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
 
 -- Color Scheme
 vim.cmd.colorscheme("nocolor")
+
+-- NeoVide
+vim.g.neovide_refresh_rate                 = 144       -- refresh rate of gfx window
+vim.g.neovide_transparency                 = 1.0       -- window background opacity
+vim.g.neovide_no_idle                      = false     -- immediately redraw
+vim.g.neovide_fullscreen                   = false     -- borderless windowed full screen
+vim.g.neovide_cursor_vfx_mode              = "railgun" -- cursor animation style [railgun|torpedo|pixiedust|sonicboom|ripple|wireframe]
+vim.g.neovide_cursor_animation_length      = 0.1       -- cursor animation time in ms
+vim.g.neovide_cursor_trail_length          = 0.1       -- cursor trail length during animation
+vim.g.neovide_cursor_antialiasing          = true      -- cursor animation antialising
+vim.g.neovide_cursor_vfx_opacity           = 200.0     -- transparency of particle effects
+vim.g.neovide_cursor_vfx_particle_lifetime = 1.2       -- duration of particle effects in s
+vim.g.neovide_cursor_vfx_particle_density  = 7.0       -- density of particle effects
+vim.g.neovide_cursor_vfx_particle_speed    = 10.0      -- velocity of particle effects
+vim.g.neovide_cursor_vfx_particle_phase    = 1.5       -- ?
+vim.g.neovide_cursor_vfx_particle_curl     = 1.0       -- ?
