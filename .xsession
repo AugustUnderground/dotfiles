@@ -18,7 +18,7 @@ export PATH=$HOME/.ghcup/bin:$PATH
 export PATH=/usr/local/cuda/bin:$PATH
 #export PATH=/usr/local/plan9/bin:$PATH
 
-export DMENU_THEME="-fn 'GoMono Nerd Font:size=12' \
+export DMENU_THEME="-fn 'VictorMono NFM:size=12' \
                     -nb '#060404' \
                     -nf '#FFF6F6' \
                     -sb '#222222' \
