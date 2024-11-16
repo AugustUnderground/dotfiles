@@ -149,9 +149,9 @@ if command -v fuck > /dev/null; then
     eval "$(thefuck --alias)"
 fi
 
-#if command -v pack > /dev/null; then
-#    eval "$(pack completion-script pack)"
-#fi
+if command -v pack > /dev/null; then
+    eval "$(pack completion-script pack)"
+fi
 
 #if [ -d "$HOME/opt/z.lua" ]; then
 #    eval "$(lua $HOME/opt/z.lua/z.lua --init zsh enhanced once fzf)"
