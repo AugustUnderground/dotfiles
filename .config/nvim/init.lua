@@ -612,11 +612,13 @@ vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {fo
 
 local capabilities = cmplsp.default_capabilities()
 
+-- lsp["hls"].setup({ capabilities = capabilities })
 lsp["texlab"].setup({ capabilities = capabilities })
 lsp["lua_ls"].setup({ capabilities = capabilities })
 lsp["pyright"].setup({ capabilities = capabilities})
--- lsp["hls"].setup({ capabilities = capabilities })
 lsp["idris2_lsp"].setup({ capabilities = capabilities })
+lsp["ocamllsp"].setup({ capabilities = capabilities })
+lsp["fortls"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })

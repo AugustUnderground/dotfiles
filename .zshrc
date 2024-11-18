@@ -258,3 +258,6 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 fi
+
+# OCaml
+[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
