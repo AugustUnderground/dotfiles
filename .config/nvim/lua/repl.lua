@@ -151,7 +151,8 @@ function M.compile_and_run()
   elseif filetype == "zig" then
     vim.cmd("!zig build-exe ./%")
   elseif filetype == "fortran" then
-    vim.cmd("!gfortran % -o %:r && ./%:r")
+    vim.cmd("!fpm run")
+    --vim.cmd("!gfortran % -o %:r && ./%:r")
   elseif filetype == "c" then
     vim.cmd("!gcc -o %:r.out %")
     vim.cmd("!chmod a+x %:r.out")
