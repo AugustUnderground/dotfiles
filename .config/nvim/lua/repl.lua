@@ -284,7 +284,7 @@ function M.start_repl()
     start_repl("term R")
     vim.opt_local.syntax = "r"
   elseif filetype == "julia" then
-    start_repl("term julia --project")
+    start_repl("term julia --project=.")
   elseif filetype == "clojure" then
     start_repl("term lein repl")
     vim.opt_local.syntax = "clojure"

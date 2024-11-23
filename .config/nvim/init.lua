@@ -84,7 +84,7 @@ local plugins = { { "folke/which-key.nvim"
                 , { "lukas-reineke/indent-blankline.nvim"
                   , main = "ibl"
                   , opts = {} }
-                , "uga-rosa/ccc.nvim"
+                -- , "uga-rosa/ccc.nvim"
                 , "fedepujol/move.nvim"
                 , { "augustunderground/nvim-intro" -- "Yoolayn/nvim-intro"
                   , config = { intro      = intro
@@ -163,7 +163,7 @@ local lsp             = require("lspconfig")
 local diagnostics     = require("toggle_lsp_diagnostics")
 local nvimtree        = require("nvim-tree")
 local luasnip         = require("luasnip")
-local ccc             = require("ccc")
+-- local ccc             = require("ccc")
 local move            = require("move")
 local cmpgit          = require("cmp_git")
 local cmp             = require("cmp")
@@ -553,7 +553,7 @@ end
 vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", opts)
 
 -- Color Picker CCC
-ccc.setup({})
+-- ccc.setup({})
 
 -- Move Lines and Blocks
 move.setup({ line  = { enable = true
@@ -619,6 +619,7 @@ lsp["pyright"].setup({ capabilities = capabilities})
 lsp["idris2_lsp"].setup({ capabilities = capabilities })
 lsp["ocamllsp"].setup({ capabilities = capabilities })
 lsp["fortls"].setup({ capabilities = capabilities })
+lsp["julials"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
