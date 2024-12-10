@@ -195,8 +195,17 @@ vim.opt.encoding       = "UTF-8"
 vim.opt.cc             = "80"
 -- vim.opt.shell          = "/bin/bash"
 
-vim.opt_local.spell.spelllang = "en_us"
+vim.opt_local.spell.spelllang = 'en_us'
 vim.opt.clipboard:append({ 'unnamed', 'unnamedplus' })
+
+vim.api.nvim_create_autocmd( 'TextYankPost'
+                           , { desc  = 'Highlight when yanking (copying) text'
+                             , group = vim.api.nvim_create_augroup( 'kickstart-highlight-yank'
+                                                                  , { clear = true } )
+                             , callback = function()
+                                  vim.highlight.on_yank()
+                                end
+                             , } )
 
 -- Languages / Syntax
 
