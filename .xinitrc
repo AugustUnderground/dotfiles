@@ -8,6 +8,8 @@ if [ -z ${LANG+x} ]; then
     export LC_ALL="en_US.UTF-8"
 fi
 
+[ "$(hostname)" = "wintermute" ] && xrandr --output DP-4 --left-of DP-2
+
 if [ -f $HOME/wp ]; then
     hsetroot -tile $HOME/wp -tint "#8F0024"
 else
@@ -30,7 +32,5 @@ fi
 [ -n "$(command -v mpd)" ] && mpd
 [ -n "$(command -v musicpd)" ] && musicpd "$HOME/.config/mpd/mpd.conf"
 [ -n "$(command -v nm-applet)" ] && nm-applet&
-
-[ "$(hostname)" = "wintermute" ] && xrandr --output DP-4 --left-of DP-2
 
 exec dbus-launch $WM
