@@ -31,4 +31,6 @@ fi
 [ -n "$(command -v musicpd)" ] && musicpd "$HOME/.config/mpd/mpd.conf"
 [ -n "$(command -v nm-applet)" ] && nm-applet&
 
+[ "$(hostname)" = "wintermute" ] && xrandr --output DP-4 --left-of DP-2
+
 exec dbus-launch $WM
