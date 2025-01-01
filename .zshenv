@@ -15,6 +15,7 @@ export PATH="/usr/local/cuda/bin:$PATH"               # CUDA
 export PATH="$HOME/.luarocks/bin:$PATH"               # Lua
 export PATH="$HOME/.nimble/bin:$PATH"                 # nim
 export PATH="$HOME/.pack/bin:$HOME/.idris2/bin:$PATH" # Idris 2
+export PATH="/usr/local/mercury-22.01.8/bin"          # Mercury
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH=/opt/homebrew/bin:$PATH
