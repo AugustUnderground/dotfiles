@@ -141,6 +141,13 @@ local plugins = { { "folke/which-key.nvim"
                 -- , { dir = "/home/uhlmanny/Workspace/nocolor.nvim" }
                 -- Color Schemes
                 , "rktjmp/lush.nvim"
+                , { "xero/miasma.nvim"
+                  , lazy     = false
+                  , priority = 1000 }
+                , { "eldritch-theme/eldritch.nvim"
+                  , lazy     = false
+                  , priority = 1000
+                  , opts     = {} }
                 , }
 
 if jit.os == "OSX" then
