@@ -142,6 +142,7 @@ if command -v alacritty > /dev/null; then
 fi
 
 if command -v zoxide > /dev/null; then
+    export _ZO_ECHO=1
     eval "$(zoxide init zsh)"
 fi
 
