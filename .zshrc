@@ -179,11 +179,11 @@ else
     alias ll="ls -l --color=auto"
 fi
 
-if ! command -v sudo >/dev/null; then
-    alias sudo="doas"
-elif ! command -v doas >/dev/null; then
-    alias doas="sudo"
-fi
+#if ! command -v sudo >/dev/null; then
+#    alias sudo="doas"
+#elif ! command -v doas >/dev/null; then
+#    alias doas="sudo"
+#fi
 
 alias psync="rsync -raulvnP ~/workspace uhlmanny@piggy:/home/uhlmanny/archive/$(hostname)/"
 alias sshgonzo="sshfs uhlmanny@gonzo.fh-reutlingen.de:/ ~/gonzo -o reconnect -o allow_other"
