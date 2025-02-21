@@ -131,6 +131,7 @@ local plugins = { { "folke/which-key.nvim"
                 , { "ShinKage/idris2-nvim"
                   , dependencies = { "neovim/nvim-lspconfig"
                                    , "MunifTanjim/nui.nvim" } }
+                , "eandrju/cellular-automaton.nvim"
                 -- My Plugins
                 , "augustunderground/vim-skill"
                 , "augustunderground/vim-mathmode"

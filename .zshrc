@@ -4,11 +4,6 @@ PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "${PWD/#$HOME/\~}"'
 # Documentation
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Plugins
-for plugin in $(ls $ZSH_CFG); do
-  source "$(ls $ZSH_CFG/$plugin/*.plugin.zsh)"
-done
-
 # Completion
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -16,6 +11,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt nocaseglob
 zstyle ':completion:*' menu select
 zmodload zsh/complist
+
+# Plugins
+for plugin in $(ls $ZSH_CFG); do
+  source "$(ls $ZSH_CFG/$plugin/*.plugin.zsh)"
+done
 
 # Autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4f4f4f"
