@@ -175,6 +175,8 @@ function M.compile_and_run()
     vim.cmd("!biber %:r")
   elseif filetype == "haskell" then
     vim.cmd("!stack build && stack exec %:p:h:h:t-exe")
+  elseif filetype == "agda" then
+    vim.cmd("!agda --compile % && ./%:r")
   elseif filetype == "idris2" then
     vim.cmd("!pack build && pack run")
   elseif filetype == "coq" then
@@ -249,8 +251,10 @@ function M.start_repl()
     ghci_repl = true
     start_repl("term stack ghci")
     vim.opt_local.syntax = "haskell"
+  elseif filetype == "agda" then
+    start_repl("term agda -I")
+    vim.opt_local.syntax = "agda"
   elseif filetype == "idris2" then
-    ghci_repl = true
     start_repl("term rlwrap pack repl")
     vim.opt_local.syntax = "idris2"
   elseif filetype == "coq" then

@@ -96,6 +96,7 @@ local plugins = { { "folke/which-key.nvim"
                                end
                              , highlights = { ["<Enter>"]  = "#ffffff"
                                             , ["<leader>"] = "#ffffff" } } }
+                , "eandrju/cellular-automaton.nvim"
                 -- JuneGunn
                 , "junegunn/vim-easy-align"
                 , { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" }
@@ -131,7 +132,7 @@ local plugins = { { "folke/which-key.nvim"
                 , { "ShinKage/idris2-nvim"
                   , dependencies = { "neovim/nvim-lspconfig"
                                    , "MunifTanjim/nui.nvim" } }
-                , "eandrju/cellular-automaton.nvim"
+                , "derekelkins/agda-vim"
                 -- My Plugins
                 , "augustunderground/vim-skill"
                 , "augustunderground/vim-mathmode"
@@ -637,6 +638,7 @@ lsp["idris2_lsp"].setup({ capabilities = capabilities })
 lsp["ocamllsp"].setup({ capabilities = capabilities })
 lsp["fortls"].setup({ capabilities = capabilities })
 lsp["julials"].setup({ capabilities = capabilities })
+lsp["agda_ls"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
