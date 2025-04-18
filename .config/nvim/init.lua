@@ -639,6 +639,7 @@ lsp["ocamllsp"].setup({ capabilities = capabilities })
 lsp["fortls"].setup({ capabilities = capabilities })
 lsp["julials"].setup({ capabilities = capabilities })
 lsp["agda_ls"].setup({ capabilities = capabilities })
+lsp["quick_lint_js"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })

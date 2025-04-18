@@ -265,7 +265,7 @@ function M.start_repl()
   elseif filetype == "purescript" then
     start_repl("term spago repl") vim.opt_local.syntax = "purescript"
   elseif filetype == "ocaml" then
-    start_repl("term utop")
+    start_repl("term dune utop")
   elseif filetype == "elm" then
     start_repl("term elm repl")
     vim.opt_local.syntax = "elm"

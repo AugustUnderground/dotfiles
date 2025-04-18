@@ -41,9 +41,13 @@ ZVM_VI_HIGHLIGHT_BACKGROUND=white      # Color name
 
 # LATEX
 if [ $(uname) = "Linux" ]; then
-    TEXLIVEPATH="/opt/texlive/latest/bin/x86_64-linux"
-    TEXLIVEMAN="/opt/texlive/latest/texmf-dist/doc/man"
-    TEXLIVEINFO="/opt/texlive/latest/texmf-dist/doc/info"
+    if [ -d "/usr/local/texlive/latest/bin/x86_64-linuxmusl" ]; then
+        TEXLIVEPATH="/usr/local/texlive/latest/bin/x86_64-linuxmusl"
+    else
+        TEXLIVEPATH="/usr/local/texlive/latest/bin/x86_64-linux"
+    fi
+    TEXLIVEMAN="/usr/local/texlive/latest/texmf-dist/doc/man"
+    TEXLIVEINFO="/usr/local/texlive/latest/texmf-dist/doc/info"
     [ -d $TEXLIVEPATH ] && export PATH=$TEXLIVEPATH:$PATH
     [ -d $TEXLIVEMAN ] && export MANPATH=$TEXLIVEMAN:$MANPATH
     [ -d $TEXLIVEINFO ] && export INFOPATH=$TEXLIVEINFO:$INFOPATH
