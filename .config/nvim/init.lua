@@ -624,7 +624,7 @@ cmp.setup.cmdline(":", { mapping  = cmp.mapping.preset.cmdline()
                        , matching = { disallow_symbol_nonprefix_matching = false } })
 
 -- lsp config
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = false, virtual_lines = false })
 -- vim.diagnostic.disable()
 vim.cmd("autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})")
 
