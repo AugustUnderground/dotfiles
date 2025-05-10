@@ -8,7 +8,7 @@ if [ -z ${LANG+x} ]; then
     export LC_ALL="en_US.UTF-8"
 fi
 
-[ "$(hostname)" = "wintermute" ] && xrandr --output DP-4 --right-of DP-2
+[ "$(hostname)" = "wintermute" ] && xrandr --output DP-2 --mode 2560x1440 --rate 240 --primary --output DP-4 --mode 2560x1440 --rate 240 --right-of DP-2
 
 if [ -f $HOME/wp ]; then
     hsetroot -tile $HOME/wp -tint "#8F0024"
