@@ -225,6 +225,13 @@ vim.api.nvim_create_autocmd( { "BufRead", "BufNewFile" }
                                vim.bo.syntax   = "bend"
                              end })
 
+vim.api.nvim_create_autocmd( { "BufRead", "BufNewFile" }
+                           , { pattern  = "*.tit"
+                             , callback = function()
+                               vim.bo.filetype = "spice"
+                               vim.bo.syntax   = "spice"
+                             end })
+
 -- require("idris2").setup({})
 
 -- Functions
@@ -642,6 +649,7 @@ lsp["agda_ls"].setup({ capabilities = capabilities })
 lsp["quick_lint_js"].setup({ capabilities = capabilities })
 lsp["clangd"].setup({ capabilities = capabilities })
 lsp["perlpls"].setup({ capabilities = capabilities })
+lsp["r_language_server"].setup({ capabilities = capabilities })
 
 if jit.os == "OSX" then
   lsp["sourcekit"].setup({ capabilities = capabilities })
