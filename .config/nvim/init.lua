@@ -125,14 +125,14 @@ local plugins = { { "folke/which-key.nvim"
                      end }
                 , "JuliaEditorSupport/julia-vim"
                 , "lervag/vimtex"
-                , { "chrisbra/csv.vim"
-                  , lazy = false }
+                , { "chrisbra/csv.vim", lazy = false }
                 , "SergioBonatto/bend-vim"
                 , "tarikgraba/vim-liberty"
                 , { "ShinKage/idris2-nvim"
                   , dependencies = { "neovim/nvim-lspconfig"
                                    , "MunifTanjim/nui.nvim" } }
                 , "derekelkins/agda-vim"
+                , "vale1410/vim-minizinc"
                 -- My Plugins
                 , "augustunderground/vim-skill"
                 , "augustunderground/vim-mathmode"
