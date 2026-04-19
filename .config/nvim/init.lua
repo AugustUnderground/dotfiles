@@ -106,7 +106,7 @@ local plugins = { { "folke/which-key.nvim"
                 , "tpope/vim-surround"
                 -- Languages / Syntax
                 , "neovim/nvim-lspconfig"
-                , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+                -- , "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
                 , "hrsh7th/cmp-nvim-lsp"
                 , "hrsh7th/cmp-buffer"
                 , "hrsh7th/cmp-path"
@@ -169,7 +169,7 @@ local highlightcolors = require("nvim-highlight-colors")
 local autoclose       = require("autoclose")
 local hlsearch        = require("hlsearch")
 -- local lsp             = require("lspconfig")
-local diagnostics     = require("toggle_lsp_diagnostics")
+-- local diagnostics     = require("toggle_lsp_diagnostics")
 local nvimtree        = require("nvim-tree")
 local luasnip         = require("luasnip")
 -- local ccc             = require("ccc")
@@ -453,7 +453,7 @@ devicons.setup({ color_icons = false
 
 autoclose.setup()
 hlsearch.setup()
-diagnostics.init()
+-- diagnostics.init()
 ibl.setup()
 
 -- highlightcolors
