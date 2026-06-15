@@ -663,15 +663,10 @@ vim.lsp.enable("perlpls")
 vim.lsp.config("r_language_server",  capabilities )
 vim.lsp.enable("r_language_server")
 
+-- MacOS Specific
 if jit.os == "OSX" then
   vim.lsp.config("sourcekit",  capabilities )
   vim.lsp.enable("sourcekit")
-end
-
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -- Goyo
@@ -693,6 +688,22 @@ vim.api.nvim_create_autocmd("User", { desc     = "Show lualine after goyo exit"
 
 -- Color Scheme
 vim.cmd.colorscheme("nocolor")
+
+-- Diagnostic Signs
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+           -- { Error = " ", Warn = " ", Hint = "󰌵 ", Info = " " }
+
+local signConf = { text = {}, texthl = {}, numhl = {} }
+
+for type, icon in pairs(signs) do
+  local severity     = vim.diagnostic.severity[string.upper(type)]
+  local hl           = "DiagnosticSign" .. type
+  signConf.text[severity]   = icon
+  signConf.texthl[severity] = hl
+  signConf.numhl[severity]  = hl
+end
+
+vim.diagnostic.config({ signs = signConf })
 
 -- NeoVide
 vim.g.neovide_refresh_rate                 = 144       -- refresh rate of gfx window
