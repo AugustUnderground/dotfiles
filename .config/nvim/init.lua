@@ -152,8 +152,9 @@ local plugins = { { "folke/which-key.nvim"
                   , opts     = {} }
                 , }
 
+local osx
 if jit.os == "OSX" then
-  plugins = require("osx").setup(plugins)
+  osx = require("osx").setup()
 end
 
 lazy.setup(plugins)
