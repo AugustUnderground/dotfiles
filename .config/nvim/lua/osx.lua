@@ -13,8 +13,9 @@ M.osx_plugins = { { "wojciech-kulik/xcodebuild.nvim"
                                    , "nvim-neotest/nvim-nio" }
                   , config = function()
                         local xcodebuild = require("xcodebuild.integrations.dap")
-                        local codelldbPath = os.getenv("HOME") .. "/opt/codelldb/extension/adapter/codelldb"
-                        xcodebuild.setup(codelldbPath)
+                        -- local codelldbPath = os.getenv("HOME") .. "/opt/codelldb/extension/adapter/codelldb"
+                        -- xcodebuild.setup(codelldbPath)
+                        xcodebuild.setup()
                         vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
                         vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })
                         vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "Debug Tests" })
